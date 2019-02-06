@@ -1,0 +1,11 @@
+@import '../../../index.scss';
+
+.Button {
+    -webkit-appearance: none;
+    background-color: var(--dark-blue);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(8px + 1vmin);
+    font-weight: 800;
+    padding: 1.5rem;
+}

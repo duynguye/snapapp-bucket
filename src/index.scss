@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300,400');
+
+:root {
+    /* Primary Color Scheme */
+    --dark-blue:    #1c2541;
+    --blue:         #2a4494;
+    --light-blue:   #5c7aff;
+    --teal:         #44e5e7;
+
+    /* Secondary Color Scheme */
+    --red:          #ff0022;
+    --orange:       #ff4e00;
+    --yellow:       #ffb30f;
+    --green:        #16db93;
+    --purple:       #6554c0;
+    --royal-blue:   #192bc2;
+    --magenta:      #dc0073;
+    --react-blue:   #282c34;
+
+    /* Neutral Colors */
+    --gray-1:       #fafbfc;
+    --gray-2:       #f4f5f7;
+    --gray-3:       #ebecf0;
+    --gray-4:       #c1c7d0;
+    --gray-5:       #a5adba;
+    --gray-6:       #7a869a;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
