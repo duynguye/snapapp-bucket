@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import './App.scss';
-
-interface Color {
-    color?: string;
-    width?: number;
-}
-
-function createColor(config: Color): { color: string, area: number } {
-    let newColor = { color: 'red', area: 100 };
-
-    return newColor;
-}
+import './components/_global/fontawesome';
+import '@material/react-ripple/index.scss';
+import styles from './App.module.scss';
 
 class App extends Component {
     handleClick(): void {
@@ -19,10 +10,8 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1>Deal</h1>
-                    <p>{ 'B' }</p>
+            <div className={styles.App}>
+                <header className={styles.AppHeader}>
                     <p>This is for contestr</p>
                 </header>
             </div>
