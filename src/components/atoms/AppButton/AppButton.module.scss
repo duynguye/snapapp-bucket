@@ -1,0 +1,46 @@
+@import '../../../index';
+
+.button {
+    background-color: transparent;
+    border-radius: 7px;
+    color: var(--light-blue);
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(10px + 2vmin);
+    font-weight: 300;
+    margin-bottom: 30px;
+    padding: 18px 23px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.2s var(--bezier);
+
+    svg {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+}
+
+.active {
+    background-color: var(--light-blue);
+    color: var(--white);
+}
+
+.span {
+    bottom: -5px;
+    color: var(--light-blue);
+    display: block;
+    font-size: 10px;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transform: translate3d(-50%, 50%, 0);
+    transition: all 0.3s var(--bezier);
+    white-space: nowrap;
+}
+
+.spanActive {
+    opacity: 1;
+    transform: translate3d(-50%, 100%, 0);
+}

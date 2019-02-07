@@ -1,0 +1,10 @@
+@import '../../../index.scss';
+
+.title {
+    color: var(--light-blue);
+    display: inline-flex;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: calc(14px + 2.5vmin);
+    font-weight: 300;
+    padding-bottom: 16px;
+}

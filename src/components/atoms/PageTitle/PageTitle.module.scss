@@ -1,0 +1,9 @@
+@import '../../../index.scss';
+
+.title {
+    color: var(--white);
+    display: inline-flex;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: calc(14px + 2vmin);
+    font-weight: 300;
+}

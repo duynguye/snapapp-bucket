@@ -5,12 +5,27 @@
     background-color: transparent;
     border: none;
     border-radius: 4px;
-    color: var(--gray-5);
+    color: var(--light-blue);
     cursor: pointer;
     font-family: 'Roboto Slab', sans-serif;
     font-size: calc(8px + 1vmin);
-    font-weight: 400;
-    padding: 15px;
+    font-weight: 500;
+    overflow: hidden;
+    padding: 15px 25px;
+    transition: background-color 0.2s var(--bezier), color 0.2s var(--bezier);
+
+    &:hover:not(:disabled) {
+        background-color: var(--light-blue-tinted);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:disabled {
+        color: var(--gray-5);
+        cursor: not-allowed;
+    }
 }
 
 .icon {

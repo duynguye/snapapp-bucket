@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as LogoImage } from './logo.svg';
 
 /**
  * Displays the main logo of the entire application.
  */
 const Logo = () => (
-    <a href="/">
+    <Link to='/'>
         <LogoImage />
-    </a>
+    </Link>
 );
 
 export default Logo;

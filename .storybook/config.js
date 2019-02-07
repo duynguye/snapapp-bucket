@@ -1,4 +1,5 @@
 import { configure } from '@storybook/react';
+import '../src/components/_global/fontawesome';
 
 const req = require.context('../src', true, /\.stories\.js$/);
 

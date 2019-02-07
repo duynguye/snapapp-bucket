@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './components/_global/fontawesome';
 import '@material/react-ripple/index.scss';
+import './components/_global/fontawesome';
 import styles from './App.module.scss';
 
 class App extends Component {
