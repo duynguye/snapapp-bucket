@@ -18,7 +18,7 @@ interface IAppButtonState {
 /**
  * Button that links to other applications within the infrastructure.
  */
-class AppButton extends Component {
+class AppButton extends Component<IAppButtonProps, IAppButtonState> {
     state: IAppButtonState = {
         isHovering: false
     };

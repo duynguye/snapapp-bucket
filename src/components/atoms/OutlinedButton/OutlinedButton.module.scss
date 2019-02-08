@@ -1,0 +1,21 @@
+@import '../../../index';
+
+.button {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 1px solid var(--gray-4);
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    padding: 11px 13px;
+    position: relative;
+}
+
+.icon {
+    color: var(--gray-6);
+    font-size: 14px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
