@@ -1,0 +1,18 @@
+@import '../../../index';
+
+.container {
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: inline-flex;
+    height: 70px;
+    width: 70px;
+}
+
+.image {
+    display: block;
+    border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}

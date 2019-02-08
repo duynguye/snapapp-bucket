@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { action } from '@storybook/addon-actions';
-import IconButtonSmall from './IconButtonSmall';
+import IconButtonLarge from './IconButtonLarge';
 
-const stories = storiesOf('Icon Button (sm)', module);
+const stories = storiesOf('Icon Button (lg)', module);
 stories.addDecorator(story => <div style={{ padding: '3rem' }}>{story()}</div>);
-stories.add('standard', () => <IconButtonSmall action={action('Clicked')}><FontAwesomeIcon icon={['far', 'plus']} /></IconButtonSmall>);
+stories.add('standard', () => <IconButtonLarge action={action('Clicked')}><FontAwesomeIcon icon={['far', 'plus']} /></IconButtonLarge>);

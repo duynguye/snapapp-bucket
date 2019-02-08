@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './IconButtonSmall.module.scss';
+import styles from './IconButtonLarge.module.scss';
 
-interface IIconButtonSmallProps {
+interface IIconButtonLargeProps {
     action: () => {},
     children: React.ReactNode
 }
@@ -9,7 +9,7 @@ interface IIconButtonSmallProps {
 /**
  * Small action button with icon
  */
-const IconButtonSmall = ({ action, children }: IIconButtonSmallProps) => (
+const IconButtonLarge = ({ action, children }: IIconButtonLargeProps) => (
     <button onClick={action} className={styles.button}>
         <span className={styles.span}>
             {children}
@@ -17,4 +17,4 @@ const IconButtonSmall = ({ action, children }: IIconButtonSmallProps) => (
     </button>
 );
 
-export default IconButtonSmall;
+export default IconButtonLarge;
