@@ -1,0 +1,25 @@
+@import '../../../index';
+
+.container {
+    color: var(--white);
+    padding: 0 16px;
+}
+
+.right {
+    text-align: right;
+}
+
+.name {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    line-height: 0.9;
+}
+
+.title {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+    line-height: 0.5;
+    text-transform: lowercase;
+}
