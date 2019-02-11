@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import StoryRouter from 'storybook-react-router';
-import AppBar from './AppBar';
+import GlobalMenu from './GlobalMenu';
 
 const apps = [
     {
@@ -32,9 +32,9 @@ const apps = [
     }
 ];
 
-const stories = storiesOf('App Bar', module);
+const stories = storiesOf('Global Menu', module);
 stories.addDecorator(withKnobs());
 stories.addDecorator(StoryRouter());
 stories.addDecorator(story => <div style={{ height: '100vh', display: 'inline-flex', boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.2)' }}>{ story() }</div>);
-stories.add('default', () => <AppBar apps={apps} />);
+stories.add('default', () => <GlobalMenu apps={apps} />);
 

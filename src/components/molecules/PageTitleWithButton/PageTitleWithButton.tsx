@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PageTitle, IconButtonSmall } from '../../atoms';
 import styles from './PageTitleWithButton.module.scss';
 
-const PageTitleWithButton = ({ children, onClick }) => (
+interface IPageTitleButtonProps {
+    children?: React.ReactNode;
+    onClick: () => {};
+}
+
+const PageTitleWithButton = ({ children, onClick }: IPageTitleButtonProps) => (
     <div className={styles.container}>
         <PageTitle>{children}</PageTitle>
 
