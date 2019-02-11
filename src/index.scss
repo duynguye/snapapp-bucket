@@ -30,6 +30,9 @@
     --gray-6:               #7a869a;
 
     --bezier:               cubic-bezier(0.42, 0.01, 0.23, 1);
+
+    --primary-gradient:     linear-gradient(to bottom, var(--blue) 0%, var(--blue) 60%, var(--light-blue) 100%);
+    --secondary-gradient:   linear-gradient(to right, var(--light-blue) 0%, var(--light-blue) 20%, var(--teal) 130%);
 }
 
 body {

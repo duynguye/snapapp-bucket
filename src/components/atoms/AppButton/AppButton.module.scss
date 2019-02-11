@@ -6,9 +6,9 @@
     color: var(--light-blue);
     display: inline-block;
     font-family: 'Roboto', sans-serif;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(10px + 1.5vmin);
     font-weight: 300;
-    padding: 18px 21px;
+    padding: 18px 18px;
     position: relative;
     text-decoration: none;
     transition: all 0.2s var(--bezier);
@@ -21,7 +21,7 @@
     }
 
     &:not(:last-of-type) {
-        margin-bottom: 30px;
+        margin-bottom: 45px;
     }
 }
 

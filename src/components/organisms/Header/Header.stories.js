@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
+import Header from './Header';
 import GlobalMenu from '../GlobalMenu/GlobalMenu';
-import LocalMenu from './LocalMenu';
+import LocalMenu from '../LocalMenu/LocalMenu';
+import { faFileExcel } from '@fortawesome/pro-solid-svg-icons';
 
 const apps = [
     {
@@ -32,13 +34,24 @@ const apps = [
     }
 ];
 
-const stories = storiesOf('Local Menu', module);
+const stories = storiesOf('Header', module);
 stories.addDecorator(StoryRouter());
-stories.addDecorator(story => <div style={{ height: '100vh', display: 'inline-flex', boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.2)' }}>{ story() }</div>);
-stories.add('default', () => <LocalMenu />);
-stories.add('with Global Menu', () => (
+stories.addDecorator(story => <div style={{  }}>{story()}</div>);
+stories.add('default', () => (
     <React.Fragment>
-        <GlobalMenu apps={apps} />
-        <LocalMenu />
+        <Header />
     </React.Fragment>
-))
+));
+
+stories.add('with Global and Local Menu', () => (
+    <div style={{ display: 'flex', height: '100vh' }}>
+        <div style={{ display: 'flex', height: '100%' }}>
+            <GlobalMenu apps={apps} />
+            <LocalMenu />
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+            <Header />
+        </div>
+    </div>
+));

@@ -12,6 +12,7 @@ import PageTitle from './PageTitle/PageTitle';
 import SectionTitle from './SectionTitle/SectionTitle';
 import SmallText from './SmallText/SmallText';
 import TextButton from './TextButton/TextButton';
+import ContextLink from './ContextLink/ContextLink';
 
 export { 
     AppButton,
@@ -27,5 +28,6 @@ export {
     PageTitle,
     SectionTitle,
     SmallText,
-    TextButton
+    TextButton,
+    ContextLink
 };

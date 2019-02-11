@@ -1,0 +1,46 @@
+@import '../../../index';
+
+.container {
+    align-items: center;
+    color: var(--white);
+    display: inline-flex;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    opacity: 0.5;
+    padding: 20px 30px;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+
+    &::before {
+        background-color: var(--teal);
+        content: '';
+        display: none;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 3px;
+    }
+}
+
+.leadingIcon {
+    font-size: 18px;
+    width: 40px;
+}
+
+.text {
+    font-size: 14px;
+}
+
+.active {
+    background-color: rgba(#1c2541, 0.35);
+    opacity: 1;
+    // mix-blend-mode: multiply;
+
+    &::before {
+        display: block;
+    }
+}
+
+

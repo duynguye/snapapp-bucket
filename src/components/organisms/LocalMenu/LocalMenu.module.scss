@@ -1,0 +1,34 @@
+@import '../../../index';
+
+.container {
+    background: var(--primary-gradient);
+    overflow: hidden;
+    padding: 50px 0;
+    position: relative;
+    min-width: 275px;
+    width: (8.33333vw * 2.5);
+    z-index: 2;
+}
+
+.header {
+    margin-bottom: 40px;
+    padding: 0 30px;
+}
+
+.background {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.3;
+    mix-blend-mode: hard-light;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.body {
+    position: relative;
+    z-index: 5;
+}

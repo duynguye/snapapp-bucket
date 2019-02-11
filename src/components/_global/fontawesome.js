@@ -1,5 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLongArrowRight, faBell as falBell, faFolder as falFolder } from '@fortawesome/pro-light-svg-icons';
+import { faLongArrowRight, faBell as falBell } from '@fortawesome/pro-light-svg-icons';
 import { faPoll as fasPoll, faSuitcase as fasSuitcase } from '@fortawesome/pro-solid-svg-icons';
 import { faPlus } from '@fortawesome/pro-regular-svg-icons';
 
@@ -16,6 +16,15 @@ import { faList as falList } from '@fortawesome/pro-light-svg-icons';
 import { faSlidersH as falSlidersH } from '@fortawesome/pro-light-svg-icons';
 import { faPenAlt as falPenAlt } from '@fortawesome/pro-light-svg-icons';
 import { faUsers as falUsers } from '@fortawesome/pro-light-svg-icons';
+import { faFolder as falFolder } from '@fortawesome/pro-light-svg-icons';
+import { faRocket as falRocket } from '@fortawesome/pro-light-svg-icons';
+import { faDesktop as falDesktop } from '@fortawesome/pro-light-svg-icons';
+import { faFileContract as falFileContract } from '@fortawesome/pro-light-svg-icons';
+import { faTrophy as falTrophy } from '@fortawesome/pro-light-svg-icons';
+import { faArchive as falArchive } from '@fortawesome/pro-light-svg-icons';
+import { faAtlas as falAtlas } from '@fortawesome/pro-light-svg-icons';
+import { faServer as falServer } from '@fortawesome/pro-light-svg-icons';
+import { faPlug as falPlug } from '@fortawesome/pro-light-svg-icons';
 
 library.add([
     falCaretLeft,
@@ -26,7 +35,16 @@ library.add([
     falList,
     falSlidersH,
     falPenAlt,
-    falUsers
+    falUsers,
+    falFolder,
+    falRocket,
+    falDesktop,
+    falFileContract,
+    falTrophy,
+    falArchive,
+    falAtlas,
+    falServer,
+    falPlug
 ]);
 
 // Solid Icons
@@ -40,4 +58,4 @@ library.add([
     fasTrophy
 ]);
 
-library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falFolder, falPlus ]);
+library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falPlus ]);
