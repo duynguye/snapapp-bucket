@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import GlobalMenu from '../GlobalMenu/GlobalMenu';
 import LocalMenu from './LocalMenu';
+import { ContextLink } from '../../atoms';
 
 const apps = [
     {
@@ -39,6 +40,16 @@ stories.add('default', () => <LocalMenu />);
 stories.add('with Global Menu', () => (
     <React.Fragment>
         <GlobalMenu apps={apps} />
-        <LocalMenu />
+        <LocalMenu>
+            <ContextLink exact={true} path='/' icon={['fal', 'folder']}>My Workspace</ContextLink>
+            <ContextLink exact={false} path='/projects' icon={['fal', 'rocket']}>Projects</ContextLink>
+            <ContextLink exact={false} path='/proposals' icon={['fal', 'desktop']}>Proposals</ContextLink>
+            <ContextLink exact={false} path='/contracts' icon={['fal', 'file-contract']}>Contracts</ContextLink>
+            <ContextLink exact={false} path='/contests' icon={['fal', 'trophy']}>Contests</ContextLink>
+            <ContextLink exact={false} path='/archives' icon={['fal', 'archive']}>Archives</ContextLink>
+            <ContextLink exact={false} path='/domain' icon={['fal', 'atlas']}>Domain &amp; DNS</ContextLink>
+            <ContextLink exact={false} path='/hosting' icon={['fal', 'server']}>Hosting</ContextLink>
+            <ContextLink exact={false} path='/plugins' icon={['fal', 'plug']}>Plugins</ContextLink>
+        </LocalMenu>
     </React.Fragment>
 ))
