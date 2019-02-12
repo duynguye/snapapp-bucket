@@ -1,16 +1,18 @@
 import React from 'react';
+import classNames from 'classnames';
 import styles from './IconButtonLarge.module.scss';
 
 interface IIconButtonLargeProps {
     action: () => {},
-    children: React.ReactNode
+    children: React.ReactNode,
+    classes: string | [string];
 }
 
 /**
  * Small action button with icon
  */
-const IconButtonLarge = ({ action, children }: IIconButtonLargeProps) => (
-    <button onClick={action} className={styles.button}>
+const IconButtonLarge = ({ action, children, classes }: IIconButtonLargeProps) => (
+    <button onClick={action} className={classNames(styles.button, classes)}>
         <span className={styles.span}>
             {children}
         </span>
