@@ -1,0 +1,22 @@
+@import '../../../index';
+
+.cell {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 14px;
+    text-align: left;
+}
+
+.cellHeader {
+    color: var(--gray-5);
+    font-weight: 400;
+}
+
+.cellBody {
+    color: var(--blue);
+    font-weight: 400;
+}
+
+.link {
+    color: var(--light-blue);
+    text-decoration: none;
+}
