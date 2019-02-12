@@ -5,7 +5,7 @@ import styles from './Badge.module.scss';
 interface IBadgeProps {
     prefix: any;
     icon: any;
-    count: number;
+    count?: number;
     onClick: () => {};
 }
 

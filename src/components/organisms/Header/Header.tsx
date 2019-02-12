@@ -3,7 +3,21 @@ import { Badge, Avatar, NameTag } from '../../atoms';
 import background from '../../_global/background.jpg';
 import styles from './Header.module.scss';
 
-const Header = () => (
+// Temporary Handler
+const onClickHandler = () => {
+    return true;
+}
+
+interface IHeaderProps {
+    badges: React.ReactNode;
+    currentUser: {
+        name: string;
+        title: string;
+        avatar: string;
+    };
+}
+
+const Header = ({ badges, currentUser }: IHeaderProps) => (
     <header className={styles.container}>
         <img src={background} alt={'Background'} className={styles.background} />
         
@@ -11,18 +25,21 @@ const Header = () => (
             <Badge 
                 prefix='fal'
                 icon='plus'
+                onClick={onClickHandler}
             />
 
             <Badge 
                 prefix='fal'
                 icon='folder'
                 count={3}
+                onClick={onClickHandler}
             />
 
             <Badge 
                 prefix='fal'
                 icon='bell'
                 count={123}
+                onClick={onClickHandler}
             />
         </div>
 
