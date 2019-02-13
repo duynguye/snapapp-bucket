@@ -1,0 +1,26 @@
+@import '../../../index';
+
+.row {
+    display: grid;
+    grid-template-columns: 100px auto 100px 150px 200px 150px 50px;
+    padding: 12px 60px;
+    position: relative;
+    
+    &:nth-child(even) {
+        background-color: var(--light-blue-tinted);
+    }
+
+    &:not(:last-child) {
+        &::after {
+            background-color: var(--gray-3);
+            bottom: 0;
+            content: '';
+            height: 1px;
+            left: 50%;
+            position: absolute;
+            transform: translate3d(-50%, 50%, 0);
+            width: calc(100% - 120px);
+            z-index: 10;
+        }   
+    }
+}

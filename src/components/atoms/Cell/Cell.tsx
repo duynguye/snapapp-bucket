@@ -5,16 +5,16 @@ import styles from './Cell.module.scss';
 
 const Cell = ({ header, children, link }) => {
     if (header) {
-        return <th className={classNames(styles.cell, styles.cellHeader)}>{children}</th>;
+        return <div className={classNames(styles.cell, styles.cellHeader)}>{children}</div>;
     } else {
         return (
-            <td className={classNames(styles.cell, styles.cellBody)}>
+            <div className={classNames(styles.cell, styles.cellBody)}>
                 { 
                     link 
                     ? <Link to={link} className={styles.link}>{children}</Link>
                     : children
                 }
-            </td>
+            </div>
         );
     }
 }
