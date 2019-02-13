@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import storyRouter from 'storybook-react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cell from './Cell';
 import { TableRow } from '../../molecules';
 import SectionHeader from '../../organisms/SectionHeader/SectionHeader';
@@ -61,7 +62,7 @@ stories.add('default', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -69,7 +70,7 @@ stories.add('default', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -77,7 +78,7 @@ stories.add('default', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -85,7 +86,7 @@ stories.add('default', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -93,7 +94,7 @@ stories.add('default', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -101,7 +102,7 @@ stories.add('default', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -109,7 +110,7 @@ stories.add('default', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow>
             </div>
         </div>
@@ -138,14 +139,14 @@ stories.add('with section header', () => (
             </div>
 
             <div>
-                <TableRow>
+            <TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
                     <Cell>KRXI</Cell>
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -153,7 +154,7 @@ stories.add('with section header', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -161,7 +162,7 @@ stories.add('with section header', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -169,7 +170,7 @@ stories.add('with section header', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -177,7 +178,7 @@ stories.add('with section header', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -185,7 +186,7 @@ stories.add('with section header', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow><TableRow>
                     <Cell link='/contest/231'>SRP-32020</Cell>
                     <Cell link='/contest/231'>2019 Australian Open Trip Giveaway</Cell>
@@ -193,7 +194,7 @@ stories.add('with section header', () => (
                     <Cell>12.31.2018</Cell>
                     <Cell>Poll</Cell>
                     <Cell>Chip Adams</Cell>
-                    <Cell>Down</Cell>
+                    <Cell link='/' centered><FontAwesomeIcon icon={['fal', 'cloud-download-alt']} /></Cell>
                 </TableRow>
             </div>
         </div>

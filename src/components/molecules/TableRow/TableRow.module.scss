@@ -24,3 +24,20 @@
         }   
     }
 }
+
+.checkbox {
+    color: var(--gray-4);
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    left: 30px;
+    opacity: 0;
+    top: 50%;
+    transform: translate3d(-65%, -50%, 0);
+    transition: all 0.2s var(--bezier);
+}
+
+.hovering {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0);
+}

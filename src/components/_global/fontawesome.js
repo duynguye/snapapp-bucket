@@ -25,6 +25,9 @@ import { faArchive as falArchive } from '@fortawesome/pro-light-svg-icons';
 import { faAtlas as falAtlas } from '@fortawesome/pro-light-svg-icons';
 import { faServer as falServer } from '@fortawesome/pro-light-svg-icons';
 import { faPlug as falPlug } from '@fortawesome/pro-light-svg-icons';
+import { faSquare as falSquare } from '@fortawesome/pro-light-svg-icons';
+import { faCheckSquare as falCheckSquare } from '@fortawesome/pro-light-svg-icons';
+import { faCloudDownloadAlt as falCloudDownloadAlt } from '@fortawesome/pro-light-svg-icons';
 
 library.add([
     falCaretLeft,
@@ -44,18 +47,23 @@ library.add([
     falArchive,
     falAtlas,
     falServer,
-    falPlug
+    falPlug,
+    falSquare,
+    falCheckSquare,
+    falCloudDownloadAlt
 ]);
 
 // Solid Icons
 import { faSort as fasSort } from '@fortawesome/pro-solid-svg-icons';
 import { faCalendarAlt as fasCalendarAlt } from '@fortawesome/pro-solid-svg-icons';
 import { faTrophy as fasTrophy } from '@fortawesome/pro-solid-svg-icons';
+import { faSquare as fasSquare } from '@fortawesome/pro-solid-svg-icons';
 
 library.add([
     fasSort,
     fasCalendarAlt,
-    fasTrophy
+    fasTrophy,
+    fasSquare
 ]);
 
 library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falPlus ]);
