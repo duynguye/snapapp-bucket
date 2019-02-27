@@ -1,22 +1,57 @@
 import React, { Component } from 'react';
-import '@material/react-ripple/index.scss';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect
+} from 'react-router-dom';
+
+/**
+ * Imports and setups all of the necessary font awesome icons for the app.
+ */
 import './components/_global/fontawesome';
-import styles from './App.module.scss';
 
-class App extends Component {
-    handleClick(): void {
-        console.log('Clicked');
-    }
+/**
+ * Imports for custom components and styles if applicable.
+ */
+import { Navigation } from './layouts';
+import { GlobalMenu } from './components';
 
-    render() {
-        return (
-            <div className={styles.App}>
-                <header className={styles.AppHeader}>
-                    <p>This is for contestr</p>
-                </header>
-            </div>
-        );
-    }
+/**
+ * Mock data
+ */
+import apps from './lib/mocks/apps';
+
+interface IAppProps {
+
+}
+
+interface IAppState {
+
+}
+
+const TestMenu = ({ children }: any) => (
+  <div>
+    {children}
+  </div>
+)
+
+/**
+ * Imports and setups all of the necessary font awesome icons for the app.
+ */
+class App extends Component<IAppProps, IAppState> {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navigation 
+            globalMenu={<GlobalMenu apps={apps} />}
+            localMenu={<h1>Local Menu</h1>}
+          />
+
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

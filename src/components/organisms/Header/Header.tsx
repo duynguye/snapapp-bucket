@@ -9,8 +9,8 @@ const onClickHandler = () => {
 }
 
 interface IHeaderProps {
-    badges: React.ReactNode;
-    currentUser: {
+    badges?: React.ReactNode;
+    currentUser?: {
         name: string;
         title: string;
         avatar: string;

@@ -43,6 +43,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+    height: 100%;
+}
+
 h1, h2, h3, h4, h5, h6, p, ul, li {
     padding: 0;
     margin: 0;
@@ -54,4 +58,8 @@ code {
 
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+div#root {
+    height: 100%;
 }

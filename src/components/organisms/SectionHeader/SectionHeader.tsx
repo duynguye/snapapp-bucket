@@ -10,20 +10,20 @@ interface ITab {
     active?: boolean;
     title: string;
     count: number;
-    callback: () => {};
+    callback: () => any;
 }
 
 interface IFilter {
-    callback: () => {};
+    callback: () => any;
     icon: string;
     prefix: string;
 }
 
 interface ISectionHeader {
-    action: () => {};
-    filters: [];
+    action?: () => any;
+    filters: any;
     title: string;
-    tabs: [];
+    tabs: any;
 }
 
 const SectionHeader = ({ title, tabs, action, filters }: ISectionHeader) => {

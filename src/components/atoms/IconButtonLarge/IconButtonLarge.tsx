@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './IconButtonLarge.module.scss';
 
 interface IIconButtonLargeProps {
-    action: () => {},
+    action: any,
     children: React.ReactNode,
     classes: string | [string];
 }

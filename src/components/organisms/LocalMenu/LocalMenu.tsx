@@ -5,7 +5,7 @@ import background from '../../_global/background.jpg';
 import styles from './LocalMenu.module.scss';
 
 interface ILocalMenuProps {
-    onClick: () => {};
+    onClick: () => any;
     title: string;
     children: React.ReactNode;
 }
