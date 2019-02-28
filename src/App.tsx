@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DocumentTitle from 'react-document-title';
 import {
   BrowserRouter as Router,
   Route,
@@ -14,42 +15,45 @@ import './components/_global/fontawesome';
  * Imports for custom components and styles if applicable.
  */
 import { Navigation } from './layouts';
-import { GlobalMenu } from './components';
+import { GlobalMenu, LocalMenu } from './components/nav';
+import { Login } from './pages';
 
 /**
  * Mock data
  */
 import apps from './lib/mocks/apps';
 
-interface IAppProps {
-
-}
-
 interface IAppState {
-
+  isLoggedIn: boolean
 }
 
-const TestMenu = ({ children }: any) => (
-  <div>
-    {children}
-  </div>
-)
+class App extends Component<{}, IAppState> {
+  state = {
+    isLoggedIn: false
+  }
 
-/**
- * Imports and setups all of the necessary font awesome icons for the app.
- */
-class App extends Component<IAppProps, IAppState> {
   render() {
-    return (
-      <Router>
-        <div>
-          <Navigation 
-            globalMenu={<GlobalMenu apps={apps} />}
-            localMenu={<h1>Local Menu</h1>}
-          />
+    const { isLoggedIn }: IAppState = this.state;
 
-        </div>
-      </Router>
+    return (
+      <DocumentTitle title={'Orca'}>
+        <Router>
+          <div className='app'>
+            <Route exact path='/' render={() => (
+              !isLoggedIn ? (
+                <Redirect to='/login' />
+              ) : (
+                <Navigation 
+                  globalMenu={<GlobalMenu apps={apps} />}
+                  localMenu={<h1>Local Menu</h1>}
+                />
+              )
+            )} />
+
+            <Route path='/login' component={Login} />
+          </div>
+        </Router>
+      </DocumentTitle>
     );
   }
 }

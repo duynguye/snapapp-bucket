@@ -1,0 +1,56 @@
+@import '../../../index';
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.left {
+  flex: 5;
+
+  // This fixes weird extra white space issues in container height.
+  font-size: 1px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+  }
+}
+
+.right {
+  align-items: center;
+  background: var(--secondary-gradient);
+  display: flex;
+  flex: 7;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.background {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.3;
+  mix-blend-mode: hard-light;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.loginButton {
+  bottom: 100px;
+  color: #ffffff;
+  position: absolute;
+}
+
+.loginButton:hover:not(:disabled) {
+  background-color: transparent;
+}

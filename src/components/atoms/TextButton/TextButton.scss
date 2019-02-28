@@ -1,6 +1,0 @@
-@import '@material/react-ripple/index.scss';
-@import '../../../index.scss';
-
-.mdc-ripple-surface--light {
-    @include mdc-states-base-color(#5c7aff);
-}

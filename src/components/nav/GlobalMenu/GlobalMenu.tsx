@@ -3,15 +3,12 @@ import React from 'react';
 // Local imports and styles
 import { 
   Logo, 
-  HorizontalDivider,
   SmallText 
-} from '../atoms';
-import AppList from '../molecules/AppList/AppList';
+} from '../../atoms';
+import { HorizontalDivider } from '../../layout';
+import AppList from '../../molecules/AppList/AppList';
 import styles from './GlobalMenu.module.scss';
 
-/**
- * 
- */
 type ApplicationNode = {
   [index: number]: {
     exact: boolean,

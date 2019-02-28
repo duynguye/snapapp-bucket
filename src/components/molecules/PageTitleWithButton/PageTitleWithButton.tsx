@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { PageTitle, IconButtonSmall } from '../../atoms';
+import { IconButtonSmall } from '../../atoms';
+import { PageTitle } from '../../text';
 import styles from './PageTitleWithButton.module.scss';
 
 interface IPageTitleButtonProps {

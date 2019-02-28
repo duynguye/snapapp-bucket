@@ -2,7 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Custom Imports
-import { HorizontalDivider, SectionTitle, IconButtonLarge, OutlinedButton } from '../../atoms';
+import { SectionTitle, IconButtonLarge, OutlinedButton } from '../../atoms';
+import { HorizontalDivider } from '../../layout';
 import { Tab } from '../../molecules';
 import styles from './SectionHeader.module.scss';
 
