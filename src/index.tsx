@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Amplify, { Auth } from 'aws-amplify';
+
+// Custom styles and imports
 import './index.scss';
+import awsmobile from './aws-exports';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// Setup AWS Amplify authentication.
+Amplify.configure(awsmobile);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

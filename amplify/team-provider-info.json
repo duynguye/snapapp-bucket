@@ -9,6 +9,11 @@
             "UnauthRoleName": "snapapp-bucket-20190304104856-unauthRole",
             "StackName": "snapapp-bucket-20190304104856",
             "StackId": "arn:aws:cloudformation:us-east-1:021996589743:stack/snapapp-bucket-20190304104856/04c6d6e0-3e95-11e9-84c9-0e3e6f4b77b8"
+        },
+        "categories": {
+            "auth": {
+                "cognito8b794885": {}
+            }
         }
     }
 }
