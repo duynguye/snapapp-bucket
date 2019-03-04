@@ -4,7 +4,6 @@ import Badge from './Badge/Badge';
 import Button from './Button/Button';
 import IconButtonLarge from './IconButtonLarge/IconButtonLarge';
 import IconButtonSmall from './IconButtonSmall/IconButtonSmall';
-import Logo from './Logo/Logo';
 import NameTag from './NameTag/NameTag';
 import OutlinedButton from './OutlinedButton/OutlinedButton';
 import SectionTitle from './SectionTitle/SectionTitle';
@@ -18,7 +17,6 @@ export {
     Button,
     IconButtonLarge,
     IconButtonSmall,
-    Logo,
     NameTag,
     OutlinedButton,
     SectionTitle,

@@ -3,6 +3,7 @@ import DocumentTitle from 'react-document-title';
 
 // Custom styles and imports
 import { LoginForm } from '../../layouts';
+import { Logo } from '../../components/nav';
 import { TextButton } from '../../components/buttons';
 import backgroundImage from '../../components/_global/background.jpg';
 import leftBackgroudImage from '../../components/_global/animal-animal-photography-blur-1683688.jpg';
@@ -13,10 +14,6 @@ class Login extends Component {
     leftImageLoaded: false,
     rightImageLoaded: false
   };
-
-  componentDidMount() {
-   
-  }
 
   render() {
     const { leftImageLoaded, rightImageLoaded } = this.state;
@@ -42,6 +39,7 @@ class Login extends Component {
               onLoad={() => this.setState({ rightImageLoaded: true })}
             />
             
+            <Logo className={styles.logo} />
             <LoginForm />
             <TextButton
               config={['fal', 'sign-in']}

@@ -1,10 +1,8 @@
 import React from 'react';
 
 // Local imports and styles
-import { 
-  Logo, 
-  SmallText 
-} from '../../atoms';
+import { SmallText } from '../../atoms';
+import { Logo } from '../';
 import { HorizontalDivider } from '../../layout';
 import AppList from '../../molecules/AppList/AppList';
 import styles from './GlobalMenu.module.scss';

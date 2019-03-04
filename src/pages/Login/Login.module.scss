@@ -58,3 +58,14 @@
 .loginButton:hover:not(:disabled) {
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+.logo {
+  left: 50%;
+  position: absolute;
+  top: 100px;
+  transform: translateX(-50%);
+}
+
+.logo > g > g {
+  fill: #ffffff;
+}
