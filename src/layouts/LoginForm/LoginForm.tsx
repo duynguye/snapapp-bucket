@@ -6,7 +6,11 @@ import { HorizontalDivider } from '../../components/layout';
 import { Label, UserInput, PassInput, FormGroup } from '../../components/forms';
 import styles from './LoginForm.module.scss';
 
-const LoginForm = () => (
+interface ILoginFormProps {
+  handleInput(): () => {}
+}
+
+const LoginForm = ({  }) => (
   <div className={styles.container}>
     <PageTitle className={styles.withMargin}>Login to the System</PageTitle>
     <HorizontalDivider className={styles.divider} />

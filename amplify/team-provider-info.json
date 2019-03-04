@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "snapapp-bucket-20190304104856-authRole",
+            "UnauthRoleArn": "arn:aws:iam::021996589743:role/snapapp-bucket-20190304104856-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::021996589743:role/snapapp-bucket-20190304104856-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "snapapp-bucket-20190304104856-deployment",
+            "UnauthRoleName": "snapapp-bucket-20190304104856-unauthRole",
+            "StackName": "snapapp-bucket-20190304104856",
+            "StackId": "arn:aws:cloudformation:us-east-1:021996589743:stack/snapapp-bucket-20190304104856/04c6d6e0-3e95-11e9-84c9-0e3e6f4b77b8"
+        }
+    }
+}

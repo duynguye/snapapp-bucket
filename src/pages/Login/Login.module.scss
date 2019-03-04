@@ -6,6 +6,7 @@
 }
 
 .left {
+  background-color: var(--dark-blue);
   flex: 5;
 
   // This fixes weird extra white space issues in container height.
@@ -15,6 +16,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    transition: all 2s var(--bezier);
     width: 100%;
   }
 }
@@ -41,6 +43,8 @@
   mix-blend-mode: hard-light;
   position: absolute;
   top: 0;
+  transition: all 2s var(--bezier);
+  user-select: none;
   width: 100%;
   z-index: -1;
 }
@@ -52,5 +56,5 @@
 }
 
 .loginButton:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);
 }
