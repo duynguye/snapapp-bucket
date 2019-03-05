@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 
 // Custom styles and imports
+import { authenticate } from '../../lib/auth';
 import { LoginForm } from '../../layouts';
 import { Logo } from '../../components/nav';
 import { TextButton } from '../../components/buttons';
@@ -12,8 +13,27 @@ import styles from './Login.module.scss';
 class Login extends Component {
   state = {
     leftImageLoaded: false,
-    rightImageLoaded: false
+    rightImageLoaded: false,
+    username: '',
+    password: ''
   };
+
+  handleInput = (type: string, value: string | undefined): void => {
+    switch (type) {
+      case 'username':
+        this.setState({ username: value });
+        break;
+
+      case 'password':
+        this.setState({ password: value });
+    }
+  }
+
+  handleSubmit = () => {
+    const { username, password } = this.state;
+
+    authenticate(username, password).then(user => console.log(user));
+  }
 
   render() {
     const { leftImageLoaded, rightImageLoaded } = this.state;
@@ -40,10 +60,11 @@ class Login extends Component {
             />
             
             <Logo className={styles.logo} />
-            <LoginForm />
+            <LoginForm handleInput={this.handleInput} />
             <TextButton
               config={['fal', 'sign-in']}
               className={styles.loginButton}
+              onClick={this.handleSubmit}
             >
               Login
             </TextButton>

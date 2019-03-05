@@ -7,6 +7,7 @@ import styles from './PassInput.module.scss';
 interface IPassInputProps {
   className?: string | [string];
   placeholder?: string;
+  handleInput: (type: string, value: string | undefined) => void;
 }
 
 interface IPassInputState {
@@ -28,6 +29,12 @@ class PassInput extends Component<IPassInputProps, IPassInputState> {
         this.setState({ isFocused: false });
     }
   }
+
+  handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const { handleInput } = this.props;
+    
+    handleInput('password', e.currentTarget.value);
+  }
   
   render () {
     const { isFocused }: IPassInputState = this.state;
@@ -40,6 +47,7 @@ class PassInput extends Component<IPassInputProps, IPassInputState> {
           placeholder={placeholder}
           onBlur={this.handleEvent}
           onFocus={this.handleEvent}
+          onChange={this.handleChange}
           type={'password'}
         />
       </div>

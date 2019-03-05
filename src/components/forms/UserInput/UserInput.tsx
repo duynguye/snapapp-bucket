@@ -7,6 +7,7 @@ import styles from './UserInput.module.scss';
 interface IUserInputProps {
   className?: string | [string];
   placeholder?: string;
+  handleInput: (type: string, value: string | undefined) => void;
 }
 
 interface IUserInputState {
@@ -28,10 +29,16 @@ class UserInput extends Component<IUserInputProps, IUserInputState> {
         this.setState({ isFocused: false });
     }
   }
+
+  handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const { handleInput } = this.props;
+    
+    handleInput('username', e.currentTarget.value);
+  }
   
   render () {
     const { isFocused }: IUserInputState = this.state;
-    const { className, placeholder }: IUserInputProps = this.props;
+    const { className, placeholder, handleInput }: IUserInputProps = this.props;
 
     return (
       <div className={classnames(styles.wrapper, isFocused ? styles.focused : '')}>
@@ -40,6 +47,7 @@ class UserInput extends Component<IUserInputProps, IUserInputState> {
           placeholder={placeholder}
           onBlur={this.handleEvent}
           onFocus={this.handleEvent}
+          onChange={this.handleChange}
         />
       </div>
     );
