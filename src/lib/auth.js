@@ -17,17 +17,17 @@ export {
 
     // Auth.signIn({
     //   username: 'anguyen',
-    //   password: 'Infinity_2581'
+    //   password: 'newpassword'
     // }).then(user => {
     //   if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
     //     const { requiredAttributes } = user.challengeParam;
 
     //     Auth.completeNewPassword(
     //       user,
-    //       'Infinity_2581',
+    //       'newpassword',
     //       {
     //         email: 'anguyen@compulse.com',
-    //         phone_number: '6822604053'
+    //         phone_number: ''
     //       }
     //     ).then(user => {
     //       console.log(user);
