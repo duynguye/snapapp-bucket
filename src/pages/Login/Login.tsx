@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 
 // Custom styles and imports
-import { authenticate } from '../../lib/auth';
+import { authenticate, currentSession, AuthCode } from '../../lib/auth';
 import { LoginForm } from '../../layouts';
 import { Logo } from '../../components/nav';
 import { TextButton } from '../../components/buttons';
@@ -19,20 +19,21 @@ class Login extends Component {
   };
 
   handleInput = (type: string, value: string | undefined): void => {
-    switch (type) {
-      case 'username':
-        this.setState({ username: value });
-        break;
-
-      case 'password':
-        this.setState({ password: value });
-    }
+    this.setState({ [type]: value });
   }
 
   handleSubmit = () => {
     const { username, password } = this.state;
 
-    authenticate(username, password).then(user => console.log(user));
+    authenticate(username, password).then(response => {
+      if (response.status === AuthCode.Success) {
+        console.log('Successfully logged in: ', response.user);
+      
+        currentSession().then(result => console.log(result));
+      } else {
+        console.log(response.status);
+      }
+    });
   }
 
   render() {
