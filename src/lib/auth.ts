@@ -68,6 +68,15 @@ export async function authenticate(username: string, password: string): Promise<
 /**
  * Setup new password.
  */
+export async function setNewPassword(user: {}, password: string): Promise<{}> {
+  try {
+    const results = await Auth.completeNewPassword(user, password, {});
+    
+    return results;
+  } catch (err) {
+    return err;
+  }
+}
 
 /**
  * Get current active session.
@@ -81,35 +90,3 @@ export async function currentSession(): Promise<{}> {
     return err;
   }
 }
-
-
-
-    // Auth.signIn({
-    //   username: 'anguyen',
-    //   password: 'newpassword'
-    // }).then(user => {
-    //   if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-    //     const { requiredAttributes } = user.challengeParam;
-
-    //     Auth.completeNewPassword(
-    //       user,
-    //       'newpassword',
-    //       {
-    //         email: 'anguyen@compulse.com',
-    //         phone_number: ''
-    //       }
-    //     ).then(user => {
-    //       console.log(user);
-    //     }).catch(e => {
-    //       console.log(e);
-    //     });
-    //   } else {
-    //     console.log(user);
-
-    //     Auth.currentSession().then(data => console.log(data)).catch(err => console.log(err));
-
-    //     this.setState({
-    //       isLoggedIn: true
-    //     });
-    //   }
-    // }).catch(err => console.log(err));
