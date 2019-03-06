@@ -1,3 +1,6 @@
-import React from 'react';
+import { combineReducers } from 'redux';
+import usersReducer from './reducers/users';
 
-console.log('Test');
+export default combineReducers({
+  users: usersReducer
+});

@@ -40,7 +40,7 @@ class Login extends Component {
     const { leftImageLoaded, rightImageLoaded } = this.state;
 
     return (
-      <DocumentTitle title='Orca - Login'>
+      <DocumentTitle title='Login Dashboard - Orca - Compulse Integrated Marketing'>
         <div className={styles.container}>
           <div className={styles.left}>
             <img 
