@@ -16,15 +16,16 @@ export enum AuthCode {
 
 interface AuthResponse {
   status: AuthCode;
-  user?: {};
+  user?: {} | undefined;
+  session?: {} | undefined;
 }
 
 /**
  * Authenicates a user account and will return an AuthResponse based on the results. 
  * Results will always be consistent and will return a user object as a payload if successful.
  * 
- * @param username string
- * @param password string
+ * @param username The username of the user logging in.
+ * @param password The password of the username. Required Field.
  */
 export async function authenticate(username: string, password: string): Promise<AuthResponse> {
   try {
@@ -60,7 +61,8 @@ export async function authenticate(username: string, password: string): Promise<
     }
 
     return {
-      status
+      status,
+      user: undefined
     }
   }
 }
@@ -70,9 +72,13 @@ export async function authenticate(username: string, password: string): Promise<
  */
 export async function setNewPassword(user: {}, password: string): Promise<{}> {
   try {
-    const results = await Auth.completeNewPassword(user, password, {});
+    const session = await Auth.completeNewPassword(user, password, {});
+    let status: AuthCode = AuthCode.Success;
     
-    return results;
+    return {
+      status,
+      session
+    };
   } catch (err) {
     return err;
   }
@@ -81,11 +87,15 @@ export async function setNewPassword(user: {}, password: string): Promise<{}> {
 /**
  * Get current active session.
  */
-export async function currentSession(): Promise<{}> {
+export async function currentSession(): Promise<AuthResponse> {
   try {
-    const result = await Auth.currentSession();
+    const session = await Auth.currentSession();
+    let status: AuthCode = AuthCode.Success;
   
-    return result;
+    return {
+      status,
+      session
+    };
   } catch (err) {
     return err;
   }
