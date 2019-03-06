@@ -1,3 +1,10 @@
-// TODO: Add Actions
+import {
+  SET_AUTH
+} from './users.types';
 
-export {};
+export function setAuthState (newStatus: boolean) {
+  return {
+    type: SET_AUTH,
+    newStatus
+  };
+}
