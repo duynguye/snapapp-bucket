@@ -5,7 +5,6 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import { Auth } from 'aws-amplify';
 
 /**
  * Imports and setups all of the necessary font awesome icons for the app.
