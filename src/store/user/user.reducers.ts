@@ -1,18 +1,23 @@
 import { 
   UserState, 
-  UserActionTypes 
-} from './users.types';
+  UserActionTypes,
+  UPDATE_SESSION
+} from './user.types';
 
 const initialState: UserState = {
-  username: undefined,
-  displayname: undefined,
-  title: undefined,
+  username: '',
+  displayname: '',
+  title: '',
   isLoggingIn: false,
-  isLoggedIn: false
+  isLoggedIn: false,
+  session: {}
 };
 
 export default (state = initialState, action: UserActionTypes): UserState => {
   switch (action.type) {
+    case UPDATE_SESSION:
+      return {...state, session: action.payload};
+
     default:
       return {...state};
   }

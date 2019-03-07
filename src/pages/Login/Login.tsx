@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
+import { connect } from 'react-redux';
 
 // Custom styles and imports
 import { authenticate, currentSession, AuthCode } from '../../lib/auth';
+import { login, updateSession } from '../../store/user/user.actions';
 import { LoginForm } from '../../layouts';
 import { Logo } from '../../components/nav';
 import { TextButton } from '../../components/buttons';
@@ -10,7 +12,12 @@ import backgroundImage from '../../components/_global/background.jpg';
 import leftBackgroudImage from '../../components/_global/animal-animal-photography-blur-1683688.jpg';
 import styles from './Login.module.scss';
 
-class Login extends Component {
+interface ILoginProps {
+  login: typeof login;
+  updateSession: typeof updateSession;
+}
+
+class Login extends Component<ILoginProps> {
   state = {
     leftImageLoaded: false,
     rightImageLoaded: false,
@@ -25,15 +32,19 @@ class Login extends Component {
   handleSubmit = () => {
     const { username, password } = this.state;
 
-    authenticate(username, password).then(response => {
-      if (response.status === AuthCode.Success) {
-        console.log('Successfully logged in: ', response.user);
+    this.props.login(username, password);
+
+    // authenticate(username, password).then(response => {
+    //   if (response.status === AuthCode.Success) {
+    //     console.log('Successfully logged in: ', response.user);
       
-        currentSession().then(result => console.log(result));
-      } else {
-        console.log(response.status);
-      }
-    });
+    //     currentSession().then(result => console.log(result));
+
+    //     this.props.updateSession();
+    //   } else {
+    //     console.log(response.status);
+    //   }
+    // });
   }
 
   render() {
@@ -76,4 +87,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect<any>(null, { login, updateSession })(Login);

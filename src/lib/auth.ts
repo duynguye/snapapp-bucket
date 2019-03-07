@@ -1,4 +1,5 @@
 import { Auth } from 'aws-amplify';
+import { CognitoUserSession } from 'amazon-cognito-identity-js';
 
 /**
  * Global enum for understand the results of authentication codes. Must be imported alongside the
@@ -14,10 +15,10 @@ export enum AuthCode {
   ResetRequired         = 'PASSWORD_RESET_REQUIRED',
 }
 
-interface AuthResponse {
+export interface AuthResponse {
   status: AuthCode;
   user?: {} | undefined;
-  session?: {} | undefined;
+  session?: CognitoUserSession | {} | undefined;
 }
 
 /**
