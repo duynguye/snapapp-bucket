@@ -13,7 +13,7 @@ interface IAppList {
 const AppList = ({ apps }: any) => {
     const appList = apps.map(({ exact, path, title, prefix, icon }: IAppList) => {
         return (
-            <AppButton exact={exact} path={path} title={title} key={title}>
+            <AppButton exact={exact} path={path} title={title} key={path}>
                 <FontAwesomeIcon icon={[prefix, icon]} />
             </AppButton>
         );

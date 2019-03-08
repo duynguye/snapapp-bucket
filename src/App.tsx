@@ -7,7 +7,6 @@ import {
   Redirect
 } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
-import { withAuthenticator, SignIn } from 'aws-amplify-react';
 
 /**
  * Imports and setups all of the necessary font awesome icons for the app.
@@ -18,75 +17,82 @@ import './components/_global/fontawesome';
  * Imports for custom components and styles if applicable.
  */
 import { Navigation } from './layouts';
-import { GlobalMenu, LocalMenu } from './components/nav';
+import { GlobalMenu, LocalMenu, ContextLink } from './components/nav';
 import { Login } from './pages';
 import { AppState } from './store';
-import { currentSession } from './lib/auth';
+import { UserState } from './store/user/user.types';
+import { setAuthState, loginStatus, loginSuccess } from './store/user/user.actions';
 
 /**
  * Mock data
  */
 import apps from './lib/mocks/apps';
+import localMenuProps from './lib/mocks/context';
 
-class App extends Component<AppState> {
-  state = {
-    loggedIn: false
-  };
+interface IAppProps extends AppState {
+  setAuthState: typeof setAuthState;
+  loginStatus: typeof loginStatus;
+  loginSuccess: typeof loginSuccess;
+}
 
+interface ContextNode {
+  exact: boolean;
+  path: string;
+  title: string;
+  icon: string[];
+}
+
+type ContextList = {
+  [index: number]: ContextNode;
+  map: any;
+}
+
+class App extends Component<IAppProps> {
   componentDidMount() {
     this.checkUser();
   }
 
   checkUser = () => {
     Auth.currentAuthenticatedUser().then(user => {
-      this.setState({
-        loggedIn: true
-      });
-    })
+      this.props.loginStatus(true);
+      this.props.setAuthState(false);
+      this.props.loginSuccess(user);
+    });
+  }
+
+  buildContextMenu = (menuItems: ContextList) => {
+    return menuItems.map((item: ContextNode, i: number) => 
+      <ContextLink exact={item.exact} path={item.path} key={i} icon={item.icon}>{item.title}</ContextLink>
+    );
   }
 
   render() {
-    const { isLoggedIn } = this.props.user;
-    const { loggedIn } = this.state;
-
-    if (loggedIn) {
-      return (
-        <DocumentTitle title={'Orca'}>
-          <Router>
-            <div className='app'>
-              <Route exact path='/' render={({ location }) => (
-                  <Navigation 
-                    globalMenu={<GlobalMenu apps={apps} />}
-                    localMenu={<h1>Local Menu</h1>}
-                  />
-              )} />
-  
-              <Route path='/login' component={Login} />
-            </div>
-          </Router>
-        </DocumentTitle>
-      );
-    }
+    const { isLoggedIn, isAuthenticating } = this.props.user;
+    const contextMenu = this.buildContextMenu(localMenuProps);
 
     return (
+      !isAuthenticating &&
+
       <DocumentTitle title={'Orca'}>
         <Router>
           <div className='app'>
-            <Route exact path='/' render={({ location }) => (
-              !isLoggedIn ? (
-                <Redirect to={{
-                  pathname: '/login',
-                  state: { from: location }
-                }}/>
-              ) : (
-                <Navigation 
-                  globalMenu={<GlobalMenu apps={apps} />}
-                  localMenu={<h1>Local Menu</h1>}
-                />
-              )
-            )} />
+            {!isLoggedIn ? <Redirect to={{ pathname: '/login' }}/> : ''}
 
             <Route path='/login' component={Login} />
+            <Route exact path='/contests' render={() => (
+              <Navigation 
+                globalMenu={<GlobalMenu apps={apps} />}
+                localMenu={<LocalMenu title='Contests' onClick={() => {}}>{contextMenu}</LocalMenu>}
+              />
+            )} />
+
+            <Route path='/contests/projects' render={() => (
+              <Navigation 
+                globalMenu={<GlobalMenu apps={apps} />}
+                localMenu={<LocalMenu title='Contests' onClick={() => {}}>{contextMenu}</LocalMenu>}
+              />
+            )} />
+
           </div>
         </Router>
       </DocumentTitle>
@@ -94,8 +100,8 @@ class App extends Component<AppState> {
   }
 }
 
-const mapStateToProps = ({ user }: { user: any }): any => ({
+const mapStateToProps = ({ user }: { user: UserState }): AppState => ({
   user
 });
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, { setAuthState, loginStatus, loginSuccess })(App);

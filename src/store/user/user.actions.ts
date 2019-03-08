@@ -11,8 +11,7 @@ import {
   UserSession,
   UserSessionDispatch,
   UserLoginDispatch,
-  User,
-  UserActionTypes
+  User
 } from './user.types';
 
 export function setAuthState(newStatus: boolean) {

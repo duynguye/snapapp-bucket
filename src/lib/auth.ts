@@ -101,3 +101,20 @@ export async function currentSession(): Promise<AuthResponse> {
     return err;
   }
 }
+
+/**
+ * Get the current authenticated user if it exists.
+ */
+export async function currentAuthUser(): Promise<AuthResponse> {
+  try {
+    const user = await Auth.currentAuthenticatedUser();
+    let status: AuthCode = AuthCode.Success;
+
+    return {
+      status,
+      user
+    };
+  } catch (err) {
+    return err;
+  }
+}

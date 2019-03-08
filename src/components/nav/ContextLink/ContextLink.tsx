@@ -7,7 +7,7 @@ interface IContextLinkProps {
     children?: React.ReactNode;
     path: string;
     exact: boolean;
-    icon: any
+    icon: any;
 }
 
 const ContextLink = ({ children, path, exact, icon }: IContextLinkProps) => (

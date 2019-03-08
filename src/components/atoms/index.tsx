@@ -8,7 +8,6 @@ import NameTag from './NameTag/NameTag';
 import OutlinedButton from './OutlinedButton/OutlinedButton';
 import SectionTitle from './SectionTitle/SectionTitle';
 import SmallText from './SmallText/SmallText';
-import ContextLink from './ContextLink/ContextLink';
 
 export { 
     AppButton,
@@ -21,5 +20,4 @@ export {
     OutlinedButton,
     SectionTitle,
     SmallText,
-    ContextLink
 };

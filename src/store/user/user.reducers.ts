@@ -1,6 +1,7 @@
 import { 
   UserState, 
   UserActionTypes,
+  SET_AUTH,
   UPDATE_SESSION,
   USER_LOGIN,
   USER_LOGIN_OK,
@@ -13,7 +14,8 @@ const initialState: UserState = {
   title: '',
   isLoggingIn: false,
   isLoggedIn: false,
-  session: {}
+  session: {},
+  isAuthenticating: true
 };
 
 export default (state = initialState, action: UserActionTypes): UserState => {
@@ -37,6 +39,9 @@ export default (state = initialState, action: UserActionTypes): UserState => {
 
     case UPDATE_SESSION:
       return {...state, session: action.payload};
+
+    case SET_AUTH:
+      return {...state, isAuthenticating: action.newStatus}
 
     default:
       return {...state};

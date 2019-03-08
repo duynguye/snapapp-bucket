@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { History } from 'history';
 
 // Custom styles and imports
-import { authenticate, currentSession, AuthCode } from '../../lib/auth';
 import { login, updateSession } from '../../store/user/user.actions';
 import { LoginForm } from '../../layouts';
 import { Logo } from '../../components/nav';

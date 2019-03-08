@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
   user: usersReducer
 });
 
+// Global AppState for type checking
 export type AppState = ReturnType<typeof rootReducer>;
 
 export default function initializeStore() {

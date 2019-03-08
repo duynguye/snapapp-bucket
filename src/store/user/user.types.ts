@@ -22,6 +22,7 @@ export interface UserState {
   isLoggingIn: boolean | undefined;
   isLoggedIn: boolean | undefined;
   session: UserSession;
+  isAuthenticating: boolean | undefined;
 }
 
 interface UserLoginAction {
@@ -38,4 +39,9 @@ interface UserUpdateSession {
   payload: UserSession;
 }
 
-export type UserActionTypes = UserLoginAction | UserUpdateSession;
+interface UserUpdateAuth {
+  type: typeof SET_AUTH;
+  newStatus: boolean;
+}
+
+export type UserActionTypes = UserLoginAction | UserUpdateSession | UserUpdateAuth;

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { ContextLink } from '../../atoms';
+import React from 'react';
 import { PageTitleWithButton } from '../../molecules';
 import background from '../../_global/background.jpg';
 import styles from './LocalMenu.module.scss';
@@ -14,7 +13,7 @@ const LocalMenu = ({ onClick, title, children }: ILocalMenuProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <PageTitleWithButton onClick={onClick}>Project Manager</PageTitleWithButton>    
+                <PageTitleWithButton onClick={onClick}>{title}</PageTitleWithButton>    
             </div>
 
             <div className={styles.body}>

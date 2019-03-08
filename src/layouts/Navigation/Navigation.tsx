@@ -28,7 +28,8 @@ class Navigation extends Component<INavigationProps> {
 
     return (
       <div className={classnames(styles.nav, className)}>
-        {[ globalMenu, localMenu ]}
+        {globalMenu}
+        {localMenu}
       </div>
     )
   }

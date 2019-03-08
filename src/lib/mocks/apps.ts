@@ -1,6 +1,6 @@
 const apps = [{
-  exact: true,
-  path: '/',
+  exact: false,
+  path: '/contests',
   title: 'Contests',
   prefix: 'fas',
   icon: 'poll' }
