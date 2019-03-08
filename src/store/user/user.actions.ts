@@ -1,4 +1,4 @@
-import { Action } from 'redux';
+import { History } from 'history';
 
 import { authenticate, currentSession, AuthCode, AuthResponse } from '../../lib/auth';
 import {
@@ -7,6 +7,7 @@ import {
   USER_LOGIN,
   USER_LOGIN_OK,
   USER_LOGIN_ERR,
+  USER_LOGIN_STATUS,
   UserSession,
   UserSessionDispatch,
   UserLoginDispatch,
@@ -37,9 +38,10 @@ export const updateSession = () => async (dispatch: UserSessionDispatch) => {
 /**
  * Action creator for logging the user in.
  */
-export const loginRequest = (username: string) => ({
+export const loginRequest = (username: string, isLoggingIn: boolean) => ({
   type: USER_LOGIN,
-  username
+  username,
+  isLoggingIn
 });
 
 export const loginSuccess = (user: User) => ({
@@ -52,17 +54,24 @@ export const loginError = (error: string) => ({
   error
 });
 
-export const login = (username: string, password: string) => {
+export const loginStatus = (isLoggedIn: boolean) => ({
+  type: USER_LOGIN_STATUS,
+  isLoggedIn
+})
+
+export const login = (username: string, password: string, history: History) => {
   return async (dispatch: UserLoginDispatch) => {
-    dispatch(loginRequest(username));
+    dispatch(loginRequest(username, true));
 
     const response = await authenticate(username, password);
 
     if (response.status === AuthCode.Success) {
-      console.log('Successfully logged in: ', response.user);
       dispatch(loginSuccess(response.user));
+      dispatch(loginRequest(username, false));
+      dispatch(loginStatus(true));
+      history.push('/');
     } else {
-      console.log('Unable to login');
+      dispatch(loginError(response.status));
     }
   }
 }

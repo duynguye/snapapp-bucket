@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { History } from 'history';
 
 // Custom styles and imports
 import { authenticate, currentSession, AuthCode } from '../../lib/auth';
@@ -13,11 +15,19 @@ import leftBackgroudImage from '../../components/_global/animal-animal-photograp
 import styles from './Login.module.scss';
 
 interface ILoginProps {
+  history: History;
   login: typeof login;
   updateSession: typeof updateSession;
 }
 
-class Login extends Component<ILoginProps> {
+interface ILoginState {
+  leftImageLoaded: boolean;
+  rightImageLoaded: boolean;
+  username: string;
+  password: string;
+}
+
+class Login extends Component<ILoginProps, ILoginState> {
   state = {
     leftImageLoaded: false,
     rightImageLoaded: false,
@@ -26,25 +36,14 @@ class Login extends Component<ILoginProps> {
   };
 
   handleInput = (type: string, value: string | undefined): void => {
-    this.setState({ [type]: value });
+    this.setState({ [type]: value } as any);
   }
 
   handleSubmit = () => {
+    const { history } = this.props;
     const { username, password } = this.state;
 
-    this.props.login(username, password);
-
-    // authenticate(username, password).then(response => {
-    //   if (response.status === AuthCode.Success) {
-    //     console.log('Successfully logged in: ', response.user);
-      
-    //     currentSession().then(result => console.log(result));
-
-    //     this.props.updateSession();
-    //   } else {
-    //     console.log(response.status);
-    //   }
-    // });
+    this.props.login(username, password, history);
   }
 
   render() {
@@ -87,4 +86,4 @@ class Login extends Component<ILoginProps> {
   }
 }
 
-export default connect<any>(null, { login, updateSession })(Login);
+export default withRouter(connect<any>(null, { login, updateSession })(Login));
