@@ -50,6 +50,8 @@ type ContextList = {
 class App extends Component<IAppProps> {
   componentDidMount() {
     this.checkUser();
+
+    console.log(this.props);
   }
 
   checkUser = () => {
@@ -57,6 +59,9 @@ class App extends Component<IAppProps> {
       this.props.loginStatus(true);
       this.props.setAuthState(false);
       this.props.loginSuccess(user);
+    }).catch(err => {
+      this.props.setAuthState(false);
+      console.log(err);
     });
   }
 
@@ -76,10 +81,10 @@ class App extends Component<IAppProps> {
       <DocumentTitle title={'Orca'}>
         <Router>
           <div className='app'>
-            {!isLoggedIn ? <Redirect to={{ pathname: '/login' }}/> : ''}
+            {!isLoggedIn ? <Redirect to={{ pathname: '/login' }} /> : ''}
 
             <Route path='/login' component={Login} />
-            <Route exact path='/contests' render={() => (
+            <Route exact path='/contests/' render={() => (
               <Navigation 
                 globalMenu={<GlobalMenu apps={apps} />}
                 localMenu={<LocalMenu title='Contests' onClick={() => {}}>{contextMenu}</LocalMenu>}
