@@ -58,7 +58,7 @@ export const loginStatus = (isLoggedIn: boolean) => ({
   isLoggedIn
 })
 
-export const login = (username: string, password: string, history: History) => {
+export const login = (username: string, password: string, history: History, path: string) => {
   return async (dispatch: UserLoginDispatch) => {
     dispatch(loginRequest(username, true));
 
@@ -68,7 +68,9 @@ export const login = (username: string, password: string, history: History) => {
       dispatch(loginSuccess(response.user));
       dispatch(loginRequest(username, false));
       dispatch(loginStatus(true));
-      history.push('/');
+
+      console.log('From action: ' + path);
+      history.push(path);
     } else {
       dispatch(loginError(response.status));
     }

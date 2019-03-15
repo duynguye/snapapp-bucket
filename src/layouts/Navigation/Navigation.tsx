@@ -19,13 +19,9 @@ interface INavigationProps {
 }
 
 class Navigation extends Component<INavigationProps> {
-  shouldComponentUpdate() {
-    return false;
-  }
-
   render() {
     const { globalMenu, localMenu, className = '' }: INavigationProps = this.props;
-
+  
     return (
       <div className={classnames(styles.nav, className)}>
         {globalMenu}

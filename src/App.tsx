@@ -4,7 +4,8 @@ import DocumentTitle from 'react-document-title';
 import {
   BrowserRouter as Router,
   Route,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 
@@ -71,6 +72,8 @@ class App extends Component<IAppProps> {
     );
   }
 
+  //<Redirect to={{ pathname: '/login' }} /> :
+
   render() {
     const { isLoggedIn, isAuthenticating } = this.props.user;
     const contextMenu = this.buildContextMenu(localMenuProps);
@@ -81,29 +84,39 @@ class App extends Component<IAppProps> {
       <DocumentTitle title={'Orca'}>
         <Router>
           <div className='app'>
-            {!isLoggedIn ? <Redirect to={{ pathname: '/login' }} /> : ''}
+            { isLoggedIn && 
+              <Navigation 
+                globalMenu={<GlobalMenu apps={apps} />}
+                localMenu={<LocalMenu title='Contests' onClick={() => {}}>{contextMenu}</LocalMenu>}
+              />
+            }
 
             <Route path='/login' component={Login} />
-            <Route exact path='/contests/' render={() => (
-              <Navigation 
-                globalMenu={<GlobalMenu apps={apps} />}
-                localMenu={<LocalMenu title='Contests' onClick={() => {}}>{contextMenu}</LocalMenu>}
-              />
-            )} />
-
-            <Route path='/contests/projects' render={() => (
-              <Navigation 
-                globalMenu={<GlobalMenu apps={apps} />}
-                localMenu={<LocalMenu title='Contests' onClick={() => {}}>{contextMenu}</LocalMenu>}
-              />
-            )} />
-
+            
+            <div>
+              <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={TestComponent} />
+              <PrivateRoute path='/contests/projects' authenticated={isLoggedIn} component={TestComponent2} />
+            </div>
           </div>
         </Router>
       </DocumentTitle>
     );
   }
 }
+
+const TestComponent = () => <h1>Component</h1>;
+const TestComponent2 = () => <h1>Component - 2</h1>;
+
+const PrivateRoute = ({ component: Component, authenticated = false, ...rest }: any) => (
+  <Route {...rest} render={(props) => (
+    authenticated
+      ? <Component {...props} />
+      : <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }} />
+  )} />
+);
 
 const mapStateToProps = ({ user }: { user: UserState }): AppState => ({
   user

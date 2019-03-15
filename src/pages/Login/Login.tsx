@@ -17,6 +17,7 @@ interface ILoginProps {
   history: History;
   login: typeof login;
   updateSession: typeof updateSession;
+  location: any;
 }
 
 interface ILoginState {
@@ -41,8 +42,11 @@ class Login extends Component<ILoginProps, ILoginState> {
   handleSubmit = () => {
     const { history } = this.props;
     const { username, password } = this.state;
+    const path = this.props.location.state.from.pathname;
 
-    this.props.login(username, password, history);
+    console.log(path);
+
+    this.props.login(username, password, history, path);
   }
 
   render() {

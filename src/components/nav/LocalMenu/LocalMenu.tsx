@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { PageTitleWithButton } from '../../molecules';
 import background from '../../_global/background.jpg';
 import styles from './LocalMenu.module.scss';

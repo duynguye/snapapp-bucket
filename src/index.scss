@@ -1,69 +1,81 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:200,300,400,600,700,800,900|Roboto:300,400');
 
 :root {
-    /* Primary Color Scheme */
-    --dark-blue:            #1c2541;
-    --blue:                 #2a4494;
-    --light-blue:           #5c7aff;
-    --teal:                 #44e5e7;
+  /* Primary Color Scheme */
+  --dark-blue: #1c2541;
+  --blue: #2a4494;
+  --light-blue: #5c7aff;
+  --teal: #44e5e7;
 
-    /* Adjusted Primary Color Scheme */
-    --light-blue-tinted:    #f7f7ff;
+  /* Adjusted Primary Color Scheme */
+  --light-blue-tinted: #f7f7ff;
 
-    /* Secondary Color Scheme */
-    --red:                  #ff0022;
-    --orange:               #ff4e00;
-    --yellow:               #ffb30f;
-    --green:                #16db93;
-    --purple:               #6554c0;
-    --royal-blue:           #192bc2;
-    --magenta:              #dc0073;
-    --react-blue:           #282c34;
+  /* Secondary Color Scheme */
+  --red: #ff0022;
+  --orange: #ff4e00;
+  --yellow: #ffb30f;
+  --green: #16db93;
+  --purple: #6554c0;
+  --royal-blue: #192bc2;
+  --magenta: #dc0073;
+  --react-blue: #282c34;
 
-    /* Neutral Colors */
-    --white:                #ffffff;
-    --gray-1:               #fafbfc;
-    --gray-2:               #f4f5f7;
-    --gray-3:               #ebecf0;
-    --gray-4:               #c1c7d0;
-    --gray-5:               #a5adba;
-    --gray-6:               #7a869a;
+  /* Neutral Colors */
+  --white: #ffffff;
+  --gray-1: #fafbfc;
+  --gray-2: #f4f5f7;
+  --gray-3: #ebecf0;
+  --gray-4: #c1c7d0;
+  --gray-5: #a5adba;
+  --gray-6: #7a869a;
 
-    --bezier:               cubic-bezier(0.42, 0.01, 0.23, 1);
+  --bezier: cubic-bezier(0.42, 0.01, 0.23, 1);
 
-    --primary-gradient:     linear-gradient(to bottom, var(--blue) 0%, var(--blue) 60%, var(--light-blue) 100%);
-    --secondary-gradient:   linear-gradient(to right, var(--light-blue) 0%, var(--light-blue) 20%, var(--teal) 130%);
+  --primary-gradient: linear-gradient(to bottom, var(--blue) 0%, var(--blue) 60%, var(--light-blue) 100%);
+  --secondary-gradient: linear-gradient(to right, var(--light-blue) 0%, var(--light-blue) 20%, var(--teal) 130%);
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, li {
-    padding: 0;
-    margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  padding: 0;
+  margin: 0;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 div#root {
-    height: 100%;
+  height: 100%;
 }
 
 .app {
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
