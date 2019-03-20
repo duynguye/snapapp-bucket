@@ -10,17 +10,23 @@
     padding: 20px 30px;
     position: relative;
     text-decoration: none;
+    transition: all 0.3s var(--bezier);
     width: 100%;
 
     &::before {
         background-color: var(--teal);
         content: '';
-        display: none;
         height: 100%;
         left: 0;
         position: absolute;
         top: 0;
+        transition: all 0.3s var(--bezier);
+        transform: translateX(-100%);
         width: 3px;
+    }
+
+    &:hover {
+        background-color: rgba(#1c2541, 0.35);
     }
 }
 
@@ -36,10 +42,13 @@
 .active {
     background-color: rgba(#1c2541, 0.35);
     opacity: 1;
-    // mix-blend-mode: multiply;
+
+    &:hover {
+        background-color: rgba(#1c2541, 0.35);
+    }
 
     &::before {
-        display: block;
+        transform: translateX(0);
     }
 }
 

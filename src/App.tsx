@@ -4,8 +4,7 @@ import DocumentTitle from 'react-document-title';
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
-  Switch
+  Redirect
 } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 
@@ -18,8 +17,15 @@ import './components/_global/fontawesome';
  * Imports for custom components and styles if applicable.
  */
 import { Navigation } from './layouts';
-import { GlobalMenu, LocalMenu, ContextLink } from './components/nav';
-import { Login } from './pages';
+import { 
+  GlobalMenu, 
+  LocalMenu, 
+  ContextLink, 
+  ContextList, 
+  ContextNode ,
+  Header
+} from './components/nav';
+import { Login, Contests } from './pages';
 import { AppState } from './store';
 import { UserState } from './store/user/user.types';
 import { setAuthState, loginStatus, loginSuccess } from './store/user/user.actions';
@@ -30,29 +36,18 @@ import { setAuthState, loginStatus, loginSuccess } from './store/user/user.actio
 import apps from './lib/mocks/apps';
 import localMenuProps from './lib/mocks/context';
 
+/**
+ * Global app props
+ */
 interface IAppProps extends AppState {
   setAuthState: typeof setAuthState;
   loginStatus: typeof loginStatus;
   loginSuccess: typeof loginSuccess;
 }
 
-interface ContextNode {
-  exact: boolean;
-  path: string;
-  title: string;
-  icon: string[];
-}
-
-type ContextList = {
-  [index: number]: ContextNode;
-  map: any;
-}
-
 class App extends Component<IAppProps> {
   componentDidMount() {
     this.checkUser();
-
-    console.log(this.props);
   }
 
   checkUser = () => {
@@ -72,8 +67,6 @@ class App extends Component<IAppProps> {
     );
   }
 
-  //<Redirect to={{ pathname: '/login' }} /> :
-
   render() {
     const { isLoggedIn, isAuthenticating } = this.props.user;
     const contextMenu = this.buildContextMenu(localMenuProps);
@@ -91,11 +84,14 @@ class App extends Component<IAppProps> {
               />
             }
 
+            <Route exact path='/' render={props => <Redirect to={{ pathname: '/contests' }} />} />
             <Route path='/login' component={Login} />
-            
-            <div>
-              <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={TestComponent} />
-              <PrivateRoute path='/contests/projects' authenticated={isLoggedIn} component={TestComponent2} />
+
+            <div className='app-content'>
+              { isLoggedIn && <Header /> }
+              <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={Contests} />
+              <PrivateRoute path='/contests/add' authenticated={isLoggedIn} component={TestComponent2} />
+              <PrivateRoute path='/contests/:id' authenticated={isLoggedIn} component={TestComponent3} />
             </div>
           </div>
         </Router>
@@ -104,8 +100,9 @@ class App extends Component<IAppProps> {
   }
 }
 
-const TestComponent = () => <h1>Component</h1>;
-const TestComponent2 = () => <h1>Component - 2</h1>;
+const TestComponent = () => <DocumentTitle title={'Contestr Dashboard - Orca - Compulse Integrated Marketing'}><h1>Component</h1></DocumentTitle>;
+const TestComponent2 = () => <DocumentTitle title={'Create Contest - Orca - Compulse Integrated Marketing'}><h1>Add New</h1></DocumentTitle>;
+const TestComponent3 = ({ match }: any) => <h1>Component - { match.params.id }</h1>;
 
 const PrivateRoute = ({ component: Component, authenticated = false, ...rest }: any) => (
   <Route {...rest} render={(props) => (

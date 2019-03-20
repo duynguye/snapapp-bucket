@@ -21,7 +21,7 @@ interface IHeaderProps {
 
 const Header = ({ badges, currentUser }: IHeaderProps) => (
   <header className={styles.container}>
-    <img src={background} alt={'Background'} className={styles.background} />
+    <img src={background} alt={'Background'} className={styles.background}/>
 
     <div style={{ display: 'flex', padding: '0 30px' }}>
       <Badge

@@ -38,13 +38,11 @@ const SectionHeader = ({ title, tabs, action, filters }: ISectionHeader) => {
 
     return (
         <div className={styles.container}>
-            { /* Title and Tab Group */ }
             <div className={styles.titleContainer}>
                 <SectionTitle classes={styles.title}>{title}</SectionTitle>
                 {tabList}
             </div>
 
-            { /* Divider and Action Button */ }
             <div className={styles.divider}>
                 <HorizontalDivider />
                 <IconButtonLarge action={action} classes={styles.button}>
@@ -52,7 +50,6 @@ const SectionHeader = ({ title, tabs, action, filters }: ISectionHeader) => {
                 </IconButtonLarge>
             </div>
 
-            { /* Filter Buttons */ }
             <div>
                 {filterList}
             </div>

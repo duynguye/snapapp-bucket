@@ -79,3 +79,9 @@ div#root {
   display: flex;
   height: 100%;
 }
+
+.app-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}

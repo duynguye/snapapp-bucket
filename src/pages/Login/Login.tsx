@@ -44,8 +44,6 @@ class Login extends Component<ILoginProps, ILoginState> {
     const { username, password } = this.state;
     const path = this.props.location.state.from.pathname;
 
-    console.log(path);
-
     this.props.login(username, password, history, path);
   }
 
