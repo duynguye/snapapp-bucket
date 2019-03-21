@@ -28,7 +28,7 @@ class Contests extends Component {
 
     return (
       <DocumentTitle title={'Contestr Dashboard - Orca - Compulse Integrated Marketing'}>
-        <div>
+        <div style={{ overflowY: 'scroll' }}>
           <SectionHeader
             filters={filters}
             title={'Contests'}

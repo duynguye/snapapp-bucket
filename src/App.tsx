@@ -90,7 +90,7 @@ class App extends Component<IAppProps> {
             <div className='app-content'>
               { isLoggedIn && <Header /> }
               <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={Contests} />
-              <PrivateRoute path='/contests/add' authenticated={isLoggedIn} component={TestComponent2} />
+              <PrivateRoute exact path='/contests/add' authenticated={isLoggedIn} component={TestComponent2} />
               <PrivateRoute path='/contests/:id' authenticated={isLoggedIn} component={TestComponent3} />
             </div>
           </div>
@@ -102,7 +102,15 @@ class App extends Component<IAppProps> {
 
 const TestComponent = () => <DocumentTitle title={'Contestr Dashboard - Orca - Compulse Integrated Marketing'}><h1>Component</h1></DocumentTitle>;
 const TestComponent2 = () => <DocumentTitle title={'Create Contest - Orca - Compulse Integrated Marketing'}><h1>Add New</h1></DocumentTitle>;
-const TestComponent3 = ({ match }: any) => <h1>Component - { match.params.id }</h1>;
+const TestComponent3 = ({ match }: any) => {
+  if (!isNaN(match.params.id)) {
+    return (
+      <h1>Component - { match.params.id }</h1>
+    );
+  }
+
+  return null;
+};
 
 const PrivateRoute = ({ component: Component, authenticated = false, ...rest }: any) => (
   <Route {...rest} render={(props) => (

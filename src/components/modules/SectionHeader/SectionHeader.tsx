@@ -27,7 +27,7 @@ interface ISectionHeader {
     tabs: any;
 }
 
-const SectionHeader = ({ title, tabs, action, filters }: ISectionHeader) => {
+const SectionHeader = ({ title, tabs = [], action, filters = [] }: ISectionHeader) => {
     const tabList = tabs.map((tab: ITab) => (
         <Tab key={tab.title} count={tab.count} onClick={tab.callback} active={tab.active}>{tab.title}</Tab>
     ));
@@ -40,7 +40,7 @@ const SectionHeader = ({ title, tabs, action, filters }: ISectionHeader) => {
         <div className={styles.container}>
             <div className={styles.titleContainer}>
                 <SectionTitle classes={styles.title}>{title}</SectionTitle>
-                {tabList}
+                {tabs.length > 0 && tabList}
             </div>
 
             <div className={styles.divider}>
@@ -51,7 +51,7 @@ const SectionHeader = ({ title, tabs, action, filters }: ISectionHeader) => {
             </div>
 
             <div>
-                {filterList}
+                {filters.length > 0 && filterList}
             </div>
         </div>
     );
