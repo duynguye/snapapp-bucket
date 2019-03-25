@@ -22,12 +22,12 @@ interface IFilter {
 
 interface ISectionHeader {
     action?: () => any;
-    filters: any;
+    filters?: any;
     title: string;
-    tabs: any;
+    tabs?: any;
 }
 
-const SectionHeader = ({ title, tabs = [], action, filters = [] }: ISectionHeader) => {
+const SectionHeader = ({ title, tabs = [], action = undefined, filters = [] }: ISectionHeader) => {
     const tabList = tabs.map((tab: ITab) => (
         <Tab key={tab.title} count={tab.count} onClick={tab.callback} active={tab.active}>{tab.title}</Tab>
     ));
@@ -45,9 +45,11 @@ const SectionHeader = ({ title, tabs = [], action, filters = [] }: ISectionHeade
 
             <div className={styles.divider}>
                 <HorizontalDivider />
-                <IconButtonLarge action={action} classes={styles.button}>
-                    <FontAwesomeIcon icon={['fal', 'plus']} />
-                </IconButtonLarge>
+                { action && 
+                    <IconButtonLarge action={action} classes={styles.button}>
+                        <FontAwesomeIcon icon={['fal', 'plus']} />
+                    </IconButtonLarge>
+                }
             </div>
 
             <div>
