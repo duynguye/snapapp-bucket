@@ -7,10 +7,13 @@ import styles from './Label.module.scss';
 interface ILabelProps {
   children: React.ReactNode;
   className?: string | [string];
+  dark?: boolean;
+  required?: boolean;
 }
 
-const Label = ({ children, className = '' }: ILabelProps) => (
-  <label className={classnames(styles.formlabel, className)}>{children}</label>
+export default ({ children, className = '', dark = false, required = false }: ILabelProps) => (
+  <label className={classnames(styles.formlabel, dark && styles.formLabelDark, className)}>
+    {children}
+    {required && '*'}
+  </label>
 );
-
-export default Label;

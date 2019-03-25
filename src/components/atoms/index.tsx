@@ -1,7 +1,6 @@
 import AppButton from './AppButton/AppButton';
 import Avatar from './Avatar/Avatar';
 import Badge from './Badge/Badge';
-import Button from './Button/Button';
 import IconButtonLarge from './IconButtonLarge/IconButtonLarge';
 import IconButtonSmall from './IconButtonSmall/IconButtonSmall';
 import NameTag from './NameTag/NameTag';
@@ -13,7 +12,6 @@ export {
     AppButton,
     Avatar,
     Badge,
-    Button,
     IconButtonLarge,
     IconButtonSmall,
     NameTag,

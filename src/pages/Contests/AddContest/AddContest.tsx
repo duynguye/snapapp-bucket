@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 
 import { SectionHeader } from '../../../components/modules';
+import AddContestPageOne from './AddContestPageOne';
 
-const AddContest = () => (
-  <DocumentTitle title={'Create Contest - Orca - Compulse Integrated Marketing'}>
-    <div>
-      <SectionHeader title='Add New Contest' />
-    </div>
-  </DocumentTitle>
-);
+interface IAddContestState {
+  page: number;
+}
+
+class AddContest extends Component<null, IAddContestState> {
+  state = {
+    page: 1
+  };
+
+  nextPage = () => {
+    this.setState({ page: this.state.page + 1 });
+  }
+
+  prevPage = () => {
+    this.setState({ page: this.state.page - 1 });
+  }
+
+  render () {
+    const { page } = this.state;
+
+    return (
+      <DocumentTitle title={'Create Contest - Orca - Compulse Integrated Marketing'}>
+        <React.Fragment>
+          <SectionHeader title='Add New Contest' />
+          {
+            page === 1 && <AddContestPageOne onSubmit={this.nextPage} />
+          }
+        </React.Fragment>
+      </DocumentTitle>
+    );
+  }
+}
 
 export default AddContest;

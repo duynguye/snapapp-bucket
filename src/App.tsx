@@ -27,7 +27,6 @@ import {
 } from './components/nav';
 import { Login, Contests, AddContest } from './pages';
 import { AppState } from './store';
-import { UserState } from './store/user/user.types';
 import { setAuthState, loginStatus, loginSuccess } from './store/user/user.actions';
 
 /**
@@ -100,8 +99,6 @@ class App extends Component<IAppProps> {
   }
 }
 
-const TestComponent = () => <DocumentTitle title={'Contestr Dashboard - Orca - Compulse Integrated Marketing'}><h1>Component</h1></DocumentTitle>;
-const TestComponent2 = () => <DocumentTitle title={'Create Contest - Orca - Compulse Integrated Marketing'}><h1>Add New</h1></DocumentTitle>;
 const TestComponent3 = ({ match }: any) => {
   if (!isNaN(match.params.id)) {
     return (
@@ -119,12 +116,12 @@ const PrivateRoute = ({ component: Component, authenticated = false, ...rest }: 
       : <Redirect to={{
         pathname: '/login',
         state: { from: props.location }
-      }} />
+    }} />
   )} />
 );
 
-const mapStateToProps = ({ user }: { user: UserState }): AppState => ({
-  user
+const mapStateToProps = ({ user }: AppState) => ({
+  user,
 });
 
 export default connect(mapStateToProps, { setAuthState, loginStatus, loginSuccess })(App);
