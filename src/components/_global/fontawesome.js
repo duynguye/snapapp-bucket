@@ -29,12 +29,14 @@ import { faSquare as falSquare } from '@fortawesome/pro-light-svg-icons';
 import { faCheckSquare as falCheckSquare } from '@fortawesome/pro-light-svg-icons';
 import { faCloudDownloadAlt as falCloudDownloadAlt } from '@fortawesome/pro-light-svg-icons';
 import { faSignIn as falSignIn } from '@fortawesome/pro-light-svg-icons';
+import { faCircle as falCircle } from '@fortawesome/pro-light-svg-icons';
 
 // Solid Icons
 import { faSort as fasSort } from '@fortawesome/pro-solid-svg-icons';
 import { faCalendarAlt as fasCalendarAlt } from '@fortawesome/pro-solid-svg-icons';
 import { faTrophy as fasTrophy } from '@fortawesome/pro-solid-svg-icons';
 import { faSquare as fasSquare } from '@fortawesome/pro-solid-svg-icons';
+import { faCheckCircle as fasCheckCircle } from '@fortawesome/pro-solid-svg-icons';
 
 library.add([
     falCaretLeft,
@@ -58,14 +60,16 @@ library.add([
     falSquare,
     falCheckSquare,
     falCloudDownloadAlt,
-    falSignIn
+    falSignIn,
+    falCircle
 ]);
 
 library.add([
     fasSort,
     fasCalendarAlt,
     fasTrophy,
-    fasSquare
+    fasSquare,
+    fasCheckCircle
 ]);
 
 library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falPlus ]);

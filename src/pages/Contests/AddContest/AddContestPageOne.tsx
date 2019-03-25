@@ -1,33 +1,40 @@
 import React from 'react';
-import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import { reduxForm, InjectedFormProps } from 'redux-form';
 
 // Custom styles and components
 import { Button } from '../../../components/buttons';
-import { Form, FormBody, FormSubmit, Label, RadioButton } from '../../../components/forms';
+import { Form, FormBody, FormSubmit, RadioButtonGroup } from '../../../components/forms';
 
 // Interfaces and types
 interface IAddContestProps extends InjectedFormProps {}
 
-const renderInput = (field: any) => 
-  <div>
-    <Label dark required>Is there an existing JIRA ticket?</Label>
-    <input {...field.input} type={field.type}/>
-    {field.meta.touched &&
-     field.meta.error &&
-     <span className="error">{field.meta.error}</span>}
-  </div>;
+/**
+ * Custom validation for this page specifically
+ */
+const validate = (values: any) => {
+  let errors = { jira: '' };
 
+  if (!values.jira) {
+    errors.jira = 'Required';
+  }
+
+  return errors;
+}
+
+/**
+ * 
+ */
 const AddContestPageOne = (props: IAddContestProps) => {
-  const { handleSubmit } = props;
+  const { handleSubmit, invalid, submitting, pristine } = props;
+  
   return (
     <Form onSubmit={handleSubmit}>
       <FormBody>
-        <Field name='jiraTicketExists' component={renderInput} />
-        <RadioButton name={'jira'} />
+        <RadioButtonGroup name={'jira'} />
       </FormBody>
 
       <FormSubmit>
-        <Button type='submit' config={['fal', 'long-arrow-right']}>Next</Button>
+        <Button disabled={invalid || submitting || pristine} type='submit' config={['fal', 'long-arrow-right']}>Next</Button>
       </FormSubmit>
     </Form>
   );
@@ -37,4 +44,5 @@ export default reduxForm({
   form: 'addContest',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
+  validate
 })(AddContestPageOne);

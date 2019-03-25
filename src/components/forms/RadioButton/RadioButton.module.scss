@@ -1,15 +1,44 @@
-.input {
+.container {
+  display: inline-flex;
+  margin-bottom: 5px;
+  position: relative;
+}
 
+.container.checked {
+  .label {
+    color: var(--light-blue);
+  }
+
+  .icon {
+    color: var(--light-blue);
+  }
+}
+
+.input {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .wrapper {
-
+  align-items: center;
+  display: flex;
 }
 
 .icon {
-  
+  color: var(--gray-5);
+  font-size: 14px;
+  margin-right: 10px;
+  transition: all 250ms var(--bezier);
 }
 
 .label {
-
+  color: var(--gray-5);
+  font-family: 'Roboto Slab', serif;
+  font-size: 11px;
+  margin-bottom: 1px;
+  transition: all 250ms var(--bezier);
 }

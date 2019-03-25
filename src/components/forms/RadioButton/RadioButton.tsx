@@ -1,49 +1,24 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classnames from 'classnames';
 
-const RadioButton = ({ checked, value, onChange }: any) => (
-  <div>
-    <input name='group' type='radio' value={value} onChange={onChange} />
-    
-    <div>
-      {checked && <span>ICON</span>}
-      <label>Radio Button Text</label>
+// Custom styles and imports
+import styles from './RadioButton.module.scss';
+
+export default ({ input, label, type, meta: { touched, error} }: any) => {
+  return (
+    <div className={classnames(styles.container, input.checked && styles.checked)}>
+      <input {...input} className={styles.input} type={type} />
+      
+      <div className={styles.wrapper}>
+        {
+          input.checked 
+          ? <FontAwesomeIcon className={styles.icon} icon={['fas', 'check-circle']} /> 
+          : <FontAwesomeIcon className={styles.icon} icon={['fal', 'circle']} /> 
+        }
+
+        <label className={styles.label}>{label}</label>
+      </div>
     </div>
-  </div>
-);
-
-interface IRadioButtonGroupProps {
-  name: string;
+  );
 }
-
-interface IRadioButtonGroupState {
-  value: string;
-}
-
-class RadioButtonGroup extends Component<IRadioButtonGroupProps, IRadioButtonGroupState> {
-  state = {
-    value: ''
-  };
-
-  buildRadioButtons = () => {
-
-  }
-
-  handleChange = (e: any) => {
-    this.setState({
-      value: e.currentTarget.value
-    });
-  }
-
-  render() {
-    const { value } = this.state;
-
-    return (
-      <React.Fragment>
-        <RadioButton value={'First'} checked={value === 'First'} onChange={this.handleChange} />
-        <RadioButton value={'Second'} checked={value === 'Second'} onChange={this.handleChange} />
-      </React.Fragment>
-    )
-  }
-}
-
-export default RadioButtonGroup;

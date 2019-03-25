@@ -6,6 +6,7 @@ import FormGroup from './FormGroup/FormGroup';
 import FormBody from './FormBody/FormBody';
 import FormSubmit from './FormSubmit/FormSubmit';
 import RadioButton from './RadioButton/RadioButton';
+import RadioButtonGroup from './RadioButtonGroup/RadioButtonGroup';
 
 export {
   UserInput,
@@ -15,5 +16,6 @@ export {
   FormGroup,
   FormBody,
   FormSubmit,
-  RadioButton
+  RadioButton,
+  RadioButtonGroup
 };
