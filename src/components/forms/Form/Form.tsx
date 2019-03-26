@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { SubmitHandler } from 'redux-form';
 import classnames from 'classnames';
 
@@ -15,8 +15,14 @@ interface IFormProps {
 /**
  * Wrapper for the form body, this fills as much of the height of the container as possible.
  */
-export default ({ children, className, onSubmit }: IFormProps) => (
-  <form className={classnames(styles.container, className)} onSubmit={onSubmit}>
-    {children}
-  </form>
-)
+const FormWithRef = React.forwardRef((props: IFormProps, ref: any) => {
+  const { children, className, onSubmit } = props;
+
+  return (
+    <form className={classnames(styles.container, className)} onSubmit={onSubmit} ref={ref}>
+      {children}
+    </form>
+  );
+});
+
+export default FormWithRef;

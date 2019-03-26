@@ -30,7 +30,7 @@ const AddContestPageOne = (props: IAddContestProps) => {
   return (
     <Form onSubmit={handleSubmit}>
       <FormBody>
-        <RadioButtonGroup name={'jira'} />
+        <RadioButtonGroup name='jira' values={['Yes', 'No']} />
       </FormBody>
 
       <FormSubmit>

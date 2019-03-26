@@ -11,14 +11,15 @@ interface ButtonProps {
   onClick?: () => void;
   config?: any;
   disabled?: boolean;
-  className?: string | [string]
+  className?: string | [string];
+  style?: {};
 }
 
 /**
  * General purpose button that is just text.
  */
-const TextButton = ({ children, onClick, className = '', config = [], disabled = false }: ButtonProps) => (
-  <button className={classnames(styles.button, className)} onClick={onClick} disabled={disabled}>
+const TextButton = ({ children, onClick, className = '', config = [], disabled = false, style }: ButtonProps) => (
+  <button className={classnames(styles.button, className)} style={style} onClick={onClick} disabled={disabled}>
     {config.length > 0 ? <FontAwesomeIcon icon={config} className={styles.icon} /> : ''}
     {children}
   </button>

@@ -6,31 +6,26 @@ import { Label, RadioButton } from '../../forms';
 
 interface IRadioButtonGroupProps {
   name: string;
+  values: string[];
 }
 
-interface IRadioButtonGroupState {
-  value: string;
-}
-
-class RadioButtonGroup extends Component<IRadioButtonGroupProps, IRadioButtonGroupState> {
-  state = {
-    value: ''
-  };
-
+class RadioButtonGroup extends Component<IRadioButtonGroupProps> {
   buildRadioButtons = () => {
+    const { name, values } = this.props;
 
+    return values.map(value => (
+      <Field key={value} name={name} type='radio' component={RadioButton} label={value} value={value} />
+    ));
   }
 
   render() {
-    const { name } = this.props;
-    const { value } = this.state;
+    const radioButtons = this.buildRadioButtons();
 
     return (
       <React.Fragment>
         <Label dark required>Is there an existing JIRA ticket?</Label>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Field name={name} type='radio' component={RadioButton} label='Yes' value='Yes' />
-          <Field name={name} type='radio' component={RadioButton} label='No' value='No' />
+          { radioButtons }
         </div>
       </React.Fragment>
     )
