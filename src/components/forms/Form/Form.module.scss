@@ -1,6 +1,7 @@
 .container {
+  align-items: flex-end;
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex: 1 0 auto;
+  flex-flow: row wrap;
   padding: 0 60px 50px;
 }

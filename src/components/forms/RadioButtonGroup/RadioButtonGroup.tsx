@@ -3,9 +3,14 @@ import { Field } from 'redux-form';
 
 // Custom styles and imports
 import { Label, RadioButton } from '../../forms';
+import { getSizeStyle } from '../withLabel';
+import { FormSize } from '../';
 
-interface IRadioButtonGroupProps {
+export interface IRadioButtonGroupProps {
+  label: string;
   name: string;
+  size?: FormSize;
+  required?: boolean;
   values: string[];
 }
 
@@ -20,14 +25,19 @@ class RadioButtonGroup extends Component<IRadioButtonGroupProps> {
 
   render() {
     const radioButtons = this.buildRadioButtons();
+    const { label, size = FormSize.Full, required = false } = this.props;
+    const style = getSizeStyle(size);
 
     return (
-      <React.Fragment>
-        <Label dark required>Is there an existing JIRA ticket?</Label>
+      <div
+        style={{ padding: '0 10px' }}
+        className={style}
+      >
+        <Label dark required={required}>{label}</Label>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           { radioButtons }
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

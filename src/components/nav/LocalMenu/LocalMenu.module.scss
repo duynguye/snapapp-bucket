@@ -1,12 +1,10 @@
-@import '../../../index';
-
 .container {
     background: var(--primary-gradient);
     overflow: hidden;
     padding: 50px 0;
     position: relative;
     min-width: 275px;
-    width: (8.33333vw * 2.5);
+    width: (8.33333vw * 2);
     z-index: 2;
 }
 
