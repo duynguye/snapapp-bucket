@@ -5,8 +5,10 @@ import { Field } from 'redux-form';
 import { Label, RadioButton } from '../../forms';
 import { getSizeStyle } from '../withLabel';
 import { FormSize } from '../';
+import styles from './RadioButtonGroup.module.scss';
 
 export interface IRadioButtonGroupProps {
+  horizontal?: boolean;
   label: string;
   name: string;
   size?: FormSize;
@@ -16,16 +18,16 @@ export interface IRadioButtonGroupProps {
 
 class RadioButtonGroup extends Component<IRadioButtonGroupProps> {
   buildRadioButtons = () => {
-    const { name, values } = this.props;
+    const { name, values, horizontal = false } = this.props;
 
     return values.map(value => (
-      <Field key={value} name={name} type='radio' component={RadioButton} label={value} value={value} />
+      <Field key={value} name={name} type='radio' component={RadioButton} label={value} value={value} className={horizontal && styles.horizontalButton}/>
     ));
   }
 
   render() {
     const radioButtons = this.buildRadioButtons();
-    const { label, size = FormSize.Full, required = false } = this.props;
+    const { label, size = FormSize.Full, required = false, horizontal = false } = this.props;
     const style = getSizeStyle(size);
 
     return (
@@ -34,7 +36,7 @@ class RadioButtonGroup extends Component<IRadioButtonGroupProps> {
         className={style}
       >
         <Label dark required={required}>{label}</Label>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex' }} className={horizontal ? styles.horizontal : styles.vertical}>
           { radioButtons }
         </div>
       </div>

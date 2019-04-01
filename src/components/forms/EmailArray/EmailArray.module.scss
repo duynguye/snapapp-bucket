@@ -1,0 +1,40 @@
+.wrapper {
+  list-style: none;
+  margin: 0;
+  padding: 30px 0;
+}
+
+.email {
+  display: flex;
+  justify-content: space-between;
+  
+  &:not(:last-of-type) {
+    margin-bottom: 5px;
+  }
+}
+
+.emailText {
+  appearance: none;
+  border: none;
+  color: var(--gray-5);
+  flex: 1;
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.add {
+  display: flex;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.delete {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--red);
+  cursor: pointer;
+  padding: 0 15px;
+  outline: none;
+}

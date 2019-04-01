@@ -1,0 +1,25 @@
+.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--gray-2);
+  border: 3px solid var(--gray-2);
+  border-radius: 7px;
+  display: inline-block;
+  flex: 1;
+  font-size: calc(1px + 1vmin);
+  margin-right: 20px;
+  padding: 8px 15px;
+  transition: all 0.3s var(--bezier);
+  width: auto;
+
+  &:focus {
+    border: 3px solid var(--light-blue);
+    color: var(--light-blue);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--gray-4);
+  }
+}

@@ -4,6 +4,7 @@ import Amplify from 'aws-amplify';
 import { Provider } from 'react-redux';
 
 // Custom styles and imports
+import 'react-datepicker/dist/react-datepicker.css';
 import './index.scss';
 import awsmobile from './aws-exports';
 import App from './App';

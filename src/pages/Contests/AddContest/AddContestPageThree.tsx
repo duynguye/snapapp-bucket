@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { reduxForm, InjectedFormProps, Field } from 'redux-form';
+import { reduxForm, InjectedFormProps, Field, FieldArray } from 'redux-form';
 
 // Custom styles and components
 import { Button, TextButton } from '../../../components/buttons';
-import { 
+import {
+  Dropdown,
   Form,
   FormAside,
   FormBody,
@@ -11,8 +12,21 @@ import {
   FormSize,
   FormSubmit,
   RadioButtonGroup,
-  WrappedInput
+  WrappedInput,
+  WrappedDatePicker,
+  WrappedTextArea,
+  EmailArray
 } from '../../../components/forms';
+import { AsideTitle } from '../../../components/text';
+import { HorizontalDivider } from '../../../components/layout';
+
+// Mock data
+import { 
+  platform as platformProps,
+  station,
+  contestType,
+  drawType
+} from '../../../lib/mocks/addNewDropdowns';
 
 // Interfaces and types
 interface IAddContestProps {
@@ -27,36 +41,41 @@ class AddContestPageThree extends Component<IAddContestProps & InjectedFormProps
       <Form onSubmit={handleSubmit}>
         <FormBody>
           <FormGroup>
-            <Field type='text' name='title' component={WrappedInput} label='Contest Name' size={FormSize.ThreeQuarters} required />
+            <Field type='text' name='title' component={WrappedInput} label='Contest Name' size={FormSize.Half} required />
             <Field type='text' name='issue' component={WrappedInput} label='Issue Number' size={FormSize.Quarter} />
+            <Field name='platform' component={Dropdown} label='Contest Platform' size={FormSize.Quarter} dataProps={platformProps} placeholder='Pick a platform...' required />
           </FormGroup>
 
           <FormGroup>
-            <Field type='text' name='platform' component={WrappedInput} label='Contest Platform' size={FormSize.Third} required />
-            <Field type='text' name='type' component={WrappedInput} label='Contest Type' size={FormSize.Third} required />
-            <Field type='text' name='station' component={WrappedInput} label='Station' size={FormSize.Third} required />
+            <Field name='type' component={Dropdown} label='Contest Type' size={FormSize.Half} dataProps={contestType} placeholder='Choose a contest type...' required />
+            <Field name='station' component={Dropdown} label='Station' size={FormSize.Half} dataProps={station} placeholder='Choose a station...' required />
           </FormGroup>
 
           <FormGroup>
-            <Field type='text' name='start' component={WrappedInput} label='Start Date' size={FormSize.Quarter} />
-            <Field type='text' name='end' component={WrappedInput} label='End Date' size={FormSize.Quarter} />
-            <Field type='text' name='draw' component={WrappedInput} label='Draw Type' size={FormSize.Quarter} />
-            <Field type='text' name='issue' component={WrappedInput} label='[NOT SURE]' size={FormSize.Quarter} />
+            <Field type='text' name='start' component={WrappedDatePicker} label='Start Date' size={FormSize.Third} />
+            <Field type='text' name='end' component={WrappedDatePicker} label='End Date' size={FormSize.Third} />
+            <Field name='draw' component={Dropdown} label='Draw Type' size={FormSize.Third} dataProps={drawType} placeholder='Choose a draw type...' />
           </FormGroup>
 
           <FormGroup>
-            <RadioButtonGroup label='Remove winner from future draws?' name='jira' values={['Yes', 'No', 'Maybe', 'So', 'Who Knows']} size={FormSize.Quarter} />
-            <Field type='text' name='issue' component={WrappedInput} label='Notes' size={FormSize.Quarter} />
-            <Field type='text' name='issue' component={WrappedInput} label='Notes' size={FormSize.Half} />
+            <RadioButtonGroup 
+              label='Remove winner from future draws?' 
+              name='jira' 
+              values={['Yes', 'No', 'Maybe', 'So', 'Who Knows']} 
+              size={FormSize.Full} 
+              horizontal 
+            />
           </FormGroup>
 
           <FormGroup>
-            <Field type='text' name='issue' component={WrappedInput} label='Notes' size={FormSize.Full} />
+            <Field type='text' name='notes' component={WrappedTextArea} label='Notes' size={FormSize.Full} />
           </FormGroup>
         </FormBody>
 
         <FormAside>
-          <h1>Emails</h1>
+          <AsideTitle>Emails</AsideTitle>
+          <HorizontalDivider />
+          <FieldArray name="emails" component={EmailArray} />
         </FormAside>
   
         <FormSubmit>

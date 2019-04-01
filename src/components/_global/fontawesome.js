@@ -31,6 +31,9 @@ import { faCloudDownloadAlt as falCloudDownloadAlt } from '@fortawesome/pro-ligh
 import { faSignIn as falSignIn } from '@fortawesome/pro-light-svg-icons';
 import { faCircle as falCircle } from '@fortawesome/pro-light-svg-icons';
 
+// Regular Icons
+import { faTimes as farTimes } from '@fortawesome/pro-regular-svg-icons';
+
 // Solid Icons
 import { faSort as fasSort } from '@fortawesome/pro-solid-svg-icons';
 import { faCalendarAlt as fasCalendarAlt } from '@fortawesome/pro-solid-svg-icons';
@@ -62,6 +65,10 @@ library.add([
     falCloudDownloadAlt,
     falSignIn,
     falCircle
+]);
+
+library.add([
+    farTimes
 ]);
 
 library.add([

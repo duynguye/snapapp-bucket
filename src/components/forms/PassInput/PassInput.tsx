@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 
 // Custom style import
@@ -8,6 +8,7 @@ interface IPassInputProps {
   className?: string | [string];
   placeholder?: string;
   handleInput: (type: string, value: string | undefined) => void;
+  handleKeyPress: (e: KeyboardEvent) => void;
 }
 
 interface IPassInputState {
@@ -38,13 +39,14 @@ class PassInput extends Component<IPassInputProps, IPassInputState> {
   
   render () {
     const { isFocused }: IPassInputState = this.state;
-    const { className, placeholder }: IPassInputProps = this.props;
+    const { className, handleKeyPress, placeholder }: IPassInputProps = this.props;
 
     return (
       <div className={classnames(styles.wrapper, isFocused ? styles.focused : '')}>
         <input 
           className={classnames(styles.password, className)}
           placeholder={placeholder}
+          onKeyPress={handleKeyPress}
           onBlur={this.handleEvent}
           onFocus={this.handleEvent}
           onChange={this.handleChange}

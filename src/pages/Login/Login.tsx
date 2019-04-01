@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, KeyboardEvent } from 'react';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -39,6 +39,12 @@ class Login extends Component<ILoginProps, ILoginState> {
     this.setState({ [type]: value } as any);
   }
 
+  handleKeyPress = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      this.handleSubmit();
+    }
+  }
+
   handleSubmit = () => {
     const { history } = this.props;
     const { username, password } = this.state;
@@ -72,7 +78,7 @@ class Login extends Component<ILoginProps, ILoginState> {
             />
             
             <Logo className={styles.logo} />
-            <LoginForm handleInput={this.handleInput} />
+            <LoginForm handleInput={this.handleInput} handleSubmit={this.handleKeyPress} />
             <TextButton
               config={['fal', 'sign-in']}
               className={styles.loginButton}
