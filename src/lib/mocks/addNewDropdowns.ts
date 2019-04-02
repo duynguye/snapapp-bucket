@@ -41,6 +41,10 @@ export const station = [{
 
 export const drawType = [{
   name: 'One Time Draw'
+}, {
+  name: 'Daily'
+}, {
+  name: 'Custom'
 }];
 
 

@@ -22,6 +22,12 @@ const renderField = ({ input }: WrappedFieldProps) => (
 class EmailArray extends Component<any> {
   private emailField = React.createRef<HTMLInputElement>();
 
+  validateEmail = (email: string): boolean => {
+    const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return reg.test(String(email).toLowerCase());
+  }
+
   handleKeyPress = (e: any) => {
     const emailField = this.emailField.current!;
     const { fields }: any = this.props;
@@ -41,6 +47,14 @@ class EmailArray extends Component<any> {
     const emailField = this.emailField.current!;
     const { fields }: any = this.props;
 
+    if (emailField.value.trim() === '') {
+      return;
+    }
+
+    if (this.validateEmail(emailField.value) === false) {
+      return;
+    }
+
     fields.push(emailField.value);
     emailField.value = '';
   }
@@ -58,7 +72,7 @@ class EmailArray extends Component<any> {
         </li>
 
         {
-          fields.map((email: any, index: any) =>
+          fields.map((email: string, index: number) =>
             <li key={index} className={styles.email}>
               <Field name={email} type='text' component={renderField} />
               <button type='button' onClick={() => fields.remove(index)} className={styles.delete}>
