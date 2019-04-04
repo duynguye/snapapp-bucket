@@ -47,4 +47,18 @@ export const drawType = [{
   name: 'Custom'
 }];
 
-
+export const timezones = [{
+  name: 'Atlantic Standard Time'
+}, {
+  name: 'Eastern Standard Time'
+}, {
+  name: 'Central Standard Time'
+}, {
+  name: 'Mountain Standard Time'
+}, {
+  name: 'Pacific Standard Time'
+}, {
+  name: 'Alaskan Standard Time'
+}, {
+  name: 'Hawaii-Aleutian Standard Time'
+}]

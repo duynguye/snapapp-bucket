@@ -7,6 +7,7 @@ import { CognitoUserSession } from 'amazon-cognito-identity-js';
  */
 export enum AuthCode {
   Success               = 'SUCCESS',
+  LogoutSucess          = 'LOGOUT_SUCCESS',
   UndefinedError        = 'UNDEFINED',
   NewPasswordRequired   = 'NEW_PASSWORD_REQUIRED',
   UserNotFound          = 'USER_NOT_FOUND',
@@ -18,7 +19,7 @@ export enum AuthCode {
 export interface AuthResponse {
   status: AuthCode;
   user?: {} | undefined;
-  session?: CognitoUserSession | {} | undefined;
+  session?: CognitoUserSession | {} | any;
 }
 
 /**
@@ -114,6 +115,24 @@ export async function currentAuthUser(): Promise<AuthResponse> {
       status,
       user
     };
+  } catch (err) {
+    return err;
+  }
+}
+
+/**
+ * Log the current auth user out.
+ */
+export async function signout(): Promise<AuthResponse> {
+  try {
+    const result = await Auth.signOut({ global: true });
+    let status: AuthCode = AuthCode.LogoutSucess;
+
+    console.log(result);
+
+    return {
+      status
+    }
   } catch (err) {
     return err;
   }

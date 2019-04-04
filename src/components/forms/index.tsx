@@ -13,6 +13,7 @@ import RadioButton from './RadioButton/RadioButton';
 import RadioButtonGroup from './RadioButtonGroup/RadioButtonGroup';
 import SmallInput from './SmallInput/SmallInput';
 import TextArea from './TextArea/TextArea';
+import TimePicker from './TimePicker/TimePicker';
 import UserInput from './UserInput/UserInput';
 import { withLabel } from './withLabel';
 
@@ -26,6 +27,7 @@ export enum FormSize {
 }
 
 const WrappedDatePicker = withLabel(DatePicker);
+const WrappedTimePicker = withLabel(TimePicker);
 const WrappedInput = withLabel(Input);
 const WrappedTextArea = withLabel(TextArea);
 
@@ -46,5 +48,6 @@ export {
   UserInput,
   WrappedDatePicker,
   WrappedInput,
-  WrappedTextArea
+  WrappedTextArea,
+  WrappedTimePicker
 };

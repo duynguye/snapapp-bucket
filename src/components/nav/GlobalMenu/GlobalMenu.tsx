@@ -33,7 +33,7 @@ const GlobalMenu = ({ apps }: IGlobalMenuProps) => (
     </div>
 
     <div className={styles.footer}>
-      <SmallText>Build 1130.01</SmallText>
+      <SmallText>Build 0.1a</SmallText>
     </div>
   </div>
 );

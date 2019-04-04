@@ -5,7 +5,8 @@ import {
   UPDATE_SESSION,
   USER_LOGIN,
   USER_LOGIN_OK,
-  USER_LOGIN_STATUS
+  USER_LOGIN_STATUS,
+  USER_LOGOUT
 } from './user.types';
 
 const initialState: UserState = {
@@ -31,7 +32,6 @@ export default (state = initialState, action: UserActionTypes): UserState => {
       }
 
     case USER_LOGIN_OK:
-      console.log('Login was a success!');
       return {...state};
 
     case USER_LOGIN_STATUS:
@@ -42,6 +42,9 @@ export default (state = initialState, action: UserActionTypes): UserState => {
 
     case SET_AUTH:
       return {...state, isAuthenticating: action.newStatus}
+
+    case USER_LOGOUT:
+      return {...state}
 
     default:
       return {...state};

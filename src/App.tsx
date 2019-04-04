@@ -22,10 +22,10 @@ import {
   LocalMenu, 
   ContextLink, 
   ContextList, 
-  ContextNode ,
+  ContextNode,
   Header
 } from './components/nav';
-import { Login, Contests, AddContest } from './pages';
+import { Login, Contests, AddContest, ContestView } from './pages';
 import { AppState } from './store';
 import { setAuthState, loginStatus, loginSuccess } from './store/user/user.actions';
 
@@ -90,7 +90,7 @@ class App extends Component<IAppProps> {
               { isLoggedIn && <Header /> }
               <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={Contests} />
               <PrivateRoute exact path='/contests/add' authenticated={isLoggedIn} component={AddContest} />
-              <PrivateRoute path='/contests/:id' authenticated={isLoggedIn} component={TestComponent3} />
+              <PrivateRoute path='/contests/:id' authenticated={isLoggedIn} component={ContestView} />
             </div>
           </div>
         </Router>
@@ -98,16 +98,6 @@ class App extends Component<IAppProps> {
     );
   }
 }
-
-const TestComponent3 = ({ match }: any) => {
-  if (!isNaN(match.params.id)) {
-    return (
-      <h1>Component - { match.params.id }</h1>
-    );
-  }
-
-  return null;
-};
 
 const PrivateRoute = ({ component: Component, authenticated = false, ...rest }: any) => (
   <Route {...rest} render={(props) => (

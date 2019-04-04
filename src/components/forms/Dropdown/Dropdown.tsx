@@ -18,6 +18,7 @@ type DropdownArray = {
 interface IDropdownProps extends WrappedFieldProps {
   dataProps: DropdownArray[];
   disabled?: boolean;
+  handleUpdate?: (value: string) => void;
   label: string;
   placeholder: string;
   required?: boolean;
@@ -88,7 +89,13 @@ class Dropdown extends Component<IDropdownProps> {
   }
 
   handleDropdown = (e: React.FormEvent<HTMLLIElement>) => {
-    this.props.input.onChange(e.currentTarget.innerHTML);
+    const { input: { onChange }, handleUpdate } = this.props;
+    
+    if (handleUpdate) {
+      handleUpdate(e.currentTarget.innerHTML);
+    }
+
+    onChange(e.currentTarget.innerHTML);
   }
 
   toggleDropdown = () => {

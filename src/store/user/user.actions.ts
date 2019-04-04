@@ -1,6 +1,6 @@
 import { History } from 'history';
 
-import { authenticate, currentSession, AuthCode, AuthResponse } from '../../lib/auth';
+import { authenticate, signout, currentSession, AuthCode, AuthResponse } from '../../lib/auth';
 import {
   SET_AUTH,
   UPDATE_SESSION,
@@ -56,7 +56,7 @@ export const loginError = (error: string) => ({
 export const loginStatus = (isLoggedIn: boolean) => ({
   type: USER_LOGIN_STATUS,
   isLoggedIn
-})
+});
 
 export const login = (username: string, password: string, history: History, path: string) => {
   return async (dispatch: UserLoginDispatch) => {
@@ -69,10 +69,21 @@ export const login = (username: string, password: string, history: History, path
       dispatch(loginRequest(username, false));
       dispatch(loginStatus(true));
 
-      console.log('From action: ' + path);
+      console.log(response.user);
       history.push(path);
     } else {
       dispatch(loginError(response.status));
     }
+  }
+}
+
+export const logout = (history: History) => {
+  return async (dispatch: UserLoginDispatch) => {
+      const response = await signout();
+
+      if (response.status === AuthCode.LogoutSucess) {
+        dispatch(loginStatus(false));
+        history.push('/', { from: '/' });
+      }
   }
 }

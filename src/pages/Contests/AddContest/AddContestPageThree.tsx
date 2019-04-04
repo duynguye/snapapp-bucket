@@ -15,6 +15,7 @@ import {
   WrappedInput,
   WrappedDatePicker,
   WrappedTextArea,
+  WrappedTimePicker,
   EmailArray
 } from '../../../components/forms';
 import { AsideTitle } from '../../../components/text';
@@ -25,7 +26,8 @@ import {
   platform as platformProps,
   station,
   contestType,
-  drawType
+  drawType as drawTypes,
+  timezones
 } from '../../../lib/mocks/addNewDropdowns';
 
 // Interfaces and types
@@ -33,9 +35,22 @@ interface IAddContestProps {
   previousPage?: () => void;
 }
 
-class AddContestPageThree extends Component<IAddContestProps & InjectedFormProps<{}, IAddContestProps>> {
+interface IAddContestState {
+  drawType: string;
+}
+
+class AddContestPageThree extends Component<IAddContestProps & InjectedFormProps<{}, IAddContestProps>, IAddContestState> {
+  state = {
+    drawType: ''
+  };
+
+  handleChange = (drawType: string) => {
+    this.setState({ drawType });
+  }
+
   render() {
     const { handleSubmit, invalid, submitting, pristine, previousPage } = this.props;
+    const { drawType } = this.state;
 
     return (
       <Form onSubmit={handleSubmit}>
@@ -54,18 +69,50 @@ class AddContestPageThree extends Component<IAddContestProps & InjectedFormProps
           <FormGroup>
             <Field type='text' name='start' component={WrappedDatePicker} label='Start Date' size={FormSize.Third} />
             <Field type='text' name='end' component={WrappedDatePicker} label='End Date' size={FormSize.Third} />
-            <Field name='draw' component={Dropdown} label='Draw Type' size={FormSize.Third} dataProps={drawType} placeholder='Choose a draw type...' />
+            <Field name='draw' component={Dropdown} label='Draw Type' size={FormSize.Third} dataProps={drawTypes} placeholder='Choose a draw type...' handleUpdate={this.handleChange} />
           </FormGroup>
 
-          <FormGroup>
-            <RadioButtonGroup 
-              label='Remove winner from future draws?' 
-              name='jira' 
-              values={['Yes', 'No', 'Maybe', 'So', 'Who Knows']} 
-              size={FormSize.Full} 
-              horizontal 
-            />
-          </FormGroup>
+          {
+            drawType === 'One Time Draw' &&
+            <FormGroup>
+              <Field type='text' name='drawdate' component={WrappedDatePicker} label='Draw Date & Time' size={FormSize.Third} />
+            </FormGroup>
+          }
+
+          {
+            drawType === 'Daily' &&
+            <FormGroup>
+              <Field type='text' name='drawtime' component={WrappedTimePicker} label='Draw Time' size={FormSize.Quarter} />
+              <Field name='timezone' component={Dropdown} label='Timezone' size={FormSize.Quarter} dataProps={timezones} placeholder='Choose a timezone...' />
+              <RadioButtonGroup 
+                label='Ignore weekends?' 
+                name='ignoreWeekends' 
+                values={['Yes', 'No']} 
+                size={FormSize.Quarter}  
+              />
+              <RadioButtonGroup 
+                label='Remove winner from future draws?' 
+                name='removeFromFutureDraws' 
+                values={['Yes', 'No']} 
+                size={FormSize.Quarter}  
+              />
+            </FormGroup>
+          }
+
+          {
+            drawType === 'Custom' &&
+            <FormGroup>
+              <Field type='text' name='drawtime' component={WrappedTimePicker} label='Draw Time' size={FormSize.Quarter} />
+              <Field name='timezone' component={Dropdown} label='Timezone' size={FormSize.Quarter} dataProps={timezones} placeholder='Choose a timezone...' />
+              <RadioButtonGroup 
+                label='Draw Frequency' 
+                name='frequency' 
+                values={['Weekly', 'Bi-Weekly', 'Monthly', 'Quarterly', 'Annually']} 
+                size={FormSize.Half}  
+                horizontal
+              />
+            </FormGroup>
+          }
 
           <FormGroup>
             <Field type='text' name='notes' component={WrappedTextArea} label='Notes' size={FormSize.Full} />

@@ -26,7 +26,7 @@ export interface UserState {
 }
 
 interface UserLoginAction {
-  type: typeof USER_LOGIN | typeof USER_LOGIN_OK | typeof USER_LOGIN_ERR | typeof USER_LOGIN_STATUS;
+  type: typeof USER_LOGIN | typeof USER_LOGIN_OK | typeof USER_LOGIN_ERR | typeof USER_LOGIN_STATUS | typeof USER_LOGOUT;
   username?: string;
   user?: User | undefined;
   error?: string;

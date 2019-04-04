@@ -31,9 +31,9 @@ class AddContest extends Component<null, IAddContestState> {
       <DocumentTitle title={'Create Contest - Orca - Compulse Integrated Marketing'}>
         <div className={styles.wrapper}>
           <SectionHeader title='Add New Contest' />
-          { page === 3 && <AddContestPageOne onSubmit={this.nextPage} /> }
+          { page === 1 && <AddContestPageOne onSubmit={this.nextPage} /> }
           { page === 2 && <AddContestPageTwo onSubmit={this.nextPage} previousPage={this.prevPage} /> }
-          { page === 1 && <AddContestPageThree onSubmit={this.nextPage} previousPage={this.prevPage} /> }
+          { page === 3 && <AddContestPageThree onSubmit={this.nextPage} previousPage={this.prevPage} /> }
         </div>
       </DocumentTitle>
     );

@@ -6,7 +6,7 @@ interface IBadgeProps {
     prefix: any;
     icon: any;
     count?: number;
-    onClick: () => {};
+    onClick: () => void;
 }
 
 const Badge = ({ prefix, icon, count, onClick }: IBadgeProps) => (

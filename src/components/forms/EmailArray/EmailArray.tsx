@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Field, WrappedFieldProps } from 'redux-form';
+import React, { Component, KeyboardEvent } from 'react';
+import { Field, WrappedFieldProps, WrappedFieldArrayProps } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Transition } from 'react-transition-group';
 
@@ -30,11 +30,19 @@ class EmailArray extends Component<any> {
 
   handleKeyPress = (e: any) => {
     const emailField = this.emailField.current!;
-    const { fields }: any = this.props;
+    const { fields } = this.props;
 
     if (e.key === 'Enter') {
       e.stopPropagation();
       e.preventDefault();
+
+      if (emailField.value.trim() === '') {
+        return;
+      }
+  
+      if (this.validateEmail(emailField.value) === false) {
+        return;
+      }
 
       fields.push(emailField.value);
       emailField.value = '';
@@ -45,7 +53,7 @@ class EmailArray extends Component<any> {
     e.preventDefault();
 
     const emailField = this.emailField.current!;
-    const { fields }: any = this.props;
+    const { fields } = this.props;
 
     if (emailField.value.trim() === '') {
       return;
@@ -60,7 +68,7 @@ class EmailArray extends Component<any> {
   }
 
   render() {
-    const { fields, meta: { error }}: any = this.props;
+    const { fields, meta: { error }} = this.props;
 
     return (
       <ul className={styles.wrapper}>

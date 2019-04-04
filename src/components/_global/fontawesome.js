@@ -30,6 +30,7 @@ import { faCheckSquare as falCheckSquare } from '@fortawesome/pro-light-svg-icon
 import { faCloudDownloadAlt as falCloudDownloadAlt } from '@fortawesome/pro-light-svg-icons';
 import { faSignIn as falSignIn } from '@fortawesome/pro-light-svg-icons';
 import { faCircle as falCircle } from '@fortawesome/pro-light-svg-icons';
+import { faSignOut as falSignOut } from '@fortawesome/pro-light-svg-icons';
 
 // Regular Icons
 import { faTimes as farTimes } from '@fortawesome/pro-regular-svg-icons';
@@ -40,6 +41,7 @@ import { faCalendarAlt as fasCalendarAlt } from '@fortawesome/pro-solid-svg-icon
 import { faTrophy as fasTrophy } from '@fortawesome/pro-solid-svg-icons';
 import { faSquare as fasSquare } from '@fortawesome/pro-solid-svg-icons';
 import { faCheckCircle as fasCheckCircle } from '@fortawesome/pro-solid-svg-icons';
+import { faClock as fasClock } from '@fortawesome/pro-solid-svg-icons';
 
 library.add([
     falCaretLeft,
@@ -64,7 +66,8 @@ library.add([
     falCheckSquare,
     falCloudDownloadAlt,
     falSignIn,
-    falCircle
+    falCircle,
+    falSignOut
 ]);
 
 library.add([
@@ -76,7 +79,8 @@ library.add([
     fasCalendarAlt,
     fasTrophy,
     fasSquare,
-    fasCheckCircle
+    fasCheckCircle,
+    fasClock
 ]);
 
 library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falPlus ]);
