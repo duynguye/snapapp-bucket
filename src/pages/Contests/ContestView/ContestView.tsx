@@ -35,8 +35,16 @@ class ContestView extends Component<any, IContestViewState> {
     fetchContest(id).then(response => {
       console.log(response);
 
-      this.setState({ loading: false, data: response });
+      setTimeout(() => {
+        this.setState({ loading: false, data: response });
+      }, 2000);
     });
+  }
+
+  handleButtonClick = () => {
+    const { history } = this.props;
+
+    history.push('/contests/add');
   }
 
   render() {
@@ -46,7 +54,7 @@ class ContestView extends Component<any, IContestViewState> {
     if (!isNaN(match.params.id)) {
       if (loading) {
         return (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>         
+          <div className={styles.loader}>         
             <Spinner color='#5c7aff' style={{ marginBottom: 50 }} name='pacman' />   
             <p>Loading</p>
           </div>
@@ -56,7 +64,11 @@ class ContestView extends Component<any, IContestViewState> {
           <DocumentTitle title={`${contest.contest_name} - Orca - Compulse Integrated Marketing`}>
             <div>
               <Breadcrumbs />
-              <SectionHeader title={contest.contest_name} className={styles.sectionHeader} />
+              <SectionHeader 
+                title={contest.contest_name} 
+                className={styles.sectionHeader} 
+                action={this.handleButtonClick} 
+              />
             </div>
           </DocumentTitle>
         )

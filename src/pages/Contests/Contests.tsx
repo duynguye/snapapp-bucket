@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
 // Custom imports and styles
 import { SectionHeader } from '../../components/modules';
 import { Cell, TableRow } from '../../components/collections';
+import { fetchContestList } from '../../lib/contests';
 
 // Mock data
 import { filters } from '../../lib/mocks/filters';
@@ -14,7 +16,11 @@ import { contests } from '../../lib/mocks/contests';
 
 class Contests extends Component {
   componentDidMount = () => {
+    fetchContestList().then(results => console.log(results));
+  }
 
+  generateContests = () => {
+    
   }
 
   render () {
@@ -53,7 +59,7 @@ class Contests extends Component {
             </div>
 
             <div>
-              {renderedContests}
+              
             </div>
           </div>
         </div>

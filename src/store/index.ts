@@ -4,11 +4,13 @@ import { reducer as formReducer } from 'redux-form';
 import ReduxThunk from 'redux-thunk';
 
 // Import reducers.
+import contestsReducer from './contests/contests.reducers';
 import usersReducer from './user/user.reducers';
 
 const rootReducer = combineReducers({
-  user: usersReducer,
-  form: formReducer
+  contests: contestsReducer,
+  form: formReducer,
+  user: usersReducer
 });
 
 // Global AppState for type checking
