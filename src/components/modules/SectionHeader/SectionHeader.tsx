@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classnames from 'classnames';
 
 // Custom Imports
 import { SectionTitle, IconButtonLarge, OutlinedButton } from '../../atoms';
@@ -22,12 +23,13 @@ interface IFilter {
 
 interface ISectionHeader {
     action?: () => any;
+    className?: string | string[] | undefined;
     filters?: any;
     title: string;
     tabs?: any;
 }
 
-const SectionHeader = ({ title, tabs = [], action = undefined, filters = [] }: ISectionHeader) => {
+const SectionHeader = ({ title, tabs = [], className = '', action = undefined, filters = [] }: ISectionHeader) => {
     const tabList = tabs.map((tab: ITab) => (
         <Tab key={tab.title} count={tab.count} onClick={tab.callback} active={tab.active}>{tab.title}</Tab>
     ));
@@ -37,7 +39,7 @@ const SectionHeader = ({ title, tabs = [], action = undefined, filters = [] }: I
     ));
 
     return (
-        <div className={styles.container}>
+        <div className={classnames(styles.container, className)}>
             <div className={styles.titleContainer}>
                 <SectionTitle classes={styles.title}>{title}</SectionTitle>
                 {tabs.length > 0 && tabList}

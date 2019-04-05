@@ -13,13 +13,17 @@ import { tabs } from '../../lib/mocks/tabs';
 import { contests } from '../../lib/mocks/contests';
 
 class Contests extends Component {
+  componentDidMount = () => {
+
+  }
+
   render () {
     const renderedContests = contests.map(contest => (
       <TableRow key={contest._id}>
         <Cell>{contest._id}</Cell>
         <Cell><Link to={`/contests/${contest._id}`}>{contest.title}</Link></Cell>
         <Cell>{contest.station}</Cell>
-        <Cell>{moment(contest.draw).format('MM-DD-YYYY')}</Cell>
+        <Cell>{moment(new Date(contest.draw)).format('MM-DD-YYYY')}</Cell>
         <Cell>{contest.type}</Cell>
         <Cell>{contest.assignee}</Cell>
         <Cell>{contest.entries}</Cell>

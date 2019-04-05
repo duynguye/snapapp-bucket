@@ -67,6 +67,19 @@ export async function fetchContestList(): Promise<any> {
  * 
  * @param id The unique identifier of the contest that needs to be fetched.
  */
-export async function fetchContest(id: string): Promise<IContest> {
-  return FakeContest;
+export async function fetchContest(id: number): Promise<any> {
+  const result = await currentSession();
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${result.session.accessToken.jwtToken}`
+    }
+  };
+
+  try {
+    const results = await axios.get(`${ENDPOINT}/contests/${id}`, config);
+
+    return results.data;
+  } catch (error) {
+    console.log(error);
+  }
 }

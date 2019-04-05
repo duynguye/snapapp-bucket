@@ -1,72 +1,65 @@
 import React, { Component } from 'react';
+import DocumentTitle from 'react-document-title';
 import Spinner from 'react-spinkit';
-import { Howl } from 'howler';
+import { withRouter } from 'react-router';
 
-import { fetchContest, fetchContestList } from '../../../lib/contests';
+// Custom imports and styles.
+import { fetchContest } from '../../../lib/contests';
+import { Breadcrumbs, SectionHeader } from '../../../components/modules';
+import styles from './ContestView.module.scss';
 
-class ContestView extends Component<any> {
-  state = {
+interface IContestViewState {
+  codePosition: number;
+  data: any;
+  loading: boolean;
+}
+
+class ContestView extends Component<any, IContestViewState> {
+  public readonly state: Readonly<IContestViewState> = {
     codePosition: 0,
+    data: {},
     loading: true
   };
 
-  private sound = new Howl({
-    src: ['https://s3.amazonaws.com/compulse-orca/pacman_beginning.wav']
-  })
-
   componentDidMount = () => {
-    const allowedKeys: any = {
-      37: 'left',
-      38: 'up',
-      39: 'right',
-      40: 'down',
-      65: 'a',
-      66: 'b'
-    };
+    const { match: { params: { id } } } = this.props;
 
-    const konami = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
-
-    document.addEventListener('keydown', (e: any) => {
-      const key = allowedKeys[e.keyCode];
-      const requiredKey = konami[this.state.codePosition];
-
-      if (key == requiredKey) {
-        this.setState({
-          codePosition: this.state.codePosition + 1
-        }, () => {
-          if (this.state.codePosition == konami.length) {
-            this.sound.play();
-            this.setState({ codePosition: 0 });
-          }
-        });
-      } else {
-        this.setState({ codePosition: 0 });
-      }
-    });
-
-    this.getContest();
+    if (!isNaN(id)) {
+      this.getContest();
+    }
   }
 
   getContest = () => {
-    // fetchContest(this.props.match.params.id).then(response => {
-    //   this.setState({ loading: false }, () => console.log('Contest was loaded'));
-    // });
+    const { match: { params: { id } } } = this.props;
 
-    fetchContestList().then(response => console.log(response));
+    fetchContest(id).then(response => {
+      console.log(response);
+
+      this.setState({ loading: false, data: response });
+    });
   }
 
   render() {
     const { match }: any = this.props;
-    const { loading } = this.state;
+    const { data: { contest }, loading } = this.state;
 
     if (!isNaN(match.params.id)) {
       if (loading) {
         return (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>         
-            <Spinner color='#ffb30f' style={{ marginBottom: 50 }} name='pacman'/>   
+            <Spinner color='#5c7aff' style={{ marginBottom: 50 }} name='pacman' />   
             <p>Loading</p>
           </div>
         );
+      } else {
+        return (
+          <DocumentTitle title={`${contest.contest_name} - Orca - Compulse Integrated Marketing`}>
+            <div>
+              <Breadcrumbs />
+              <SectionHeader title={contest.contest_name} className={styles.sectionHeader} />
+            </div>
+          </DocumentTitle>
+        )
       }
     }
   
@@ -74,4 +67,4 @@ class ContestView extends Component<any> {
   }
 }
 
-export default ContestView;
+export default withRouter(ContestView);

@@ -1,0 +1,13 @@
+{
+    "bucketName": "compulse-orca",
+    "authPolicyName": "s3_amplify_5035f539",
+    "unauthPolicyName": "s3_amplify_5035f539",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authPermissions": "rw",
+    "unauthPermissions": "r"
+}
