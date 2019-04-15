@@ -40,7 +40,7 @@ class AddContestPageTwo extends Component<IAddContestProps & InjectedFormProps<{
     return (
       <Form onSubmit={handleSubmit} ref={this.form}>
         <FormBody>
-          <Field type='text' name='issue' component={WrappedInput} label='JIRA Issue Number (Do not include SRP)' required maxWidth={300} />
+          <Field type='text' name='ticket_number' component={WrappedInput} label='JIRA Issue Number (Do not include SRP)' required maxWidth={300} />
         </FormBody>
   
         <FormSubmit>

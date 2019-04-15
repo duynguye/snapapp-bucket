@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 // Custom imports and styles
 import styles from './Breadcrumbs.module.scss';
 
-export default () => {
+export default ({ id }: { id: number }) => {
   return (
     <div className={styles.container}>
-      <Link to='/contests'>Contests</Link> / <span>ORCA-22546</span>
+      <Link to='/contests'>Contests</Link> / <span>ORCA-{id}</span>
     </div>
   );
 }

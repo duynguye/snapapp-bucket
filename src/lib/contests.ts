@@ -6,24 +6,6 @@ import { currentSession } from './auth';
 const ENDPOINT = 'https://contestr.compulse-staging.com/api';
 
 /**
- * FAKE DATA
- */
-const FakeContest: IContest = {
-  id: '15223',
-  title: 'The Great Escape',
-  station: 'COMP',
-  requestType: 'Sweepstakes',
-  entries: 151,
-  assignedUsers: {}
-}
-
-function getRandomInt(min: number, max: number): number {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-/**
  * Contest API
  */
 export type Station = string;
@@ -79,6 +61,26 @@ export async function fetchContest(id: number): Promise<any> {
     const results = await axios.get(`${ENDPOINT}/contests/${id}`, config);
 
     return results.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * Submit new contest
+ */
+export async function createNewContest(data: any): Promise<any> {
+  const result = await currentSession();
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${result.session.accessToken.jwtToken}`
+    }
+  };
+
+  try {
+    const results = await axios.post(`${ENDPOINT}/contests`, data, config);
+
+    return results;
   } catch (error) {
     console.log(error);
   }

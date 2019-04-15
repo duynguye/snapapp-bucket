@@ -1,0 +1,31 @@
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.total {
+  color: var(--light-blue);
+  font: 300 50px/1'Roboto Slab', serif;
+  margin-right: 35px;
+  padding-bottom: 4px;
+}
+
+.lastUpdated {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-center;
+}
+
+.label {
+  color: var(--gray-5);
+  display: block;
+  font: 500 10px 'Roboto Slab', serif;
+  margin-bottom: 0px;
+}
+
+.date {
+  color: var(--gray-6);
+  font: 500 16px 'Roboto Slab', serif;
+}

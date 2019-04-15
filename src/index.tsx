@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 // Custom styles and imports
 import 'react-datepicker/dist/react-datepicker.css';
+import 'react-quill/dist/quill.snow.css';
 import './index.scss';
 import awsmobile from './aws-exports';
 import App from './App';

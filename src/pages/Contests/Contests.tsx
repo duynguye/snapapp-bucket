@@ -2,39 +2,70 @@ import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Spinner from 'react-spinkit';
 import moment from 'moment';
 
 // Custom imports and styles
 import { SectionHeader } from '../../components/modules';
 import { Cell, TableRow } from '../../components/collections';
-import { fetchContestList } from '../../lib/contests';
+import { ContestListState } from '../../store/contests/contests.types';
+import { getContests } from '../../store/contests/contests.actions';
+import { AppState } from '../../store';
 
 // Mock data
 import { filters } from '../../lib/mocks/filters';
-import { tabs } from '../../lib/mocks/tabs';
-import { contests } from '../../lib/mocks/contests';
 
-class Contests extends Component {
+interface IContests extends AppState {
+  contests: ContestListState;
+  getContests: typeof getContests;
+}
+
+const ContestTableHeader = () => (
+  <div>
+    <TableRow>
+      <Cell header>Key</Cell>
+      <Cell header>Title</Cell>
+      <Cell header>Station</Cell>
+      <Cell header>Draw Date</Cell>
+      <Cell header>Request Type</Cell>
+      <Cell header>Assignee</Cell>
+      <Cell header>Entries</Cell>
+    </TableRow>
+  </div>
+)
+
+class Contests extends Component<IContests> {
   componentDidMount = () => {
-    fetchContestList().then(results => console.log(results));
+    this.props.getContests();
   }
 
   generateContests = () => {
+    const { contests } = this.props;
     
-  }
-
-  render () {
-    const renderedContests = contests.map(contest => (
-      <TableRow key={contest._id}>
-        <Cell>{contest._id}</Cell>
-        <Cell><Link to={`/contests/${contest._id}`}>{contest.title}</Link></Cell>
+    return contests.map(contest => (
+      <TableRow key={contest.id}>
+        <Cell><Link to={`/contests/${contest.id}`}>ORCA-{contest.id}</Link></Cell>
+        <Cell><Link to={`/contests/${contest.id}`}>{contest.title}</Link></Cell>
         <Cell>{contest.station}</Cell>
-        <Cell>{moment(new Date(contest.draw)).format('MM-DD-YYYY')}</Cell>
+        <Cell>{moment(new Date(contest.endDate)).format('MM-DD-YYYY')}</Cell>
         <Cell>{contest.type}</Cell>
-        <Cell>{contest.assignee}</Cell>
+        <Cell>{contest.creator}</Cell>
         <Cell>{contest.entries}</Cell>
       </TableRow>
     ));
+  }
+
+  generateTabs = () => {
+    return [{
+      active: true,
+      title: 'All',
+      count: this.props.contests.length,
+      callback: () => {}
+    }];
+  }
+
+  render () {
+    const tabs = this.generateTabs();
 
     return (
       <DocumentTitle title={'Contestr Dashboard - Orca - Compulse Integrated Marketing'}>
@@ -46,26 +77,26 @@ class Contests extends Component {
           />
 
           <div style={{ display: 'grid', width: '100%' }}>
-            <div>
-              <TableRow>
-                <Cell header>Key</Cell>
-                <Cell header>Title</Cell>
-                <Cell header>Station</Cell>
-                <Cell header>Draw Date</Cell>
-                <Cell header>Request Type</Cell>
-                <Cell header>Assignee</Cell>
-                <Cell header>Entries</Cell>
-              </TableRow>
-            </div>
+            <ContestTableHeader />
 
             <div>
-              
+              { this.generateContests() }
             </div>
           </div>
+
+          { this.props.contests.length <= 0 &&
+            <div style={{ display: 'flex', justifyContent: 'center', margin: '40px 0', width: '100%' }}>
+              <Spinner color='#5c7aff' style={{ height: 45, width: 45 }} name='folding-cube' fadeIn='half' />
+            </div>
+          }
         </div>
       </DocumentTitle>
     );
   }
 }
 
-export default Contests;
+const mapStateToProps = ({ contests }: any): any => ({
+  contests
+});
+
+export default connect<IContests>(mapStateToProps, { getContests })(Contests);

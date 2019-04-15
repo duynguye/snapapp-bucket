@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 
 // Custom Imports
-import { SectionTitle, IconButtonLarge, OutlinedButton } from '../../atoms';
+import { SectionTitle, IconButtonLarge } from '../../atoms';
+import { OutlinedButton } from '../../buttons';
 import { HorizontalDivider } from '../../layout';
 import { Tab } from '../../molecules';
 import styles from './SectionHeader.module.scss';
@@ -19,6 +20,7 @@ interface IFilter {
     callback: () => any;
     icon: string;
     prefix: string;
+    tooltip?: string;
 }
 
 interface ISectionHeader {
@@ -35,7 +37,7 @@ const SectionHeader = ({ title, tabs = [], className = '', action = undefined, f
     ));
 
     const filterList = filters.map((filter: IFilter) => (
-        <OutlinedButton key={filter.icon} prefix={filter.prefix} icon={filter.icon} onClick={filter.callback} classes={styles.filter} />
+        <OutlinedButton key={filter.icon} prefix={filter.prefix} icon={filter.icon} onClick={filter.callback} classes={styles.filter} tooltip={filter.tooltip} />
     ));
 
     return (
@@ -54,7 +56,7 @@ const SectionHeader = ({ title, tabs = [], className = '', action = undefined, f
                 }
             </div>
 
-            <div>
+            <div style={{ display: 'flex' }}>
                 {filters.length > 0 && filterList}
             </div>
         </div>

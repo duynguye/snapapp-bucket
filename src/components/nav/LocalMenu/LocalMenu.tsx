@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PageTitleWithButton } from '../../molecules';
+import { PageTitle } from '../../text';
 import background from '../../_global/background.jpg';
 import styles from './LocalMenu.module.scss';
 
@@ -10,11 +10,11 @@ interface ILocalMenuProps {
     children: React.ReactNode;
 }
 
-const LocalMenu = ({ onClick, title, children }: ILocalMenuProps) => {
+const LocalMenu = ({ title, children }: ILocalMenuProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <PageTitleWithButton onClick={onClick}>{title}</PageTitleWithButton>    
+                <PageTitle>{title}</PageTitle>    
             </div>
 
             <div className={styles.body}>

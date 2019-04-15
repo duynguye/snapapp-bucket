@@ -1,0 +1,23 @@
+.container {
+  margin-bottom: 50px;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.titleWrapper {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.icon {
+  left: -30px;
+  position: absolute;
+  top: calc(50% + 1px);
+  transform: translate3d(0, -50%, 0);
+}
+
+.divider {
+  margin-bottom: 20px;
+}

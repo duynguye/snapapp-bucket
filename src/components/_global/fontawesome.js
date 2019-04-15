@@ -31,9 +31,14 @@ import { faCloudDownloadAlt as falCloudDownloadAlt } from '@fortawesome/pro-ligh
 import { faSignIn as falSignIn } from '@fortawesome/pro-light-svg-icons';
 import { faCircle as falCircle } from '@fortawesome/pro-light-svg-icons';
 import { faSignOut as falSignOut } from '@fortawesome/pro-light-svg-icons';
+import { faCommentAltLines as falCommentAltLines } from '@fortawesome/pro-light-svg-icons';
+import { faMailBulk as falMailBulk } from '@fortawesome/pro-light-svg-icons';
+import { faUserPlus as falUserPlus } from '@fortawesome/pro-light-svg-icons';
+import { faChevronDown as falChevronDown } from '@fortawesome/pro-light-svg-icons';
 
 // Regular Icons
 import { faTimes as farTimes } from '@fortawesome/pro-regular-svg-icons';
+import { faChevronDown as farChevronDown } from '@fortawesome/pro-regular-svg-icons';
 
 // Solid Icons
 import { faSort as fasSort } from '@fortawesome/pro-solid-svg-icons';
@@ -42,6 +47,8 @@ import { faTrophy as fasTrophy } from '@fortawesome/pro-solid-svg-icons';
 import { faSquare as fasSquare } from '@fortawesome/pro-solid-svg-icons';
 import { faCheckCircle as fasCheckCircle } from '@fortawesome/pro-solid-svg-icons';
 import { faClock as fasClock } from '@fortawesome/pro-solid-svg-icons';
+import { faQuestionCircle as fasQuestionCircle } from '@fortawesome/pro-solid-svg-icons';
+import { faChevronDown as fasChevronDown } from '@fortawesome/pro-solid-svg-icons';
 
 library.add([
     falCaretLeft,
@@ -67,11 +74,16 @@ library.add([
     falCloudDownloadAlt,
     falSignIn,
     falCircle,
-    falSignOut
+    falSignOut,
+    falCommentAltLines,
+    falMailBulk,
+    falUserPlus,
+    falChevronDown
 ]);
 
 library.add([
-    farTimes
+    farTimes,
+    farChevronDown
 ]);
 
 library.add([
@@ -80,7 +92,9 @@ library.add([
     fasTrophy,
     fasSquare,
     fasCheckCircle,
-    fasClock
+    fasClock,
+    fasQuestionCircle,
+    fasChevronDown
 ]);
 
 library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falPlus ]);

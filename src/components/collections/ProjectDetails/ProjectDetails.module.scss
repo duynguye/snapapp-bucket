@@ -1,0 +1,17 @@
+.container {
+  margin-bottom: 15px;
+}
+
+.label {
+  margin-bottom: 1px;
+}
+
+.text {
+  color: var(--light-blue);
+  display: block;
+  font: 500 13px/1'Roboto Slab', serif;
+  max-width: 175px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
