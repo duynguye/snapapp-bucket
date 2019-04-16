@@ -1,5 +1,6 @@
 import DatePicker from './DatePicker/DatePicker';
 import Dropdown from './Dropdown/Dropdown';
+import DropdownInput from './DropdownInput/DropdownInput';
 import EmailArray from './EmailArray/EmailArray';
 import Form from './Form/Form';
 import FormAside from './FormAside/FormAside';
@@ -33,6 +34,7 @@ const WrappedTextArea = withLabel(TextArea);
 
 export {
   Dropdown,
+  DropdownInput,
   Form,
   FormAside,
   FormGroup,

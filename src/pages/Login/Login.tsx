@@ -6,7 +6,7 @@ import { History } from 'history';
 
 // Custom styles and imports
 import { login, updateSession } from '../../store/user/user.actions';
-import { LoginForm } from '../../layouts';
+import { LoginForm } from '../../forms/layouts';
 import { Logo } from '../../components/nav';
 import { TextButton } from '../../components/buttons';
 import backgroundImage from '../../components/_global/background.jpg';

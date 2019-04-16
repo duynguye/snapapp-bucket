@@ -16,7 +16,7 @@ import './components/_global/fontawesome';
 /**
  * Imports for custom components and styles if applicable.
  */
-import { Navigation } from './layouts';
+import { Navigation } from './forms/layouts';
 import { 
   GlobalMenu, 
   LocalMenu, 

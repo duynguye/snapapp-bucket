@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 import Spinner from 'react-spinkit';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { Storage } from 'aws-amplify';
 import moment from 'moment';
 import ReactQuill from 'react-quill';
 
 // Custom imports and styles.
 import { fetchContest } from '../../../lib/contests';
-import { Breadcrumbs, ContestEntries, SectionHeader } from '../../../components/modules';
+import { DropdownInput } from '../../../components/forms';
+import { Breadcrumbs, ContestEntries, SectionHeader, UserCard } from '../../../components/modules';
 import { Aside, Body, CollapsableContainer, Content } from '../../../components/layout';
 import { ProjectDetailsList } from '../../../components/collections';
 import styles from './ContestView.module.scss';
@@ -16,6 +18,7 @@ interface IContestViewState {
   data: any;
   loading: boolean;
   text: string;
+  reload: boolean;
 }
 
 interface IContestProps {
@@ -60,7 +63,8 @@ class ContestView extends Component<RouteComponentProps<IContestProps>, IContest
   public readonly state: Readonly<IContestViewState> = {
     data: {},
     loading: true,
-    text: ''
+    text: '',
+    reload: false
   };
 
   modules = {
@@ -80,19 +84,52 @@ class ContestView extends Component<RouteComponentProps<IContestProps>, IContest
     'link', 'image'
   ]
 
+  static getDerivedStateFromProps(props: any, state: any) {
+    const { match: { params: { id }}} = props;
+
+    if (!isNaN(+id) && state && state.data && state.data.contest) {
+      const { data: { contest: { ticket_id }}} = state;
+
+      if (ticket_id && parseInt(id) !== parseInt(ticket_id)) {
+        return {
+          data: {},
+          loading: true,
+          text: '',
+          reload: true
+        }
+      }
+    }
+
+    return null;
+  }
+
   componentDidMount = () => {
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id }}} = this.props;
+
+    Storage.list('test/').then(result => console.log(result)).catch(err => console.log(err));
 
     if (!isNaN(+id)) {
       this.getContest();
     }
   }
 
+  componentDidUpdate = () => {
+    const { match: { params: { id }}} = this.props;
+
+    if (!isNaN(+id)) {
+      if (this.state.reload) {
+        setTimeout(() => {
+          this.getContest();
+        }, 3000);
+      }
+    }
+  }
+
   getContest = () => {
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id }}} = this.props;
 
     fetchContest(+id).then(response => {
-      this.setState({ loading: false, data: response }, () => this.extractContestData());
+      this.setState({ loading: false, data: response, reload: false }, () => this.extractContestData());
     });
   }
 
@@ -133,10 +170,12 @@ class ContestView extends Component<RouteComponentProps<IContestProps>, IContest
     if (!isNaN(match.params.id)) {
       if (loading) {
         return (
-          <div className={styles.loader}>         
-            <Spinner color='#5c7aff' style={{ marginBottom: 50 }} name='pacman' />   
-            <p>Loading</p>
-          </div>
+          <DocumentTitle title={'Loading Contest... - Orca - Compulse Integrated Marketing'}>
+            <div className={styles.loader}>         
+              <Spinner color='#5c7aff' style={{ marginBottom: 50 }} name='pacman' />   
+              <p>Loading</p>
+            </div>
+          </DocumentTitle>
         );
       } else {
         return (
@@ -177,7 +216,15 @@ class ContestView extends Component<RouteComponentProps<IContestProps>, IContest
                   </CollapsableContainer>
 
                   <CollapsableContainer title='Assignees'>
-                    <p>Sidebar Items</p>
+                    <DropdownInput />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
                   </CollapsableContainer>
                 </Aside>
               </Body>

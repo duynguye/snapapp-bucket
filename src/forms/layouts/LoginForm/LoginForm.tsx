@@ -2,9 +2,9 @@ import React, { KeyboardEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 // Custom style and component imports
-import { PageTitle } from '../../components/text';
-import { HorizontalDivider } from '../../components/layout';
-import { Label, UserInput, PassInput, FormGroup } from '../../components/forms';
+import { PageTitle } from '../../../components/text';
+import { HorizontalDivider } from '../../../components/layout';
+import { Label, UserInput, PassInput, FormGroup } from '../../../components/forms';
 import styles from './LoginForm.module.scss';
 
 interface ILoginFormProps {

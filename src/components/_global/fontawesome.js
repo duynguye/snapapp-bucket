@@ -49,6 +49,7 @@ import { faCheckCircle as fasCheckCircle } from '@fortawesome/pro-solid-svg-icon
 import { faClock as fasClock } from '@fortawesome/pro-solid-svg-icons';
 import { faQuestionCircle as fasQuestionCircle } from '@fortawesome/pro-solid-svg-icons';
 import { faChevronDown as fasChevronDown } from '@fortawesome/pro-solid-svg-icons';
+import { faIdCardAlt as fasIdCardAlt } from '@fortawesome/pro-solid-svg-icons';
 
 library.add([
     falCaretLeft,
@@ -94,7 +95,8 @@ library.add([
     fasCheckCircle,
     fasClock,
     fasQuestionCircle,
-    fasChevronDown
+    fasChevronDown,
+    fasIdCardAlt
 ]);
 
 library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falPlus ]);

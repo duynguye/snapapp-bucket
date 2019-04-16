@@ -25,8 +25,8 @@ class CustomInput extends Component<ICustomInputProps> {
         <input
           className={className}
           type='text'
-          onChange={onChange}
           value={value}
+          onChange={onChange}
           onClick={onClick}
         />
 
@@ -36,20 +36,36 @@ class CustomInput extends Component<ICustomInputProps> {
   }
 }
 
-export default ({ input, required }: any) => (
-  <React.Fragment>
-    <DatePicker 
-      {...input} 
-      className={styles.input}
-      customInput={<CustomInput/>}
-      dateFormat='ddd, MMM D, YYYY hh:mm A'
-      showTimeSelect
-      timeIntervals={30}
-      required={required}
-      popperPlacement='bottom'
-      onChange={(date: any) => {
-        input.onChange(moment(date).format('ddd, MMM D, YYYY hh:mm A'));
-      }}
-    />
-  </React.Fragment>
-);
+class CustomDatePicker extends Component<any> {
+  state = {
+    startDate: new Date()
+  }
+
+  handleChange = (e: any) => {
+    this.setState({ startDate: e });
+  }
+
+  render() {
+    console.log(this.state);
+    const { required } = this.props;
+
+    return (
+      <React.Fragment>
+        <DatePicker 
+          // {...input} 
+          className={styles.input}
+          customInput={<CustomInput/>}
+          dateFormat='eee, MMM d, YYYY hh:mm aa'
+          selected={this.state.startDate}
+          showTimeSelect
+          timeIntervals={30}
+          required={required}
+          popperPlacement='bottom'
+          onChange={this.handleChange}
+        />
+      </React.Fragment>
+    )
+  }
+}
+
+export default CustomDatePicker;

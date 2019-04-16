@@ -29,6 +29,8 @@ interface IDropdownWrapperProps {
   children: React.ReactNode;
   active?: boolean;
   onClick: () => void | undefined;
+  onBlur: () => void | undefined;
+  disabled: boolean;
 }
 
 interface IDropdownSelectedProps {
@@ -43,13 +45,25 @@ const DropdownSelected = ({ children }: IDropdownSelectedProps) => <div classNam
 /**
  * This wrapper just adds the ability to have a font awesome icon floating to the right.
  */
-const DropdownWrapper = ({ children, onClick, active = false }: IDropdownWrapperProps) => (
-  <div className={styles.wrapper} onClick={onClick}>
-    {children}
+const DropdownWrapper = ({ children, onClick, onBlur, disabled, active = false }: IDropdownWrapperProps) => {
+  if (disabled) {
+    return (
+      <div className={classnames(styles.wrapper, styles.wrapperDisabled)}>
+        {children}
+    
+        <FontAwesomeIcon icon={['fas', 'sort']} className={styles.icon} />
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.wrapper} onClick={onClick} onBlur={onBlur} tabIndex={0}>
+        {children}
 
-    <FontAwesomeIcon icon={['fas', 'sort']} className={classnames(styles.icon, active && styles.iconActive)} />
-  </div>
-);
+        <FontAwesomeIcon icon={['fas', 'sort']} className={classnames(styles.icon, active && styles.iconActive)} />
+      </div>
+    );
+  }
+};
 
 /**
  * Main dropdown class.
@@ -60,7 +74,8 @@ const DropdownWrapper = ({ children, onClick, active = false }: IDropdownWrapper
  */
 class Dropdown extends Component<IDropdownProps> {
   state = {
-    active: false
+    active: false,
+    disabled: false
   }
 
   private dropdown = React.createRef<HTMLUListElement>();
@@ -110,6 +125,15 @@ class Dropdown extends Component<IDropdownProps> {
     this.setState({ active: !active });
   }
 
+  closeDropdown = () => {
+    const { active } = this.state;
+    
+    if (active) {
+      this.timeline.reverse();
+      this.setState({ active: !active });
+    }
+  }
+
   render() {
     const { active } = this.state;
     const { input: { value }, label, placeholder, size = FormSize.Full, required = false } = this.props;
@@ -121,7 +145,7 @@ class Dropdown extends Component<IDropdownProps> {
         className={style}
       >
         <Label dark required={required}>{label}</Label>
-        <DropdownWrapper active={active} onClick={this.toggleDropdown}>
+        <DropdownWrapper active={active} onClick={this.toggleDropdown} onBlur={this.closeDropdown} disabled={this.state.disabled}>
           <DropdownSelected>{ value ? value : placeholder }</DropdownSelected>
 
           <ul className={styles.dropdown} ref={this.dropdown}>

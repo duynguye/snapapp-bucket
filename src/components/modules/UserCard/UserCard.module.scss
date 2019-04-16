@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 55px;
+  margin-right: 20px;
+  object-fit: cover;
+  width: 55px;
+}
+
+.name {
+  color: var(--light-blue);
+  font: 700 16px 'Roboto', sans-serif;
+  margin-bottom: 2px;
+}
+
+.title {
+  color: var(--gray-6);
+  font: 400 13px 'Roboto', sans-serif;
+  text-transform: lowercase;
+}
+
+.tag {
+  background-color: var(--green);
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin-left: 9px;
+  width: 10px;
+}
