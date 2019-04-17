@@ -29,6 +29,7 @@ import {
   drawType as drawTypes,
   timezones
 } from '../../../lib/mocks/addNewDropdowns';
+import { stations } from '../../../lib/mocks/stations';
 
 // Interfaces and types
 interface IAddContestProps {
@@ -63,7 +64,7 @@ class AddContestPageThree extends Component<IAddContestProps & InjectedFormProps
 
           <FormGroup>
             <Field name='contest_type' component={Dropdown} label='Contest Type' size={FormSize.Half} dataProps={contestType} placeholder='Choose a contest type...' required />
-            <Field name='ticket_station' component={Dropdown} label='Station' size={FormSize.Half} dataProps={station} placeholder='Choose a station...' required />
+            <Field name='ticket_station' component={Dropdown} label='Station' size={FormSize.Half} dataProps={stations} placeholder='Choose a station...' required />
           </FormGroup>
 
           <FormGroup>

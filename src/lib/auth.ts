@@ -14,6 +14,7 @@ export enum AuthCode {
   InvalidPassword       = 'INVALID_PASSWORD',
   UserNotComfirmed      = 'USER_NOT_CONFIRMED',
   ResetRequired         = 'PASSWORD_RESET_REQUIRED',
+  AwaitingLogin         = 'AWAITING_LOGIN'
 }
 
 export interface AuthResponse {
@@ -72,9 +73,10 @@ export async function authenticate(username: string, password: string): Promise<
 /**
  * Setup new password.
  */
-export async function setNewPassword(user: {}, password: string): Promise<{}> {
+export async function setNewPassword(user: any, password: string): Promise<AuthResponse> {
   try {
     const session = await Auth.completeNewPassword(user, password, {});
+    console.log(session);
     let status: AuthCode = AuthCode.Success;
     
     return {
@@ -82,6 +84,7 @@ export async function setNewPassword(user: {}, password: string): Promise<{}> {
       session
     };
   } catch (err) {
+    console.log(err);
     return err;
   }
 }

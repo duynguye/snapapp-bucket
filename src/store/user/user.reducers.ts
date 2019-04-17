@@ -6,17 +6,21 @@ import {
   USER_LOGIN,
   USER_LOGIN_OK,
   USER_LOGIN_STATUS,
-  USER_LOGOUT
+  USER_LOGOUT,
+  UPDATE_LOGIN_STATE
 } from './user.types';
+import { AuthCode } from '../../lib/auth';
 
 const initialState: UserState = {
+  user: {},
   username: '',
   displayname: '',
   title: '',
   isLoggingIn: false,
   isLoggedIn: false,
   session: {},
-  isAuthenticating: true
+  isAuthenticating: true,
+  currentState: AuthCode.AwaitingLogin
 };
 
 export default (state = initialState, action: UserActionTypes): UserState => {
@@ -32,7 +36,7 @@ export default (state = initialState, action: UserActionTypes): UserState => {
       }
 
     case USER_LOGIN_OK:
-      return {...state};
+      return {...state, user: action.user};
 
     case USER_LOGIN_STATUS:
       return {...state, isLoggedIn: action.isLoggedIn};
@@ -45,6 +49,9 @@ export default (state = initialState, action: UserActionTypes): UserState => {
 
     case USER_LOGOUT:
       return {...state}
+
+    case UPDATE_LOGIN_STATE:
+      return {...state, currentState: action.currentState};
 
     default:
       return {...state};

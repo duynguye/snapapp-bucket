@@ -46,7 +46,6 @@ class CustomDatePicker extends Component<any> {
   }
 
   render() {
-    console.log(this.state);
     const { required } = this.props;
 
     return (

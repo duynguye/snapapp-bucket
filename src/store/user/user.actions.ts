@@ -1,6 +1,6 @@
 import { History } from 'history';
 
-import { authenticate, signout, currentSession, AuthCode, AuthResponse } from '../../lib/auth';
+import { authenticate, signout, currentSession, AuthCode, setNewPassword, AuthResponse } from '../../lib/auth';
 import {
   SET_AUTH,
   UPDATE_SESSION,
@@ -8,6 +8,7 @@ import {
   USER_LOGIN_OK,
   USER_LOGIN_ERR,
   USER_LOGIN_STATUS,
+  UPDATE_LOGIN_STATE,
   UserSession,
   UserSessionDispatch,
   UserLoginDispatch,
@@ -58,6 +59,11 @@ export const loginStatus = (isLoggedIn: boolean) => ({
   isLoggedIn
 });
 
+export const loginState = (currentState: AuthCode) => ({
+  type: UPDATE_LOGIN_STATE,
+  currentState
+});
+
 export const login = (username: string, password: string, history: History, path: string) => {
   return async (dispatch: UserLoginDispatch) => {
     dispatch(loginRequest(username, true));
@@ -69,10 +75,25 @@ export const login = (username: string, password: string, history: History, path
       dispatch(loginRequest(username, false));
       dispatch(loginStatus(true));
 
-      console.log(response.user);
       history.push(path);
+    } if (response.status === AuthCode.NewPasswordRequired) {
+      dispatch(loginRequest(username, false));
+      dispatch(loginSuccess(response.user));
+      dispatch(loginState(AuthCode.NewPasswordRequired));
     } else {
       dispatch(loginError(response.status));
+    }
+  }
+}
+
+export const setRequiredPassword = (user: User, password: string, history: History) => {
+  return async (dispatch: UserLoginDispatch) => {
+    const response = await setNewPassword(user, password);
+
+    if (response.status === AuthCode.Success) {
+      dispatch(loginStatus(true));
+      dispatch(loginSuccess(response.user));
+      history.push('/');
     }
   }
 }

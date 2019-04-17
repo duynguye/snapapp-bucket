@@ -5,8 +5,10 @@ import { withRouter } from 'react-router-dom';
 import { History } from 'history';
 
 // Custom styles and imports
-import { login, updateSession } from '../../store/user/user.actions';
-import { LoginForm } from '../../forms/layouts';
+import { AuthCode } from '../../lib/auth';
+import { login, updateSession, setRequiredPassword } from '../../store/user/user.actions';
+import { User } from '../../store/user/user.types';
+import { LoginForm, RequireNewPassword } from '../../forms/layouts';
 import { Logo } from '../../components/nav';
 import { TextButton } from '../../components/buttons';
 import backgroundImage from '../../components/_global/background.jpg';
@@ -17,7 +19,10 @@ interface ILoginProps {
   history: History;
   login: typeof login;
   updateSession: typeof updateSession;
+  currentState: AuthCode; 
+  setRequiredPassword: typeof setRequiredPassword;
   location: any;
+  user?: any;
 }
 
 interface ILoginState {
@@ -25,6 +30,7 @@ interface ILoginState {
   rightImageLoaded: boolean;
   username: string;
   password: string;
+  passwordConfirm: string;
 }
 
 class Login extends Component<ILoginProps, ILoginState> {
@@ -32,7 +38,8 @@ class Login extends Component<ILoginProps, ILoginState> {
     leftImageLoaded: false,
     rightImageLoaded: false,
     username: '',
-    password: ''
+    password: '',
+    passwordConfirm: ''
   };
 
   handleInput = (type: string, value: string | undefined): void => {
@@ -40,21 +47,38 @@ class Login extends Component<ILoginProps, ILoginState> {
   }
 
   handleKeyPress = (e: KeyboardEvent) => {
+    const { currentState } = this.props;
+
     if (e.key === 'Enter') {
-      this.handleSubmit();
+      if (currentState == AuthCode.AwaitingLogin) {
+        this.handleSubmit();
+      }
+
+      if (currentState == AuthCode.NewPasswordRequired) {
+        this.handleNewPassword();
+      }
     }
   }
 
   handleSubmit = () => {
     const { history } = this.props;
     const { username, password } = this.state;
-    const path = this.props.location.state.from.pathname;
+    const path = this.props.location.state ? this.props.location.state.from.pathname : '/';
 
     this.props.login(username, password, history, path);
   }
 
+  handleNewPassword = () => {
+    const { history, user } = this.props;
+    const { password } = this.state;
+
+    this.props.setRequiredPassword(user.user, password, history);
+  }
+
   render() {
+    console.log(this.props, this.state);
     const { leftImageLoaded, rightImageLoaded } = this.state;
+    const { currentState } = this.props;
 
     return (
       <DocumentTitle title='Login Dashboard - Orca - Compulse Integrated Marketing'>
@@ -78,14 +102,33 @@ class Login extends Component<ILoginProps, ILoginState> {
             />
             
             <Logo className={styles.logo} />
-            <LoginForm handleInput={this.handleInput} handleSubmit={this.handleKeyPress} />
-            <TextButton
-              config={['fal', 'sign-in']}
-              className={styles.loginButton}
-              onClick={this.handleSubmit}
-            >
-              Login
-            </TextButton>
+            {
+              currentState == AuthCode.AwaitingLogin &&
+              <React.Fragment>
+                <LoginForm handleInput={this.handleInput} handleSubmit={this.handleKeyPress} />
+                <TextButton
+                  config={['fal', 'sign-in']}
+                  className={styles.loginButton}
+                  onClick={this.handleSubmit}
+                >
+                  Login
+                </TextButton>
+              </React.Fragment>
+            }
+
+            {
+              currentState == AuthCode.NewPasswordRequired &&
+              <React.Fragment>
+                <RequireNewPassword handleInput={this.handleInput} handleSubmit={this.handleKeyPress} />
+                <TextButton
+                    config={['fal', 'sign-in']}
+                    className={styles.loginButton}
+                    onClick={this.handleNewPassword}
+                  >
+                  Update Password
+                </TextButton>
+              </React.Fragment>
+            }
           </div>
         </div>
       </DocumentTitle>
@@ -93,4 +136,9 @@ class Login extends Component<ILoginProps, ILoginState> {
   }
 }
 
-export default withRouter(connect<any>(null, { login, updateSession })(Login));
+const mapStateToProps = ({ user }: any) => ({
+  user,
+  currentState: user.currentState
+});
+
+export default withRouter(connect<any>(mapStateToProps, { login, updateSession, setRequiredPassword  })(Login));

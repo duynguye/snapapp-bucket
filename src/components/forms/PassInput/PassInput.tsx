@@ -9,6 +9,7 @@ interface IPassInputProps {
   placeholder?: string;
   handleInput: (type: string, value: string | undefined) => void;
   handleKeyPress: (e: KeyboardEvent) => void;
+  name?: string;
 }
 
 interface IPassInputState {
@@ -32,14 +33,14 @@ class PassInput extends Component<IPassInputProps, IPassInputState> {
   }
 
   handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const { handleInput } = this.props;
+    const { handleInput, name = 'password' } = this.props;
     
-    handleInput('password', e.currentTarget.value);
+    handleInput(name, e.currentTarget.value);
   }
   
   render () {
     const { isFocused }: IPassInputState = this.state;
-    const { className, handleKeyPress, placeholder }: IPassInputProps = this.props;
+    const { className, handleKeyPress, placeholder}: IPassInputProps = this.props;
 
     return (
       <div className={classnames(styles.wrapper, isFocused ? styles.focused : '')}>
