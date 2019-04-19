@@ -28,6 +28,7 @@ export interface UserState {
   isAuthenticating: boolean | undefined;
   currentState: AuthCode | undefined;
   user: User | undefined;
+  error: string | undefined;
 }
 
 interface UserLoginAction {

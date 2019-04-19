@@ -9,9 +9,11 @@ import FormBody from './FormBody/FormBody';
 import FormSubmit from './FormSubmit/FormSubmit';
 import Input from './Input/Input';
 import Label from './Label/Label';
+import Notification from './Notification/Notification';
 import PassInput from './PassInput/PassInput';
 import RadioButton from './RadioButton/RadioButton';
 import RadioButtonGroup from './RadioButtonGroup/RadioButtonGroup';
+import RichTextEditor from './RichTextEditor/RichTextEditor';
 import SmallInput from './SmallInput/SmallInput';
 import TextArea from './TextArea/TextArea';
 import TimePicker from './TimePicker/TimePicker';
@@ -43,9 +45,11 @@ export {
   EmailArray,
   Input,
   Label,
+  Notification,
   PassInput,
   RadioButton,
   RadioButtonGroup,
+  RichTextEditor,
   SmallInput,
   UserInput,
   WrappedDatePicker,

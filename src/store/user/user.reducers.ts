@@ -7,11 +7,13 @@ import {
   USER_LOGIN_OK,
   USER_LOGIN_STATUS,
   USER_LOGOUT,
-  UPDATE_LOGIN_STATE
+  UPDATE_LOGIN_STATE,
+  USER_LOGIN_ERR
 } from './user.types';
 import { AuthCode } from '../../lib/auth';
 
 const initialState: UserState = {
+  error: '',
   user: {},
   username: '',
   displayname: '',
@@ -27,7 +29,6 @@ export default (state = initialState, action: UserActionTypes): UserState => {
   switch (action.type) {
     case USER_LOGIN:
       const { username, isLoggingIn } = action;
-      console.log(`Setting isLoggingIn: ${action.isLoggingIn}`);
       
       return {
         ...state, 
@@ -52,6 +53,9 @@ export default (state = initialState, action: UserActionTypes): UserState => {
 
     case UPDATE_LOGIN_STATE:
       return {...state, currentState: action.currentState};
+
+    case USER_LOGIN_ERR:
+      return {...state, error: action.error };
 
     default:
       return {...state};

@@ -19,3 +19,18 @@
   font-family: 'Roboto Slab', sans-serif;
   font-size: 12px;
 }
+
+.title {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link {
+  color: var(--teal);
+  display: inline-block;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 12px;
+  margin-bottom: 15px;
+  text-decoration: none;
+}

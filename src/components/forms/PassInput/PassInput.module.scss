@@ -2,12 +2,13 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background-position: 90% 50% !important;
   border: none;
   border-radius: 0 25px 25px 25px;
   display: block;
   font-size: 14px;
   letter-spacing: 5px;
-  padding: 15px 20px;
+  padding: 15px 75px 15px 20px;
   transition: all 0.3s var(--bezier);
   width: 100%;
 
@@ -17,6 +18,24 @@
 
   &::placeholder {
     color: var(--gray-4);
+  }
+}
+
+.button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: var(--gray-4);
+  cursor: pointer;
+  font-size: 18px;
+  outline: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+
+  &:focus {
+    color: var(--gray-6);
   }
 }
 

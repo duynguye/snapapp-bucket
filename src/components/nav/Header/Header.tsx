@@ -32,8 +32,25 @@ class Header extends Component<IHeaderProps> {
     logout(history);
   }
 
+  handleActionButton = () => {
+    const { history } = this.props;
+    const path = history.location.pathname;
+
+    let paths = path.split('/');
+    paths.shift();
+
+    switch (paths[0]) {
+      case 'contests':
+        history.push('/contests/add');
+        break;
+
+      default:
+        history.push('/');
+    }
+  }
+
   render() {
-    const { badges, currentUser } = this.props;
+    const { badges, currentUser, history } = this.props;
 
     return (
       <header className={styles.container}>
@@ -43,20 +60,13 @@ class Header extends Component<IHeaderProps> {
           <Badge
             prefix='fal'
             icon='plus'
-            onClick={onClickHandler}
-          />
-
-          <Badge
-            prefix='fal'
-            icon='folder'
-            count={3}
-            onClick={onClickHandler}
+            onClick={this.handleActionButton}
           />
 
           <Badge
             prefix='fal'
             icon='bell'
-            count={123}
+            count={0}
             onClick={onClickHandler}
           />
         </div>

@@ -1,7 +1,7 @@
 import React, { Component, KeyboardEvent } from 'react';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { History } from 'history';
 
 // Custom styles and imports
@@ -76,9 +76,8 @@ class Login extends Component<ILoginProps, ILoginState> {
   }
 
   render() {
-    console.log(this.props, this.state);
     const { leftImageLoaded, rightImageLoaded } = this.state;
-    const { currentState } = this.props;
+    const { currentState, user } = this.props;
 
     return (
       <DocumentTitle title='Login Dashboard - Orca - Compulse Integrated Marketing'>
@@ -90,6 +89,12 @@ class Login extends Component<ILoginProps, ILoginState> {
               style={{ opacity: leftImageLoaded ? 1 : 0 }}
               onLoad={() => this.setState({ leftImageLoaded: true })}
             />
+
+            <div className={styles.copyright}>
+              <span>Orca Management Software (Build 0.1a)</span>
+              <span>|</span>
+              <span><Link to='/'>About ORCA</Link></span>
+            </div>
           </div>
 
           <div className={styles.right}>
@@ -129,6 +134,10 @@ class Login extends Component<ILoginProps, ILoginState> {
                 </TextButton>
               </React.Fragment>
             }
+
+            <div className={styles.request}>
+              <span>Not a member? To request an account, please contact a <Link to='/'>system administrator</Link>.</span>
+            </div>
           </div>
         </div>
       </DocumentTitle>

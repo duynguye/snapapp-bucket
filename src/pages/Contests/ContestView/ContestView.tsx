@@ -4,11 +4,10 @@ import Spinner from 'react-spinkit';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { Storage } from 'aws-amplify';
 import moment from 'moment';
-import ReactQuill from 'react-quill';
 
 // Custom imports and styles.
 import { fetchContest } from '../../../lib/contests';
-import { DropdownInput } from '../../../components/forms';
+import { DropdownInput, RichTextEditor } from '../../../components/forms';
 import { Breadcrumbs, ContestEntries, SectionHeader, UserCard } from '../../../components/modules';
 import { Aside, Body, CollapsableContainer, Content } from '../../../components/layout';
 import { ProjectDetailsList } from '../../../components/collections';
@@ -66,23 +65,6 @@ class ContestView extends Component<RouteComponentProps<IContestProps>, IContest
     text: '',
     reload: false
   };
-
-  modules = {
-    toolbar: [
-      [{ 'header': [1, 2, false] }],
-      ['bold', 'italic', 'underline','strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-      ['link', 'image'],
-      ['clean']
-    ],
-  }
-
-  formats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image'
-  ]
 
   static getDerivedStateFromProps(props: any, state: any) {
     const { match: { params: { id }}} = props;
@@ -194,13 +176,9 @@ class ContestView extends Component<RouteComponentProps<IContestProps>, IContest
                   <CollapsableContainer title='Contest Details'>
                     <div style={{ display: 'flex' }}>
                       <ProjectDetailsList details={this.extractContestData()} />
-                      <ReactQuill 
-                        modules={this.modules}
-                        formats={this.formats}
-                        theme='snow' 
-                        value={this.state.text} 
-                        onChange={this.handleTextUpdates} 
-                        style={{ flex: 1, paddingLeft: 30 }} 
+                      <RichTextEditor
+                        value={this.state.text}
+                        onChange={this.handleTextUpdates}
                       />
                     </div>
                   </CollapsableContainer>

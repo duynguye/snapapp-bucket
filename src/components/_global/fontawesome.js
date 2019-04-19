@@ -31,14 +31,21 @@ import { faCloudDownloadAlt as falCloudDownloadAlt } from '@fortawesome/pro-ligh
 import { faSignIn as falSignIn } from '@fortawesome/pro-light-svg-icons';
 import { faCircle as falCircle } from '@fortawesome/pro-light-svg-icons';
 import { faSignOut as falSignOut } from '@fortawesome/pro-light-svg-icons';
-import { faCommentAltLines as falCommentAltLines } from '@fortawesome/pro-light-svg-icons';
-import { faMailBulk as falMailBulk } from '@fortawesome/pro-light-svg-icons';
-import { faUserPlus as falUserPlus } from '@fortawesome/pro-light-svg-icons';
-import { faChevronDown as falChevronDown } from '@fortawesome/pro-light-svg-icons';
+
+import {
+    faCommentAltLines as falCommentAltLines,
+    faMailBulk as falMailBulk,
+    faUserPlus as falUserPlus,
+    faChevronDown as falChevronDown,
+    faEye as falEye
+} from '@fortawesome/pro-light-svg-icons';
 
 // Regular Icons
-import { faTimes as farTimes } from '@fortawesome/pro-regular-svg-icons';
-import { faChevronDown as farChevronDown } from '@fortawesome/pro-regular-svg-icons';
+import { 
+    faTimes as farTimes,
+    faChevronDown as farChevronDown,
+    faFingerprint as farFingerprint  
+} from '@fortawesome/pro-regular-svg-icons';
 
 // Solid Icons
 import { faSort as fasSort } from '@fortawesome/pro-solid-svg-icons';
@@ -50,6 +57,7 @@ import { faClock as fasClock } from '@fortawesome/pro-solid-svg-icons';
 import { faQuestionCircle as fasQuestionCircle } from '@fortawesome/pro-solid-svg-icons';
 import { faChevronDown as fasChevronDown } from '@fortawesome/pro-solid-svg-icons';
 import { faIdCardAlt as fasIdCardAlt } from '@fortawesome/pro-solid-svg-icons';
+import { faTimesCircle as fasTimesCircle } from '@fortawesome/pro-solid-svg-icons';
 
 library.add([
     falCaretLeft,
@@ -79,12 +87,14 @@ library.add([
     falCommentAltLines,
     falMailBulk,
     falUserPlus,
-    falChevronDown
+    falChevronDown,
+    falEye
 ]);
 
 library.add([
     farTimes,
-    farChevronDown
+    farChevronDown,
+    farFingerprint
 ]);
 
 library.add([
@@ -96,7 +106,8 @@ library.add([
     fasClock,
     fasQuestionCircle,
     fasChevronDown,
-    fasIdCardAlt
+    fasIdCardAlt,
+    fasTimesCircle
 ]);
 
 library.add([ faLongArrowRight, fasPoll, fasSuitcase, faPlus, falBell, falPlus ]);

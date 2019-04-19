@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 // Custom style import
 import styles from './UserInput.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IUserInputProps {
   className?: string | [string];
@@ -49,6 +50,10 @@ class UserInput extends Component<IUserInputProps, IUserInputState> {
           onFocus={this.handleEvent}
           onChange={this.handleChange}
         />
+
+        <button className={styles.button} >
+          <FontAwesomeIcon icon={['far', 'fingerprint']} className={styles.icon} />
+        </button>
       </div>
     );
   }

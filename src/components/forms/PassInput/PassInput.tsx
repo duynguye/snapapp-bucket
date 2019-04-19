@@ -1,4 +1,5 @@
 import React, { Component, KeyboardEvent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 
 // Custom style import
@@ -53,6 +54,10 @@ class PassInput extends Component<IPassInputProps, IPassInputState> {
           onChange={this.handleChange}
           type={'password'}
         />
+
+        <button className={styles.button} >
+          <FontAwesomeIcon icon={['fal', 'eye']} className={styles.icon} />
+        </button>
       </div>
     );
   }
