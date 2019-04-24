@@ -37,7 +37,8 @@ import {
     faMailBulk as falMailBulk,
     faUserPlus as falUserPlus,
     faChevronDown as falChevronDown,
-    faEye as falEye
+    faEye as falEye,
+    faQuestionCircle as falQuestionCircle
 } from '@fortawesome/pro-light-svg-icons';
 
 // Regular Icons
@@ -88,7 +89,8 @@ library.add([
     falMailBulk,
     falUserPlus,
     falChevronDown,
-    falEye
+    falEye,
+    falQuestionCircle
 ]);
 
 library.add([

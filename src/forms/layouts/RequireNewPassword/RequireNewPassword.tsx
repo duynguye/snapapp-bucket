@@ -8,7 +8,7 @@ import { Label, UserInput, PassInput, FormGroup } from '../../../components/form
 import styles from './RequireNewPassword.module.scss';
 
 interface IRequireNewPassword {
-  handleInput: (type: string, value: string | undefined) => void;
+  handleInput: (type: string, value: string) => void;
   handleSubmit: (e: KeyboardEvent) => void;
 }
 

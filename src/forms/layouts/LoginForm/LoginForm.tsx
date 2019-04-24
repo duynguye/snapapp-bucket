@@ -8,7 +8,7 @@ import { Label, UserInput, PassInput, FormGroup, Notification } from '../../../c
 import styles from './LoginForm.module.scss';
 
 interface ILoginFormProps {
-  handleInput: (type: string, value: string | undefined) => void;
+  handleInput: (type: string, value: string) => void;
   handleSubmit: (e: KeyboardEvent) => void;
 }
 

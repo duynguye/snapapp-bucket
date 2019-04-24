@@ -93,8 +93,6 @@ class App extends Component<IAppProps> {
                 <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={Contests} />
                 <PrivateRoute exact path='/contests/add' authenticated={isLoggedIn} component={AddContest} />
                 <PrivateRoute path='/contests/:id' authenticated={isLoggedIn} component={ContestView} />
-
-                <Route component={NotFound} />
               </div>
             </Switch>
           </div>

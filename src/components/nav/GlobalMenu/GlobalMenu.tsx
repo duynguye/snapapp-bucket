@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Local imports and styles
 import { SmallText } from '../../atoms';
@@ -33,6 +34,9 @@ const GlobalMenu = ({ apps }: IGlobalMenuProps) => (
     </div>
 
     <div className={styles.footer}>
+      <a href='/' target='_blank'>
+        <FontAwesomeIcon icon={['fal', 'question-circle']} className={styles.help} />
+      </a>
       <SmallText>Build 0.1a</SmallText>
     </div>
   </div>

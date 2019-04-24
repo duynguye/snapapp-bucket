@@ -31,6 +31,14 @@ interface ILoginState {
   username: string;
   password: string;
   passwordConfirm: string;
+  validation: {
+    hasNumber: boolean;
+    hasLowercase: boolean;
+    hasUppercase: boolean;
+    validLength: boolean;
+    hasSpecial: boolean;
+    allValid: boolean;
+  }
 }
 
 class Login extends Component<ILoginProps, ILoginState> {
@@ -39,11 +47,60 @@ class Login extends Component<ILoginProps, ILoginState> {
     rightImageLoaded: false,
     username: '',
     password: '',
-    passwordConfirm: ''
+    passwordConfirm: '',
+    validation: {
+      hasNumber: false,
+      hasLowercase: false,
+      hasUppercase: false,
+      validLength: false,
+      hasSpecial: false,
+      allValid: false
+    }
   };
 
-  handleInput = (type: string, value: string | undefined): void => {
-    this.setState({ [type]: value } as any);
+  handleInput = (type: string, value: string): void => {
+    const { currentState } = this.props;
+
+    if (currentState == AuthCode.NewPasswordRequired) {
+      if (type === 'password') {
+        // Validate that a number exists
+        const hasNumber = /\d/;
+        const numberResult = hasNumber.test(value);
+
+        // Validate that a lowercase exists
+        const hasLowercase = /[a-z]+/g;
+        const lowercaseResult = hasLowercase.test(value);
+
+        // Validate that a lowercase exists
+        const hasUppercase = /[A-Z]+/g;
+        const uppercaseResult = hasUppercase.test(value);
+
+        // Get the length of the password
+        const length = value.length;
+        const lengthValid = length >= 8;
+
+        // Check to see if the password has a special character
+        const hasSpecialChar = /[!@#\$%\^\&*\)\(+=._-]+/g;
+        const specialCharResult = hasSpecialChar.test(value);
+
+        // Check to see if they are all valid
+        const allValid = (numberResult && lowercaseResult && uppercaseResult && lengthValid && specialCharResult);
+
+        this.setState({
+          [type]: value,
+          validation: {
+            hasNumber: numberResult,
+            hasLowercase: lowercaseResult,
+            hasUppercase: uppercaseResult,
+            validLength: lengthValid,
+            hasSpecial: specialCharResult,
+            allValid
+          }
+        } as any);
+      }
+    } else {
+      this.setState({ [type]: value } as any);
+    }
   }
 
   handleKeyPress = (e: KeyboardEvent) => {

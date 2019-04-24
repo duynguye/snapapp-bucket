@@ -8,7 +8,7 @@ import styles from './PassInput.module.scss';
 interface IPassInputProps {
   className?: string | [string];
   placeholder?: string;
-  handleInput: (type: string, value: string | undefined) => void;
+  handleInput: (type: string, value: string) => void;
   handleKeyPress: (e: KeyboardEvent) => void;
   name?: string;
 }

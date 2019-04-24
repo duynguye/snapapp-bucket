@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface IUserInputProps {
   className?: string | [string];
   placeholder?: string;
-  handleInput: (type: string, value: string | undefined) => void;
+  handleInput: (type: string, value: string) => void;
 }
 
 interface IUserInputState {
