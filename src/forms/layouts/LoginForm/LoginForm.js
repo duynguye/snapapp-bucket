@@ -1,18 +1,13 @@
-import React, { KeyboardEvent } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Custom style and component imports
-import { PageTitle } from '../../../components/text';
-import { HorizontalDivider } from '../../../components/layout';
-import { Label, UserInput, PassInput, FormGroup, Notification } from '../../../components/forms';
+import { PageTitle } from 'components/text';
+import { HorizontalDivider } from 'components/layout';
+import { Label, UserInput, PassInput, FormGroup, Notification } from 'components/forms';
 import styles from './LoginForm.module.scss';
 
-interface ILoginFormProps {
-  handleInput: (type: string, value: string) => void;
-  handleSubmit: (e: KeyboardEvent) => void;
-}
-
-const LoginForm = ({ handleInput, handleSubmit }: ILoginFormProps) => (
+const LoginForm = ({ handleInput, handleSubmit }) => (
   <div className={styles.container}>
     <div className={styles.title}>
       <PageTitle className={styles.withMargin}>Login to the System</PageTitle>

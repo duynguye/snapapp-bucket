@@ -3,40 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 
 // Custom Imports
-import { SectionTitle, IconButtonLarge } from '../../atoms';
-import { OutlinedButton } from '../../buttons';
-import { HorizontalDivider } from '../../layout';
-import { Tab } from '../../molecules';
+import { IconButtonLarge, OutlinedButton } from 'components/buttons';
+import { SectionTitle } from 'components/text';
+import { HorizontalDivider } from 'components/layout';
+import { Tab } from 'components/molecules';
 import styles from './SectionHeader.module.scss';
 
-interface ITab {
-    active?: boolean;
-    title: string;
-    count: number;
-    callback: () => any;
-}
-
-interface IFilter {
-    callback: () => any;
-    icon: string;
-    prefix: string;
-    tooltip?: string;
-}
-
-interface ISectionHeader {
-    action?: () => any;
-    className?: string | string[] | undefined;
-    filters?: any;
-    title: string;
-    tabs?: any;
-}
-
-const SectionHeader = ({ title, tabs = [], className = '', action = undefined, filters = [] }: ISectionHeader) => {
-    const tabList = tabs.map((tab: ITab) => (
+const SectionHeader = ({ title, tabs = [], className = '', action = undefined, filters = [] }) => {
+    const tabList = tabs.map(tab => (
         <Tab key={tab.title} count={tab.count} onClick={tab.callback} active={tab.active}>{tab.title}</Tab>
     ));
 
-    const filterList = filters.map((filter: IFilter) => (
+    const filterList = filters.map(filter => (
         <OutlinedButton key={filter.icon} prefix={filter.prefix} icon={filter.icon} onClick={filter.callback} classes={styles.filter} tooltip={filter.tooltip} />
     ));
 

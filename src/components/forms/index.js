@@ -27,15 +27,6 @@ export const FORMSIZE_THREEQUARTERS = 'FORMSIZE_THREEQUARTERS';
 export const FORMSIZE_THIRD = 'FORMSIZE_THIRD';
 export const FORMSIZE_TWOTHIRDS = 'FORMSIZE_TWOTHIRDS';
 
-export enum FormSize {
-  Full,
-  Half,
-  Quarter,
-  ThreeQuarters,
-  Third,
-  TwoThirds
-}
-
 const WrappedDatePicker = withLabel(DatePicker);
 const WrappedTimePicker = withLabel(TimePicker);
 const WrappedInput = withLabel(Input);

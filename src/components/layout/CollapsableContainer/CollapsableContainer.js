@@ -1,16 +1,11 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component } from 'react';
 
-import { HorizontalDivider } from '../';
-import { IconButton } from '../../buttons';
-import { DashboardSectionTitle } from '../../text';
+import { HorizontalDivider } from 'components/layout';
+import { IconButton } from 'components/buttons';
+import { DashboardSectionTitle } from 'components/text';
 import styles from './CollapsableContainer.module.scss';
 
-interface ICollapse {
-  children?: ReactNode;
-  title: string;
-}
-
-class CollapsableContainer extends Component<ICollapse> {
+class CollapsableContainer extends Component {
   render() {
     const { children, title } = this.props;
 

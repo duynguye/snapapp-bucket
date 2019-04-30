@@ -2,27 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Local imports and styles
-import { SmallText } from '../../atoms';
-import { Logo } from '../';
-import { HorizontalDivider } from '../../layout';
-import AppList from '../../molecules/AppList/AppList';
+import { SmallText } from 'components/text';
+import { AppList, Logo } from 'components/nav';
+import { HorizontalDivider } from 'components/layout';
 import styles from './GlobalMenu.module.scss';
 
-type ApplicationNode = {
-  [index: number]: {
-    exact: boolean,
-    path: string,
-    title: string,
-    prefix: string,
-    icon: string
-  }
-};
-
-interface IGlobalMenuProps {
-  apps: ApplicationNode | [ApplicationNode]
-}
-
-const GlobalMenu = ({ apps }: IGlobalMenuProps) => (
+const GlobalMenu = ({ apps }) => (
   <div className={styles.container}>
     <div className={styles.header}>
       <Logo />

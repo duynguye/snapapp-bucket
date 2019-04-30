@@ -4,9 +4,8 @@ import { Power2, TimelineMax, TweenMax } from 'gsap';
 import classnames from 'classnames';
 
 // Custom imports and styles
-import { Label } from 'components/forms';
+import { Label, FORMSIZE_FULL } from 'components/forms';
 import { getSizeStyle } from 'components/forms/withLabel';
-import { FormSize } from '..';
 import styles from './Dropdown.module.scss';
 
 /**
@@ -151,7 +150,7 @@ class Dropdown extends Component {
 
   render() {
     const { active } = this.state;
-    const { input: { value }, label, placeholder, size = FormSize.Full, required = false } = this.props;
+    const { input: { value }, label, placeholder, size = FORMSIZE_FULL, required = false } = this.props;
     const style = getSizeStyle(size);
 
     return (

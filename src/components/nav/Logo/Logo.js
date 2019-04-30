@@ -9,7 +9,7 @@ import styles from './Logo.module.scss';
 /**
  * Displays the main logo of the entire application.
  */
-const Logo = ({ className = '' }: { className?: string }) => (
+const Logo = ({ className = '' }) => (
     <Link to='/'>
         <LogoImage className={classnames(styles.logo, className)}/>
     </Link>

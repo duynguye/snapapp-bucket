@@ -3,14 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 import styles from './ContextLink.module.scss';
 
-interface IContextLinkProps {
-  children?: React.ReactNode;
-  path: string;
-  exact: boolean;
-  icon: any;
-}
-
-const ContextLink = ({ children, path, exact, icon }: IContextLinkProps) => (
+const ContextLink = ({ children, path, exact, icon }) => (
   <NavLink exact={exact} to={path} className={styles.container} activeClassName={styles.active}>
     <span className={styles.leadingIcon}>
       <FontAwesomeIcon icon={icon} />

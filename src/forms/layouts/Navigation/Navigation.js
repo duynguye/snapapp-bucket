@@ -12,15 +12,10 @@ import styles from './Navigation.module.scss';
  * @props {React.ReactNode} globalMenu  - Menu that contains application icons.
  * @props {React.ReactNode} localMenu   - Context menu for the current appplication.
  */
-interface INavigationProps {
-  globalMenu: React.ReactNode,
-  localMenu: React.ReactNode,
-  className?: [string] | string
-}
 
-class Navigation extends Component<INavigationProps> {
+class Navigation extends Component {
   render() {
-    const { globalMenu, localMenu, className = '' }: INavigationProps = this.props;
+    const { globalMenu, localMenu, className = '' } = this.props;
   
     return (
       <div className={classnames(styles.nav, className)}>

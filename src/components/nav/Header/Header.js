@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { History } from 'history';
+import { withRouter } from 'react-router-dom';
 
 // Import custom styles and components.
-import { UserLoginDispatch } from 'store/user/user.types';
 import { logout } from 'store/user/user.actions';
-import { Badge, Avatar, NameTag } from '../../atoms';
-import background from '../../_global/background.jpg';
+import { Badge, Avatar } from 'components/modules';
+import { NameTag } from 'components/text';
+import background from '_global/background.jpg';
 import styles from './Header.module.scss';
 
 // Temporary Handler
@@ -15,23 +14,7 @@ const onClickHandler = () => {
   return;
 }
 
-interface DispatchProps {
-  logout: (history: History) => (dispatch: UserLoginDispatch) => Promise<void>;
-}
-
-interface OwnProps extends RouteComponentProps {
-  badges?: React.ReactNode | [React.ReactNode];
-  currentUser?: {
-    name: string;
-    title: string;
-    avatar: string;
-  };
-  history: History;
-}
-
-type Props = DispatchProps & OwnProps;
-
-class Header extends Component<Props> {
+class Header extends Component {
   handleLogout = () => {
     const { history, logout } = this.props;
 
@@ -56,8 +39,6 @@ class Header extends Component<Props> {
   }
 
   render() {
-    const { badges, currentUser, history } = this.props;
-
     return (
       <header className={styles.container}>
         <img src={background} alt={'Background'} className={styles.background}/>
@@ -91,4 +72,4 @@ class Header extends Component<Props> {
   }
 }
 
-export default withRouter(connect<{}, DispatchProps, OwnProps>(null, { logout })(Header as any));
+export default withRouter(connect(null, { logout })(Header));

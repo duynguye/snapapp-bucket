@@ -4,12 +4,7 @@ import classnames from 'classnames';
 // Custom styles
 import styles from './PageTitle.module.scss';
 
-interface IPageTitleProps {
-  children?: React.ReactNode;
-  className?: string | [string]
-}
-
-const PageTitle = ({ children, className = '' }: IPageTitleProps) => (
+const PageTitle = ({ children, className = '' }) => (
   <h1 className={classnames(styles.title, className)}>{children}</h1>
 );
 

@@ -2,14 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Badge.module.scss';
 
-interface IBadgeProps {
-    prefix: any;
-    icon: any;
-    count?: number;
-    onClick: () => void;
-}
-
-const Badge = ({ prefix, icon, count, onClick }: IBadgeProps) => (
+const Badge = ({ prefix, icon, count, onClick }) => (
     <div className={styles.container}>
         <div className={styles.wrapper} onClick={onClick}>
             <FontAwesomeIcon icon={[prefix, icon]} className={styles.icon} />

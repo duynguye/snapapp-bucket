@@ -2,14 +2,7 @@ import React from 'react';
 
 import styles from './UserCard.module.scss';
 
-interface IUserCardProps {
-  image?: string;
-  name?: string;
-  tags?: [];
-  title?: string;
-}
-
-const UserImage = ({ src }: { src: string }) => (
+const UserImage = ({ src }) => (
   <img src={src} className={styles.avatar} />
 );
 
@@ -21,17 +14,17 @@ const ColoredTag = () => {
   return <span className={styles.tag} style={{ backgroundColor: `rgba(${red}, ${green}, ${blue}, 1)` }}></span>;
 };
 
-const UserName = ({ children }: { children: React.ReactNode }) => {
+const UserName = ({ children }) => {
   return (
     <p className={styles.name}>{ children }</p>
   );
 }
 
-const UserTitle = ({ children }: { children: React.ReactNode }) => (
+const UserTitle = ({ children }) => (
   <p className={styles.title}>{ children }</p>
 );
 
-export default ({}: IUserCardProps) => (
+export default () => (
   <div className={styles.container}>
     <UserImage src={`https://randomuser.me/api/portraits/men/${Math.floor(Math.random() * 100)}.jpg`} />
     

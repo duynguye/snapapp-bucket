@@ -1,18 +1,12 @@
-import React, { KeyboardEvent } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 // Custom style and component imports
-import { PageTitle } from '../../../components/text';
-import { HorizontalDivider } from '../../../components/layout';
-import { Label, UserInput, PassInput, FormGroup } from '../../../components/forms';
+import { PageTitle } from 'components/text';
+import { HorizontalDivider } from 'components/layout';
+import { Label, PassInput, FormGroup } from 'components/forms';
 import styles from './RequireNewPassword.module.scss';
 
-interface IRequireNewPassword {
-  handleInput: (type: string, value: string) => void;
-  handleSubmit: (e: KeyboardEvent) => void;
-}
-
-const RequireNewPassword = ({ handleInput, handleSubmit }: IRequireNewPassword) => (
+const RequireNewPassword = ({ handleInput, handleSubmit }) => (
   <div className={styles.container}>
     <PageTitle className={styles.withMargin}>New Password Required</PageTitle>
     <HorizontalDivider className={styles.divider} />
