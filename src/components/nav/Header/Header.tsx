@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { History } from 'history';
 
 // Import custom styles and components.
-import { logout } from '../../../store/user/user.actions';
+import { UserLoginDispatch } from 'store/user/user.types';
+import { logout } from 'store/user/user.actions';
 import { Badge, Avatar, NameTag } from '../../atoms';
 import background from '../../_global/background.jpg';
 import styles from './Header.module.scss';
@@ -14,7 +15,11 @@ const onClickHandler = () => {
   return;
 }
 
-interface IHeaderProps {
+interface DispatchProps {
+  logout: (history: History) => (dispatch: UserLoginDispatch) => Promise<void>;
+}
+
+interface OwnProps extends RouteComponentProps {
   badges?: React.ReactNode | [React.ReactNode];
   currentUser?: {
     name: string;
@@ -22,10 +27,11 @@ interface IHeaderProps {
     avatar: string;
   };
   history: History;
-  logout: typeof logout;
 }
 
-class Header extends Component<IHeaderProps> {
+type Props = DispatchProps & OwnProps;
+
+class Header extends Component<Props> {
   handleLogout = () => {
     const { history, logout } = this.props;
 
@@ -85,4 +91,4 @@ class Header extends Component<IHeaderProps> {
   }
 }
 
-export default withRouter(connect<any>(null, { logout })(Header));
+export default withRouter(connect<{}, DispatchProps, OwnProps>(null, { logout })(Header as any));

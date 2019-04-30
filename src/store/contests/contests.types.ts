@@ -1,6 +1,3 @@
-import { Action } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-
 export const ADD_CONTESTS = 'ADD_CONTESTS';
 
 export interface ContestEntry {

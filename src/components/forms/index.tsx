@@ -20,6 +20,13 @@ import TimePicker from './TimePicker/TimePicker';
 import UserInput from './UserInput/UserInput';
 import { withLabel } from './withLabel';
 
+export const FORMSIZE_FULL = 'FORMSIZE_FULL';
+export const FORMSIZE_HALF = 'FORMSIZE_HALF';
+export const FORMSIZE_QUARTER = 'FORMSIZE_QUARTER';
+export const FORMSIZE_THREEQUARTERS = 'FORMSIZE_THREEQUARTERS';
+export const FORMSIZE_THIRD = 'FORMSIZE_THIRD';
+export const FORMSIZE_TWOTHIRDS = 'FORMSIZE_TWOTHIRDS';
+
 export enum FormSize {
   Full,
   Half,
