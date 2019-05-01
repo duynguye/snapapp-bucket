@@ -14,33 +14,7 @@ import backgroundImage from 'components/_global/background.jpg';
 import leftBackgroudImage from 'components/_global/animal-animal-photography-blur-1683688.jpg';
 import styles from './Login.module.scss';
 
-interface ILoginProps extends RouteComponentProps {
-  history: History;
-  login: typeof login;
-  updateSession: typeof updateSession;
-  currentState: AuthCode; 
-  setRequiredPassword: typeof setRequiredPassword;
-  location: any;
-  user?: any;
-}
-
-interface ILoginState {
-  leftImageLoaded: boolean;
-  rightImageLoaded: boolean;
-  username: string;
-  password: string;
-  passwordConfirm: string;
-  validation: {
-    hasNumber: boolean;
-    hasLowercase: boolean;
-    hasUppercase: boolean;
-    validLength: boolean;
-    hasSpecial: boolean;
-    allValid: boolean;
-  }
-}
-
-class Login extends Component<ILoginProps, ILoginState> {
+class Login extends Component {
   state = {
     leftImageLoaded: false,
     rightImageLoaded: false,
@@ -57,7 +31,7 @@ class Login extends Component<ILoginProps, ILoginState> {
     }
   };
 
-  handleInput = (type: string, value: string): void => {
+  handleInput = (type, value) => {
     const { currentState } = this.props;
 
     if (currentState === AuthCode.NewPasswordRequired) {
@@ -95,14 +69,14 @@ class Login extends Component<ILoginProps, ILoginState> {
             hasSpecial: specialCharResult,
             allValid
           }
-        } as any);
+        });
       }
     } else {
-      this.setState({ [type]: value } as any);
+      this.setState({ [type]: value });
     }
   }
 
-  handleKeyPress = (e: KeyboardEvent) => {
+  handleKeyPress = (e) => {
     const { currentState } = this.props;
 
     if (e.key === 'Enter') {
@@ -201,9 +175,9 @@ class Login extends Component<ILoginProps, ILoginState> {
   }
 }
 
-const mapStateToProps = ({ user }: any) => ({
+const mapStateToProps = ({ user }) => ({
   user,
   currentState: user.currentState
 });
 
-export default withRouter(connect<any>(mapStateToProps, { login, updateSession, setRequiredPassword  })(Login));
+export default withRouter(connect(mapStateToProps, { login, updateSession, setRequiredPassword  })(Login));

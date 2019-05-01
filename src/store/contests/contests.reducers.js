@@ -1,11 +1,10 @@
 import {
-  ADD_CONTESTS,
-  ContestListState
+  ADD_CONTESTS
 } from './contests.types';
 
-const initialState: ContestListState = [];
+const initialState = [];
 
-export default (state = initialState, action: any) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_CONTESTS:
       return [...action.contests];

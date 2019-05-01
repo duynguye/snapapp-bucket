@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 import Spinner from 'react-spinkit';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import { Storage } from 'aws-amplify';
 import moment from 'moment';
 
 // Custom imports and styles.
-import { fetchContest } from '../../../lib/contests';
-import { DropdownInput, RichTextEditor } from '../../../components/forms';
-import { Breadcrumbs, ContestEntries, SectionHeader, UserCard } from '../../../components/modules';
-import { Aside, Body, CollapsableContainer, Content } from '../../../components/layout';
-import { ProjectDetailsList } from '../../../components/collections';
+import { fetchContest } from 'lib/contests';
+import { DropdownInput, RichTextEditor } from 'components/forms';
+import { Breadcrumbs, ContestEntries, SectionHeader, UserCard } from 'components/modules';
+import { Aside, Body, CollapsableContainer, Content } from 'components/layout';
+import { ProjectDetailsList } from 'components/collections';
 import styles from './ContestView.module.scss';
-
-interface IContestViewState {
-  data: any;
-  loading: boolean;
-  text: string;
-  reload: boolean;
-}
-
-interface IContestProps {
-  id: string;
-}
 
 /**
  * Tabs in the section header specific to the contest view page.
@@ -58,18 +47,18 @@ export const filters = [{
 /**
  * Main view of the contest.
  */
-class ContestView extends Component<RouteComponentProps<IContestProps>, IContestViewState> {
-  public readonly state: Readonly<IContestViewState> = {
+class ContestView extends Component {
+  state = {
     data: {},
     loading: true,
     text: '',
     reload: false
   };
 
-  static getDerivedStateFromProps(props: any, state: any) {
+  static getDerivedStateFromProps(props, state) {
     const { match: { params: { id }}} = props;
 
-    if (!isNaN(+id) && state && state.data && state.data.contest) {
+    if (!isNaN(ParseInt(id)) && state && state.data && state.data.contest) {
       const { data: { contest: { ticket_id }}} = state;
 
       if (ticket_id && parseInt(id) !== parseInt(ticket_id)) {
@@ -140,13 +129,13 @@ class ContestView extends Component<RouteComponentProps<IContestProps>, IContest
     history.push('/contests/add');
   }
 
-  handleTextUpdates = (text: string) => {
+  handleTextUpdates = (text) => {
     console.log(text);
     this.setState({ text });
   }
 
   render() {
-    const { match }: any = this.props;
+    const { match } = this.props;
     const { data: { contest }, loading } = this.state;
 
     if (!isNaN(match.params.id)) {

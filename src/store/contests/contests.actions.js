@@ -1,14 +1,11 @@
-import { fetchContestList } from '../../lib/contests';
-import {
-  ContestListState 
-} from './contests.types';
+import { fetchContestList } from 'lib/contests';
 
 /**
  * This converts the API data to working attributes.
  */
-const transformContestData = (contests: any) => {
+const transformContestData = (contests) => {
   if (contests.length > 0) {
-    return contests.map((contest: any) => {
+    return contests.map((contest) => {
       return {
         id:             contest.ticket_id,
         issueId:        contest.external_ticket_number,
@@ -26,13 +23,13 @@ const transformContestData = (contests: any) => {
   }
 }
 
-const addContests = (contests: ContestListState) => ({
+const addContests = (contests) => ({
   type: 'ADD_CONTESTS',
   contests
 });
 
 export const getContests = () => {
-  return async (dispatch: any) => {
+  return async (dispatch) => {
     const results = await fetchContestList();
 
     if (results && results.success) {

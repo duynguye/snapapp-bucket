@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { reduxForm, InjectedFormProps, Field, formValueSelector, SubmitHandler } from 'redux-form';
 import { connect } from 'react-redux';
 
 // Custom styles and components
-import { Button, TextButton } from '../../../components/buttons';
+import { Button, TextButton } from 'components/buttons';
 import { 
   Form, 
   FormBody, 
   FormSubmit,
   WrappedInput
-} from '../../../components/forms';
-
-// Interfaces and types
-interface IAddContestProps {
-  jira?: boolean;
-  previousPage?: any;
-  submit?: any;
-}
+} from 'components/forms';
 
 /**
  * 
  */
-class AddContestPageTwo extends Component<IAddContestProps & InjectedFormProps<{}, IAddContestProps>> {
-  private form = React.createRef<HTMLDivElement>();
+class AddContestPageTwo extends Component {
+  form = createRef();
 
   componentDidMount() {
     if (this.props.jira === false) {
@@ -52,7 +45,7 @@ class AddContestPageTwo extends Component<IAddContestProps & InjectedFormProps<{
   }
 }
 
-const ContestPageWithForm = reduxForm<{}, IAddContestProps>({
+const ContestPageWithForm = reduxForm({
   form: 'addContest',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true

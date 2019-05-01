@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, InjectedFormProps, Field, FieldArray } from 'redux-form';
 
 // Custom styles and components
-import { Button, TextButton } from '../../../components/buttons';
+import { Button, TextButton } from 'components/buttons';
 import {
   Dropdown,
   Form,
@@ -17,9 +17,9 @@ import {
   WrappedTextArea,
   WrappedTimePicker,
   EmailArray
-} from '../../../components/forms';
-import { AsideTitle } from '../../../components/text';
-import { HorizontalDivider } from '../../../components/layout';
+} from 'components/forms';
+import { AsideTitle } from 'components/text';
+import { HorizontalDivider } from 'omponents/layout';
 
 // Mock data
 import { 
@@ -28,24 +28,15 @@ import {
   contestType,
   drawType as drawTypes,
   timezones
-} from '../../../lib/mocks/addNewDropdowns';
-import { stations } from '../../../lib/mocks/stations';
+} from 'lib/mocks/addNewDropdowns';
+import { stations } from 'lib/mocks/stations';
 
-// Interfaces and types
-interface IAddContestProps {
-  previousPage?: () => void;
-}
-
-interface IAddContestState {
-  drawType: string;
-}
-
-class AddContestPageThree extends Component<IAddContestProps & InjectedFormProps<{}, IAddContestProps>, IAddContestState> {
+class AddContestPageThree extends Component {
   state = {
     drawType: ''
   };
 
-  handleChange = (drawType: string) => {
+  handleChange = (drawType) => {
     this.setState({ drawType });
   }
 
@@ -136,7 +127,7 @@ class AddContestPageThree extends Component<IAddContestProps & InjectedFormProps
   }
 }
 
-const ContestPageWithForm = reduxForm<{}, IAddContestProps>({
+const ContestPageWithForm = reduxForm({
   form: 'addContest',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true

@@ -1,5 +1,4 @@
 import { Auth } from 'aws-amplify';
-import { CognitoUserSession } from 'amazon-cognito-identity-js';
 
 /**
  * Global enum for understand the results of authentication codes. Must be imported alongside the
@@ -15,24 +14,6 @@ export const AUTHCODE_USERNOTCONFIRMED  = 'USER_NOT_CONFIRMED';
 export const AUTHCODE_RESETREQUIRED     = 'PASSWORD_RESET_REQUIRED';
 export const AUTHCODE_AWAITINGLOGIN     = 'AWAITING_LOGIN';
 
-export enum AuthCode {
-  Success               = 'SUCCESS',
-  LogoutSucess          = 'LOGOUT_SUCCESS',
-  UndefinedError        = 'UNDEFINED',
-  NewPasswordRequired   = 'NEW_PASSWORD_REQUIRED',
-  UserNotFound          = 'USER_NOT_FOUND',
-  InvalidPassword       = 'INVALID_PASSWORD',
-  UserNotComfirmed      = 'USER_NOT_CONFIRMED',
-  ResetRequired         = 'PASSWORD_RESET_REQUIRED',
-  AwaitingLogin         = 'AWAITING_LOGIN'
-}
-
-export interface AuthResponse {
-  status: AuthCode;
-  user?: {} | undefined;
-  session?: CognitoUserSession | {} | any;
-}
-
 /**
  * Authenicates a user account and will return an AuthResponse based on the results. 
  * Results will always be consistent and will return a user object as a payload if successful.
@@ -40,13 +21,13 @@ export interface AuthResponse {
  * @param username The username of the user logging in.
  * @param password The password of the username. Required Field.
  */
-export async function authenticate(username: string, password: string): Promise<AuthResponse> {
+export async function authenticate(username, password) {
   try {
     const user = await Auth.signIn(username, password);
-    let status: AuthCode = AuthCode.Success;
+    let status = AUTHCODE_SUCCESS;
     
     if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-      status = AuthCode.NewPasswordRequired;
+      status = AUTHCODE_NEWPASSWORD;
     }
 
     return {
@@ -54,23 +35,23 @@ export async function authenticate(username: string, password: string): Promise<
       user
     };
   } catch (err) {
-    let status: AuthCode = AuthCode.UndefinedError;
+    let status = AUTHCODE_UNDEFINED;
 
     switch (err.code) {
       case 'UserNotFoundException':
-        status = AuthCode.UserNotFound;
+        status = AUTHCODE_USERNOTFOUND;
         break;
 
       case 'NotAuthorizedException':
-        status = AuthCode.InvalidPassword;
+        status = AUTHCODE_INAVLIDPASSWORD;
         break;
 
       case 'UserNotConfirmedException':
-        status = AuthCode.UserNotComfirmed;
+        status = AUTHCODE_USERNOTCONFIRMED;
         break;
 
       case 'PasswordResetRequiredException':
-        status = AuthCode.ResetRequired;
+        status = AUTHCODE_RESETREQUIRED;
     }
 
     return {
@@ -83,11 +64,11 @@ export async function authenticate(username: string, password: string): Promise<
 /**
  * Setup new password.
  */
-export async function setNewPassword(user: any, password: string): Promise<AuthResponse> {
+export async function setNewPassword(user, password) {
   try {
     const session = await Auth.completeNewPassword(user, password, {});
     console.log(session);
-    let status: AuthCode = AuthCode.Success;
+    let status = AUTHCODE_SUCCESS;
     
     return {
       status,
@@ -102,10 +83,10 @@ export async function setNewPassword(user: any, password: string): Promise<AuthR
 /**
  * Get current active session.
  */
-export async function currentSession(): Promise<AuthResponse> {
+export async function currentSession() {
   try {
     const session = await Auth.currentSession();
-    let status: AuthCode = AuthCode.Success;
+    let status = AUTHCODE_SUCCESS;
   
     return {
       status,
@@ -119,10 +100,10 @@ export async function currentSession(): Promise<AuthResponse> {
 /**
  * Get the current authenticated user if it exists.
  */
-export async function currentAuthUser(): Promise<AuthResponse> {
+export async function currentAuthUser() {
   try {
     const user = await Auth.currentAuthenticatedUser();
-    let status: AuthCode = AuthCode.Success;
+    let status = AUTHCODE_SUCCESS;
 
     return {
       status,
@@ -136,10 +117,10 @@ export async function currentAuthUser(): Promise<AuthResponse> {
 /**
  * Log the current auth user out.
  */
-export async function signout(): Promise<AuthResponse> {
+export async function signout() {
   try {
     const result = await Auth.signOut({ global: true });
-    let status: AuthCode = AuthCode.LogoutSucess;
+    let status = AUTHCODE_LOGOUTSUCCESS;
 
     console.log(result);
 

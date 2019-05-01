@@ -1,17 +1,14 @@
 import React from 'react';
-import { reduxForm, InjectedFormProps } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 // Custom styles and components
-import { Button } from '../../../components/buttons';
-import { Form, FormBody, FormSubmit, RadioButtonGroup } from '../../../components/forms';
-
-// Interfaces and types
-interface IAddContestProps extends InjectedFormProps {}
+import { Button } from 'components/buttons';
+import { Form, FormBody, FormSubmit, RadioButtonGroup } from 'components/forms';
 
 /**
  * Custom validation for this page specifically
  */
-const validate = (values: any) => {
+const validate = (values) => {
   let errors = { jira: '' };
 
   if (!values.jira) {
@@ -24,7 +21,7 @@ const validate = (values: any) => {
 /**
  * 
  */
-const AddContestPageOne = (props: IAddContestProps) => {
+const AddContestPageOne = (props) => {
   const { handleSubmit, invalid, submitting, pristine } = props;
   
   return (

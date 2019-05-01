@@ -6,19 +6,12 @@ import Spinner from 'react-spinkit';
 import moment from 'moment';
 
 // Custom imports and styles
-import { SectionHeader } from '../../components/modules';
-import { Cell, TableRow } from '../../components/collections';
-import { ContestListState } from '../../store/contests/contests.types';
-import { getContests } from '../../store/contests/contests.actions';
-import { AppState } from '../../store';
+import { SectionHeader } from 'components/modules';
+import { Cell, TableRow } from 'components/collections';
+import { getContests } from 'store/contests/contests.actions';
 
 // Mock data
-import { filters } from '../../lib/mocks/filters';
-
-interface IContests extends AppState {
-  contests: ContestListState;
-  getContests: typeof getContests;
-}
+import { filters } from 'lib/mocks/filters';
 
 const ContestTableHeader = () => (
   <div>
@@ -34,7 +27,7 @@ const ContestTableHeader = () => (
   </div>
 )
 
-class Contests extends Component<IContests> {
+class Contests extends Component {
   componentDidMount = () => {
     this.props.getContests();
   }
@@ -95,8 +88,8 @@ class Contests extends Component<IContests> {
   }
 }
 
-const mapStateToProps = ({ contests }: any): any => ({
+const mapStateToProps = ({ contests }) => ({
   contests
 });
 
-export default connect<IContests>(mapStateToProps, { getContests })(Contests);
+export default connect(mapStateToProps, { getContests })(Contests);
