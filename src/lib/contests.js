@@ -1,31 +1,14 @@
 import axios from 'axios';
 
 // Custom Imports
-import { currentSession } from './auth';
+import { currentSession } from 'lib/auth';
 
 const ENDPOINT = 'https://contestr.compulse-staging.com/api';
 
 /**
- * Contest API
- */
-export type Station = string;
-
-/**
- * This is the schema for which the contests data will be converted to.
- */
-export interface IContest {
-  id: string;
-  title: string;
-  station: Station;
-  requestType: string;
-  assignedUsers: {},
-  entries: number;
-}
-
-/**
  * 
  */
-export async function fetchContestList(): Promise<any> {
+export async function fetchContestList() {
   const result = await currentSession();
   const config = {
     headers: {
@@ -49,7 +32,7 @@ export async function fetchContestList(): Promise<any> {
  * 
  * @param id The unique identifier of the contest that needs to be fetched.
  */
-export async function fetchContest(id: number): Promise<any> {
+export async function fetchContest(id) {
   const result = await currentSession();
   const config = {
     headers: {
@@ -69,7 +52,7 @@ export async function fetchContest(id: number): Promise<any> {
 /**
  * Submit new contest
  */
-export async function createNewContest(data: any): Promise<any> {
+export async function createNewContest(data) {
   const result = await currentSession();
   const config = {
     headers: {

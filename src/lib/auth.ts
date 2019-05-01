@@ -5,6 +5,16 @@ import { CognitoUserSession } from 'amazon-cognito-identity-js';
  * Global enum for understand the results of authentication codes. Must be imported alongside the
  * function calls so that it can be translated.
  */
+export const AUTHCODE_SUCCESS           = 'SUCCESS';
+export const AUTHCODE_LOGOUTSUCCESS     = 'LOGOUT_SUCCESS';
+export const AUTHCODE_UNDEFINED         = 'UNDEFINED';
+export const AUTHCODE_NEWPASSWORD       = 'NEW_PASSWORD_REQUIRED';
+export const AUTHCODE_USERNOTFOUND      = 'USER_NOT_FOUND';
+export const AUTHCODE_INAVLIDPASSWORD   = 'INVALID_PASSWORD';
+export const AUTHCODE_USERNOTCONFIRMED  = 'USER_NOT_CONFIRMED';
+export const AUTHCODE_RESETREQUIRED     = 'PASSWORD_RESET_REQUIRED';
+export const AUTHCODE_AWAITINGLOGIN     = 'AWAITING_LOGIN';
+
 export enum AuthCode {
   Success               = 'SUCCESS',
   LogoutSucess          = 'LOGOUT_SUCCESS',
