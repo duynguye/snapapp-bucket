@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './AppButton.module.scss';
@@ -9,8 +9,8 @@ import styles from './AppButton.module.scss';
 const AppButton = ({ children, path, title = '', exact = false }) => {
   const [isHovering, setHover] = useState(false);
 
-  const onMouseEnter = () => useCallback(() => setHover(true), [isHovering]);
-  const onMouseLeave = () => useCallback(() => setHover(false), [isHovering]);
+  const onMouseEnter = () => setHover(true);
+  const onMouseLeave = () => setHover(false);
 
   return (
     <NavLink

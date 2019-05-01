@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Amplify, { Storage } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import { Provider } from 'react-redux';
 
 // Custom styles and imports

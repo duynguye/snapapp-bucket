@@ -52,6 +52,9 @@ export async function authenticate(username, password) {
 
       case 'PasswordResetRequiredException':
         status = AUTHCODE_RESETREQUIRED;
+        break;
+
+      default:
     }
 
     return {

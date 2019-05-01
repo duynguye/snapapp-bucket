@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { reduxForm, InjectedFormProps, Field, formValueSelector, SubmitHandler } from 'redux-form';
+import { reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 
 // Custom styles and components

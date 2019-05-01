@@ -34,7 +34,8 @@ import {
     faSortAmountDown as falSortAmountDown,
     faCaretLeft as falCaretLeft,
     faPlus as falPlus,
-    faLongArrowRight as falLongArrowRight
+    faLongArrowRight as falLongArrowRight,
+    faAngleDown as falAngleDown
 } from '@fortawesome/pro-light-svg-icons';
 
 // Regular Icons
@@ -92,7 +93,8 @@ library.add([
     falChevronDown,
     falEye,
     falQuestionCircle,
-    falLongArrowRight
+    falLongArrowRight,
+    falAngleDown
 ]);
 
 library.add([

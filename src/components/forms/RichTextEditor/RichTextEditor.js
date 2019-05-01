@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactQuill, { Quill } from 'react-quill';
+import ReactQuill from 'react-quill';
 
 import { Button } from '../../buttons';
 import styles from './RichTextEditor.module.scss';
 
-const icons = Quill.import('ui/icons');
+// const icons = Quill.import('ui/icons');
 // icons['bold'] = '<i class="far fa-plus"></i>';
 
 const modules = {

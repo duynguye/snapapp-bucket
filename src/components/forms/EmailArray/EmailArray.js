@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Custom imports and styles
 import { CompactButton } from 'components/buttons';
-import { SmallInput } from 'compoennts/forms'
+import { SmallInput } from 'components/forms'
 import styles from './EmailArray.module.scss';
 
 /**
@@ -22,7 +22,7 @@ class EmailArray extends Component {
   emailField = React.createRef();
 
   validateEmail = (email) => {
-    const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     return reg.test(String(email).toLowerCase());
   }
@@ -67,7 +67,7 @@ class EmailArray extends Component {
   }
 
   render() {
-    const { fields, meta: { error }} = this.props;
+    const { fields } = this.props;
 
     return (
       <ul className={styles.wrapper}>

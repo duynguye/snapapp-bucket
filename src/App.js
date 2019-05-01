@@ -23,15 +23,15 @@ import {
   LocalMenu, 
   ContextLink,
   Header
-} from './components/nav';
-import { Login, Contests, AddContest, ContestView } from './pages';
-import { setAuthState, loginStatus, loginSuccess } from './store/user/user.actions';
+} from 'components/nav';
+import { Login, Contests, AddContest, ContestView } from 'pages';
+import { setAuthState, loginStatus, loginSuccess } from 'store/user/user.actions';
 
 /**
  * Mock data
  */
-import apps from './lib/mocks/apps';
-import localMenuProps from './lib/mocks/context';
+import apps from 'lib/mocks/apps';
+import localMenuProps from 'lib/mocks/context';
 
 class App extends Component {
   componentDidMount() {
@@ -75,14 +75,14 @@ class App extends Component {
             <Switch>
               <Route exact path='/' render={props => <Redirect to={{ pathname: '/contests' }} />} />
               <Route path='/login' component={Login} />
-
-              <div className='app-content'>
-                { isLoggedIn && <Header /> }
-                <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={Contests} />
-                <PrivateRoute exact path='/contests/add' authenticated={isLoggedIn} component={AddContest} />
-                <PrivateRoute path='/contests/:id' authenticated={isLoggedIn} component={ContestView} />
-              </div>
             </Switch>
+
+            <div className='app-content'>
+              { isLoggedIn && <Header /> }
+              <PrivateRoute exact path='/contests' authenticated={isLoggedIn} component={Contests} />
+              <PrivateRoute exact path='/contests/add' authenticated={isLoggedIn} component={AddContest} />
+              <PrivateRoute path='/contests/:id' authenticated={isLoggedIn} component={ContestView} />
+            </div>
           </div>
         </Router>
       </DocumentTitle>
@@ -90,7 +90,7 @@ class App extends Component {
   }
 }
 
-const PrivateRoute = ({ component, authenticated, ...rest }) => (
+const PrivateRoute = ({ component: Component, authenticated, ...rest }) => (
   <Route {...rest} render={(props) => (
     authenticated
       ? <Component {...props} />

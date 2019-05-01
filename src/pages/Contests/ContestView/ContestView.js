@@ -58,7 +58,7 @@ class ContestView extends Component {
   static getDerivedStateFromProps(props, state) {
     const { match: { params: { id }}} = props;
 
-    if (!isNaN(ParseInt(id)) && state && state.data && state.data.contest) {
+    if (!isNaN(parseInt(id)) && state && state.data && state.data.contest) {
       const { data: { contest: { ticket_id }}} = state;
 
       if (ticket_id && parseInt(id) !== parseInt(ticket_id)) {

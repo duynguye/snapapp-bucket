@@ -16,6 +16,7 @@ class UserInput extends Component {
         this.setState({ isFocused: true });
         break;
       
+      default:
       case 'blur':
         this.setState({ isFocused: false });
     }

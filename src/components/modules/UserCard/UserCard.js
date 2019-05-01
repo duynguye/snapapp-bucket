@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './UserCard.module.scss';
 
 const UserImage = ({ src }) => (
-  <img src={src} className={styles.avatar} />
+  <img src={src} className={styles.avatar} alt='User avatar' />
 );
 
 const ColoredTag = () => {

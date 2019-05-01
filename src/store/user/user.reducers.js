@@ -8,8 +8,7 @@ import {
   UPDATE_LOGIN_STATE,
   USER_LOGIN_ERR
 } from 'store/user';
-
-import { AuthCode } from 'lib/auth';
+import { AUTHCODE_AWAITINGLOGIN } from 'lib/auth';
 
 const initialState = {
   error: '',
@@ -21,7 +20,7 @@ const initialState = {
   isLoggedIn: false,
   session: {},
   isAuthenticating: true,
-  currentState: AuthCode.AwaitingLogin
+  currentState: AUTHCODE_AWAITINGLOGIN
 };
 
 export default (state = initialState, action) => {

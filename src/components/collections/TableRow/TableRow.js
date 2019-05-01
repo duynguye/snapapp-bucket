@@ -1,4 +1,4 @@
-import React, { Component, useCallback } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import styles from './TableRow.module.scss';
@@ -7,9 +7,9 @@ const TableRow = ({ children }) => {
   const [hovering, setHover] = useState(false);
   const [active, setActive] = useState(false);
 
-  const onMouseEnter = () => useCallback(() => setHover(true), [hovering]);
-  const onMouseLeave = () => useCallback(() => setHover(false), [hovering]);
-  const onClick = () => useCallback(() => setActive(!active), [active]);
+  const onMouseEnter = () => setHover(true);
+  const onMouseLeave = () => setHover(false);
+  const onClick = () => setActive(!active);
 
   return (
     <div

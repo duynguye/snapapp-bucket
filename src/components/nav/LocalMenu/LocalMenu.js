@@ -15,7 +15,7 @@ const LocalMenu = ({ title, children }) => {
                 { children }
             </div>
 
-            <img className={styles.background} src={background} alt="Background Image" />
+            <img className={styles.background} src={background} alt="underwater scene" />
         </div>
     );
 }
