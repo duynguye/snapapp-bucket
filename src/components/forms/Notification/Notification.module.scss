@@ -1,12 +1,18 @@
+.wrapper {
+  position: absolute;
+}
+
 .container {
   align-items: center;
   background-color: var(--pink);
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  margin-bottom: 30px;
+  margin-bottom: 45px;
   margin-top: -15px;
   padding: 14px 15px;
+
+  opacity: 0;
 }
 
 .icon {

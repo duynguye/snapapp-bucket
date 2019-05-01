@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 // Local imports and styles
@@ -13,17 +13,13 @@ import styles from './Navigation.module.scss';
  * @props {React.ReactNode} localMenu   - Context menu for the current appplication.
  */
 
-class Navigation extends Component {
-  render() {
-    const { globalMenu, localMenu, className = '' } = this.props;
-  
-    return (
-      <div className={classnames(styles.nav, className)}>
-        {globalMenu}
-        {localMenu}
-      </div>
-    )
-  }
+const Navigation = ({ globalMenu, localMenu, className = '' }) => {
+  return (
+    <div className={classnames(styles.nav, className)}>
+      {globalMenu}
+      {localMenu}
+    </div>
+  )
 }
 
 export default Navigation;
