@@ -1,5 +1,5 @@
 .wrapper {
-  position: absolute;
+  display: none;
 }
 
 .container {
@@ -8,10 +8,8 @@
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  margin-bottom: 45px;
-  margin-top: -15px;
+  margin-bottom: 15px;
   padding: 14px 15px;
-
   opacity: 0;
 }
 

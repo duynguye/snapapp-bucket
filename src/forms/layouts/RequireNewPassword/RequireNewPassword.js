@@ -6,6 +6,8 @@ import { HorizontalDivider } from 'components/layout';
 import { Label, PassInput, FormGroup } from 'components/forms';
 import styles from './RequireNewPassword.module.scss';
 
+const placeholder = '&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;';
+
 const RequireNewPassword = ({ handleInput, handleSubmit }) => (
   <div className={styles.container}>
     <PageTitle className={styles.withMargin}>New Password Required</PageTitle>
@@ -13,12 +15,12 @@ const RequireNewPassword = ({ handleInput, handleSubmit }) => (
     
     <FormGroup className={styles.formMargin} clear>
       <Label>Password</Label>
-      <PassInput placeholder='&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;' handleInput={handleInput} handleKeyPress={handleSubmit} name='password' />
+      <PassInput placeholder={placeholder} handleInput={handleInput} handleKeyPress={handleSubmit} name='password' />
     </FormGroup>
 
     <FormGroup className={styles.formMargin} clear>
       <Label>Confirm Password</Label>
-      <PassInput placeholder='&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;' handleInput={handleInput} handleKeyPress={handleSubmit} name='passwordConfirm' />
+      <PassInput placeholder={placeholder} handleInput={handleInput} handleKeyPress={handleSubmit} name='passwordConfirm' />
     </FormGroup>
   </div>
 );

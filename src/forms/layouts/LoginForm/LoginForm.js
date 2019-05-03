@@ -15,7 +15,8 @@ const LoginForm = ({ handleInput, handleSubmit }) => (
     </div>
     <HorizontalDivider className={styles.divider} />
 
-    <Notification>Sorry, we couldn't find an account with that username and/or password. Can we help you recover your <Link to='/'>credentials</Link>?</Notification>
+    <Notification display>Sorry, we couldn't find an account with that username and/or password. Can we help you recover your <Link to='/'>credentials</Link>?</Notification>
+    <Notification display>Sorry, we couldn't find an account with that username and/or password. Can we help you recover your <Link to='/'>credentials</Link>?</Notification>
     
     <FormGroup className={styles.formMargin} clear>
       <Label>Username</Label>

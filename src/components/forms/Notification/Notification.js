@@ -4,27 +4,32 @@ import { TweenMax } from 'gsap';
 
 import styles from './Notification.module.scss';
 
-export default ({ children }) => {
+export default ({ children, display = false }) => {
   const wrapper = useRef(null);
   const container = useRef(null);
   const [initialHeight, setInitialHeight] = useState(0);
 
   useEffect(() => {
     if (wrapper.current) {
-      setInitialHeight(wrapper.current.offsetHeight);
+      const containerStyles = getComputedStyle(container.current);
+      TweenMax.set(wrapper.current, { display: 'block' });
+
+      setInitialHeight(wrapper.current.offsetHeight + parseInt(containerStyles.marginBottom));
     }
   }, [wrapper]);
 
   useEffect(() => {
     if (initialHeight > 0) {
       TweenMax.set(wrapper.current, { height: 0, position: 'initial' });
-
-      setTimeout(() => {
-        TweenMax.to(wrapper.current, 0.35, { height: initialHeight });
-        TweenMax.to(container.current, 0.35, { opacity: 1 });
-      }, 1000);
     }
   }, [initialHeight]);
+
+  useEffect(() => {
+    if (display) {
+      TweenMax.to(wrapper.current, 0.35, { height: initialHeight });
+      TweenMax.to(container.current, 0.5, { delay: 0.15, opacity: 1 });
+    }
+  }, [display, initialHeight]);
 
   return (
     <div className={styles.wrapper} ref={wrapper}>
